@@ -13,8 +13,8 @@ class InfoViewController: UIViewController{
     
     //@IBOutlet weak var friendImage: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
+       @IBOutlet weak var profilePicSmall: UIImageView!
     
-    @IBOutlet weak var lastName: UILabel!
     @IBOutlet weak var firstName: UILabel!
     @IBOutlet weak var job: UILabel!
     @IBOutlet weak var age: UILabel!
@@ -24,16 +24,20 @@ class InfoViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        profilePic.layer.borderWidth = 1.0
-        profilePic.layer.masksToBounds = false
-        profilePic.layer.borderColor = UIColor.whiteColor().CGColor
-        profilePic.layer.cornerRadius = profilePic.frame.height/2
-        profilePic.clipsToBounds = true
-        self.spinner.startAnimating()
+        profilePicSmall.layer.masksToBounds = false
+        profilePicSmall.layer.cornerRadius = 55
+        profilePicSmall.clipsToBounds = true
+                self.spinner.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
         })
         returnUserData()
+        let blurEffect = UIBlurEffect(style: .Light)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = CGRectMake(0, 0, 400 , 204)
+        blurredEffectView.alpha = 0.7
+        profilePic.addSubview(blurredEffectView)
+
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -90,16 +94,15 @@ class InfoViewController: UIViewController{
                 print("fetched user: \(result)")
                 let age_range : NSDictionary = result.valueForKey("age_range") as! NSDictionary
                 self.age.text = age_range["min"]?.stringValue
-                let firstName : NSString = result.valueForKey("first_name") as! NSString
+                let firstName : NSString = result.valueForKey("name") as! NSString
                 self.firstName.text = firstName as String
-                let lastName : NSString = result.valueForKey("last_name") as! NSString
-                self.lastName.text = lastName as String
                 let sex : NSString = result.valueForKey("gender") as! NSString
                 self.gender.text = sex as String
                 let userID : NSString = result.valueForKey("id") as! NSString
                 let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                 if let data = NSData(contentsOfURL: facebookProfileUrl!) {
                     self.profilePic.image = UIImage(data: data)
+                    self.profilePicSmall.image = UIImage(data: data)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         
                         self.spinner.stopAnimating()

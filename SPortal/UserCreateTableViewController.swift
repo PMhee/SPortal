@@ -44,7 +44,12 @@ class UserCreateTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if selectedCellIndexPath == indexPath {
-            return selectedCellHeight
+            if indexPath.row == 1 || indexPath.row == 0 {
+            return unselectedCellHeight
+            }else
+            {
+                return selectedCellHeight
+            }
         }
         return unselectedCellHeight
     }
