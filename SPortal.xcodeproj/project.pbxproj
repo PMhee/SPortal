@@ -20,6 +20,7 @@
 		B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */; };
 		B7BC89FB1C558FD500FB6073 /* TrainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */; };
 		B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FC1C56079D00FB6073 /* StatViewController.swift */; };
+		B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */; };
 		B7D1F7961C54B85800F376BC /* FitnessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1F7951C54B85800F376BC /* FitnessTableViewController.swift */; };
 		B7D1F7981C55151300F376BC /* TrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1F7971C55151300F376BC /* TrainerViewController.swift */; };
 		B7F455971C522BF50031199B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F455961C522BF50031199B /* FBSDKCoreKit.framework */; };
@@ -65,6 +66,7 @@
 		B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMakeAppointmentViewController.swift; sourceTree = "<group>"; };
 		B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewController.swift; sourceTree = "<group>"; };
 		B7BC89FC1C56079D00FB6073 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
+		B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = "<group>"; };
 		B7D1F7951C54B85800F376BC /* FitnessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessTableViewController.swift; sourceTree = "<group>"; };
 		B7D1F7971C55151300F376BC /* TrainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerViewController.swift; sourceTree = "<group>"; };
 		B7F455961C522BF50031199B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				B79B47181C59DE90001E104A /* GraphView.swift */,
 				B78618381C63EA6000D71401 /* NewsFeedViewController.swift */,
 				B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */,
+				B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				B79B47191C59DE90001E104A /* GraphView.swift in Sources */,
 				B78618391C63EA6000D71401 /* NewsFeedViewController.swift in Sources */,
 				B75697DF1C3E3DC200A8FB3F /* AppDelegate.swift in Sources */,
+				B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */,
 				B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */,
 				B7D1F7961C54B85800F376BC /* FitnessTableViewController.swift in Sources */,
 				B7BC89FB1C558FD500FB6073 /* TrainerTableViewController.swift in Sources */,
