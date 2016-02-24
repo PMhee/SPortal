@@ -15,6 +15,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
         delay(5){
             self.returnUserData()
         }
@@ -28,6 +29,10 @@ class FirstViewController: UIViewController {
             ),
             dispatch_get_main_queue(), closure)
     }
+
+  
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -57,7 +57,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svy-CB-P4E">
                                 <rect key="frame" x="80" y="190" width="240" height="236"/>
                                 <subviews>
@@ -107,6 +106,7 @@
                                     <rect key="frame" x="100" y="210" width="200" height="201"/>
                                 </variation>
                             </stackView>
+
 
                         </subviews>
                         <color key="backgroundColor" red="0.67843137254901964" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2659,8 +2659,10 @@
             </objects>
             <point key="canvasLocation" x="2998.5" y="594"/>
         </scene>
+
         <!--Select Table View Controller-->
         <scene sceneID="Afg-OO-EDp">
+
             <objects>
 
                 <tableViewController id="5sH-oj-Zas" customClass="SelectTableViewController" customModule="SPortal" customModuleProvider="target" sceneMemberID="viewController">
@@ -5157,8 +5159,6 @@
                                             </variation>
                                         </label>
 
-
-
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder8-2" translatesAutoresizingMaskIntoConstraints="NO" id="126-N2-lgd">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <constraints>
@@ -5761,6 +5761,7 @@
         <segue reference="wqu-se-Dmk"/>
         <segue reference="vWi-x4-n8c"/>
         <segue reference="Quc-2z-axb"/>
+
 
     </inferredMetricsTieBreakers>
 </document>
