@@ -23,7 +23,7 @@ class InfoViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        /*
         profilePicSmall.layer.masksToBounds = false
         profilePicSmall.layer.cornerRadius = 55
         profilePicSmall.clipsToBounds = true
@@ -37,6 +37,7 @@ class InfoViewController: UIViewController{
         blurredEffectView.frame = CGRectMake(0, 0, 400 , 204)
         blurredEffectView.alpha = 0.7
         profilePic.addSubview(blurredEffectView)
+*/
 
     }
     override func viewWillAppear(animated: Bool) {
