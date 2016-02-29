@@ -16,7 +16,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        delay(5){
+        delay(2){
             self.returnUserData()
         }
         

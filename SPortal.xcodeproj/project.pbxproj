@@ -14,6 +14,8 @@
 		B75697E91C3E3DC200A8FB3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75697E71C3E3DC200A8FB3F /* LaunchScreen.storyboard */; };
 		B75697F41C3E3DC300A8FB3F /* SPortalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697F31C3E3DC300A8FB3F /* SPortalTests.swift */; };
 		B75697FF1C3E3DC300A8FB3F /* SPortalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697FE1C3E3DC300A8FB3F /* SPortalUITests.swift */; };
+		B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7585C851C8142C000DE6980 /* ShowEventViewController.swift */; };
+		B7585C881C81481200DE6980 /* DataToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7585C871C81481200DE6980 /* DataToPass.swift */; };
 		B78618391C63EA6000D71401 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78618381C63EA6000D71401 /* NewsFeedViewController.swift */; };
 		B79B47191C59DE90001E104A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B47181C59DE90001E104A /* GraphView.swift */; };
 		B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */; };
@@ -60,6 +62,8 @@
 		B75697FA1C3E3DC300A8FB3F /* SPortalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPortalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75697FE1C3E3DC300A8FB3F /* SPortalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPortalUITests.swift; sourceTree = "<group>"; };
 		B75698001C3E3DC300A8FB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7585C851C8142C000DE6980 /* ShowEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
+		B7585C871C81481200DE6980 /* DataToPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataToPass.swift; sourceTree = "<group>"; };
 		B78618381C63EA6000D71401 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		B79B47181C59DE90001E104A /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateTableViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		B75697DD1C3E3DC200A8FB3F /* SPortal */ = {
 			isa = PBXGroup;
 			children = (
+				B7FE68531C81F6E50026FB13 /* Resource */,
 				B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */,
 				B75697E01C3E3DC200A8FB3F /* ViewController.swift */,
 				B75697E21C3E3DC200A8FB3F /* Main.storyboard */,
@@ -144,6 +149,8 @@
 				B78618381C63EA6000D71401 /* NewsFeedViewController.swift */,
 				B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */,
 				B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */,
+				B7585C851C8142C000DE6980 /* ShowEventViewController.swift */,
+				B7585C871C81481200DE6980 /* DataToPass.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -164,6 +171,13 @@
 				B75698001C3E3DC300A8FB3F /* Info.plist */,
 			);
 			path = SPortalUITests;
+			sourceTree = "<group>";
+		};
+		B7FE68531C81F6E50026FB13 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +318,8 @@
 				B7D1F7981C55151300F376BC /* TrainerViewController.swift in Sources */,
 				B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */,
 				B79B47191C59DE90001E104A /* GraphView.swift in Sources */,
+				B7585C881C81481200DE6980 /* DataToPass.swift in Sources */,
+				B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */,
 				B78618391C63EA6000D71401 /* NewsFeedViewController.swift in Sources */,
 				B75697DF1C3E3DC200A8FB3F /* AppDelegate.swift in Sources */,
 				B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */,

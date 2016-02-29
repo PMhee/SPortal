@@ -9,20 +9,11 @@
 import UIKit
 
 class TrainerTableViewController: UITableViewController {
-
-    struct event {
-        var type : String
-        var date : String
-        var time : String
-        var place : String
-        var author : String
-        var price : String
-    }
-    let imageArray = ["exercise84","yoga13","sport318","exercise84","exercise84","sport316"]
-    var events = [event]()
+    let imageArray = ["fitness icon","yoga icon","boxing icon","fitness icon","fitness icon","football icon"]
+    var events = [DataToPass]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        events = [event(type: "Workout ", date: "12/01/2016", time: "13.00-14.00", place: "SportComplex ",author: "Tanakorn Rattanajariya",price: "500-600 B"),event(type: "Yoga ", date: "13/01/2016", time: "13.30-14.30", place: "AmornFitness ",author: "Tanakorn Rattanajariya",price: "800-1,000 B"),event(type: "Kickboxing ", date: "13/01/2016", time: "9.00-10.00", place: "HouseFitness ",author: "Kirk Lertritpuwadol",price: "900-1,200 B"),event(type: "Workout ", date: "12/01/2016", time: "10.00-11.00", place: "SportComplex ",author: "Kirk Lertritpuwadol",price: "500-600 B"),event(type: "Workout ", date: "12/01/2016", time: "11.00-12.00", place: "SportComplex ",author: "Tanakorn Rattanajariya",price: "500-600 B"),event(type: "Weighting ", date: "12/01/2016", time: "8.00-9.00", place: "SportComplex ",author: "Kirk Lertritpuwadol",price: "500-600 B"),]
+        events = [DataToPass(type: "Workout ", date: "12/01/2016", time: "13.00-14.00", place: "SportComplex ",author: "Tanakorn Rattanajariya",price: "500-600 B",image : "fitness icon"),DataToPass(type: "Yoga ", date: "13/01/2016", time: "13.30-14.30", place: "AmornFitness ",author: "Tanakorn Rattanajariya",price: "800-1,000 B",image : "yoga icon"),DataToPass(type: "Kickboxing ", date: "13/01/2016", time: "9.00-10.00", place: "HouseFitness ",author: "Kirk Lertritpuwadol",price: "900-1,200 B",image : "boxing icon"),DataToPass(type: "Workout ", date: "12/01/2016", time: "10.00-11.00", place: "SportComplex ",author: "Kirk Lertritpuwadol",price: "500-600 B",image : "fitness icon"),DataToPass(type: "Workout ", date: "12/01/2016", time: "11.00-12.00", place: "SportComplex ",author: "Tanakorn Rattanajariya",price: "500-600 B",image : "fitness icon"),DataToPass(type: "football ", date: "12/01/2016", time: "8.00-9.00", place: "SportComplex ",author: "Kirk Lertritpuwadol",price: "500-600 B",image: "football icon")]
         
     }
     
@@ -30,12 +21,24 @@ class TrainerTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "pass") {
+            
+            // initialize new view controller and cast it as your view controller
+            let des = segue.destinationViewController as? ShowEventViewController
+            // your new view controller should have property that will store passed value
+            var indexPath = self.tableView.indexPathForSelectedRow!
+            var dataToPass = events[indexPath.row]
+            des?.showEvent = dataToPass
+        }
+        
+    }
     // MARK: - Table view data source
     override  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
         let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(named: imageArray[indexPath.row])
+        imageView.image = UIImage(named: events[indexPath.row].image)
         let author = cell.viewWithTag(2) as! UILabel
         author.text = events[indexPath.row].author
         let place = cell.viewWithTag(3) as! UILabel

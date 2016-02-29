@@ -14,7 +14,7 @@ class SelectTableViewController: UITableViewController {
     @IBOutlet weak var frame1: UIView!
     @IBOutlet weak var frame2: UIView!
     @IBOutlet weak var frame3: UIView!
-    
+    var place :String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,20 @@ class SelectTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let des = segue.destinationViewController as? UserMakeAppointmentViewController{
+            if let identifier = segue.identifier{
+                print("inn")
+            switch identifier {
+            case "Football" : des.sportType = "Football"
+            case "BodyBuilding" : des.sportType = "BodyBuilding"
+            case "Yoga" : des.sportType = "Yoga"
+            case "Boxing" : des.sportType = "Boxing"
+            default : des.sportType = ""
+            }
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -10,22 +10,51 @@ import UIKit
 
 class UserCreateTableViewController: UITableViewController {
     
+    @IBOutlet weak var Price: UILabel!
+    @IBOutlet weak var Time: UILabel!
+    @IBOutlet weak var Date: UILabel!
+    @IBOutlet weak var dates: UIDatePicker!
+    @IBAction func price(sender: UISlider) {
+        var current = Double(sender.value)*2000
+        let y = Double(round(current)/1)
+        Price.text = "\(y)"
+    }
+    @IBOutlet weak var times: UIDatePicker!
+    @IBOutlet weak var SportTT: UILabel!
     @IBOutlet weak var LocationTitle: UILabel!
     var fromSegue :String = "Select Place"
     var selectedCellIndexPath: NSIndexPath?
     let selectedCellHeight: CGFloat = 200.0
     let unselectedCellHeight: CGFloat = 44.0
+    var sportType : String = "Select Type"
     override func viewDidLoad() {
         super.viewDidLoad()
+        var a = NSBundle.mainBundle().objectForInfoDictionaryKey("storeData")!
+        
         LocationTitle.text = fromSegue
-    
+        dates.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        times.addTarget(self, action: Selector("timePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        SportTT.text = sportType
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    func datePickerChanged(datePicker:UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        var strDate = dateFormatter.stringFromDate(datePicker.date)
+        Date.text = strDate
+    }
+    func timePickerChanged(datePicker:UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        var strDate = dateFormatter.stringFromDate(datePicker.date)
+        Time.text = strDate
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

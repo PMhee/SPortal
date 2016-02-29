@@ -12,6 +12,7 @@ import CoreLocation
 
 class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var map: MKMapView!
+    var sportType:String = ""
     let locationManager = CLLocationManager()
     var locationtitle :String = ""
     override func viewDidLoad() {
@@ -48,6 +49,7 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
         if let destination = segue.destinationViewController as? UserCreateTableViewController {
             if segue.identifier == "confirm"{
             destination.fromSegue = self.locationtitle
+            destination.sportType = self.sportType
             print(self.locationtitle)
             }
         }
