@@ -16,9 +16,9 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        delay(2){
+//        delay(2){
             self.returnUserData()
-        }
+//        }
         
     }
     func delay(delay:Double, closure:()->()) {
