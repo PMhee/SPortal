@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A62D237F1C88A971003E234A /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D237E1C88A971003E234A /* UIImageEffects.swift */; };
+		A62D23811C88B443003E234A /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D23801C88B443003E234A /* UIImageEffects.swift */; };
 		B75697DF1C3E3DC200A8FB3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */; };
 		B75697E11C3E3DC200A8FB3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697E01C3E3DC200A8FB3F /* ViewController.swift */; };
 		B75697E41C3E3DC200A8FB3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75697E21C3E3DC200A8FB3F /* Main.storyboard */; };
@@ -51,7 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A62D237E1C88A971003E234A /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageEffects.swift; path = "../../../Downloads/SwiftUIImageEffects-master/Source/UIImageEffects.swift"; sourceTree = "<group>"; };
+		A62D23801C88B443003E234A /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		B75697DB1C3E3DC200A8FB3F /* SPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75697E01C3E3DC200A8FB3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,8 +142,8 @@
 				B75697E51C3E3DC200A8FB3F /* Assets.xcassets */,
 				B75697E71C3E3DC200A8FB3F /* LaunchScreen.storyboard */,
 				B75697EA1C3E3DC200A8FB3F /* Info.plist */,
-				A62D237E1C88A971003E234A /* UIImageEffects.swift */,
 				B7F4559A1C523D950031199B /* InfoViewController.swift */,
+				A62D23801C88B443003E234A /* UIImageEffects.swift */,
 				B7F4559C1C52636D0031199B /* FirstViewController.swift */,
 				B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */,
 				B7D1F7951C54B85800F376BC /* FitnessTableViewController.swift */,
@@ -319,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A62D237F1C88A971003E234A /* UIImageEffects.swift in Sources */,
+				A62D23811C88B443003E234A /* UIImageEffects.swift in Sources */,
 				B75697E11C3E3DC200A8FB3F /* ViewController.swift in Sources */,
 				B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */,
 				B7F4559B1C523D950031199B /* InfoViewController.swift in Sources */,
