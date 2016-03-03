@@ -13,8 +13,49 @@ class TrainerTableViewController: UITableViewController {
     var events = [DataToPass]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        events = [DataToPass(type: "Workout ", date: "12/01/2016", time: "13.00-14.00", place: "SportComplex ",author: "Tanakorn Rattanajariya",price: "500-600 B",image : "fitness icon"),DataToPass(type: "Yoga ", date: "13/01/2016", time: "13.30-14.30", place: "AmornFitness ",author: "Tanakorn Rattanajariya",price: "800-1,000 B",image : "yoga icon"),DataToPass(type: "Kickboxing ", date: "13/01/2016", time: "9.00-10.00", place: "HouseFitness ",author: "Kirk Lertritpuwadol",price: "900-1,200 B",image : "boxing icon"),DataToPass(type: "Workout ", date: "12/01/2016", time: "10.00-11.00", place: "SportComplex ",author: "Kirk Lertritpuwadol",price: "500-600 B",image : "fitness icon"),DataToPass(type: "Workout ", date: "12/01/2016", time: "11.00-12.00", place: "SportComplex ",author: "Tanakorn Rattanajariya",price: "500-600 B",image : "fitness icon"),DataToPass(type: "football ", date: "12/01/2016", time: "8.00-9.00", place: "SportComplex ",author: "Kirk Lertritpuwadol",price: "500-600 B",image: "football icon")]
-        
+        let urlPath: String = "http://localhost/Project/sportTable.json"
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+        var error: NSErrorPointer = nil
+        do{
+            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            print("Synchronous \(jsonResult)")
+            var a = jsonResult.valueForKey("events")!
+            for i in 0...1 {
+                events.append(DataToPass(type: a[i].valueForKey("type")! as! String,date: a[i].valueForKey("date")! as! String,time:  a[i].valueForKey("time")! as! String,place:  a[i].valueForKey("place")! as! String,author:  a[i].valueForKey("author")! as! String,price:  a[i].valueForKey("price")! as! String,image: a[i].valueForKey("image")! as! String))
+            }
+        }catch{
+            
+        }
+        var err: NSError
+        print(response)
+//        var courses = [
+//            "IOS101": [
+//                "title" :"Foundation of iPhone Programming",
+//                "duration": 2,
+//                "starttime": 900,
+//                "endtime": 1700,
+//                "dates" : ["25/02/2015",
+//                    "09/03/2015"]
+//            ],
+//            "IOS301": [
+//                "title" :"Advanced iOS - iBeacon Programming",
+//                "duration": 1,
+//                "starttime": 900,
+//                "endtime": 1700,
+//                "dates" : ["12/03/2015"]
+//            ]
+//        ]
+//        var outputStream = NSOutputStream(toFileAtPath: urlPath, append: false)
+//        outputStream?.open()
+//        NSJSONSerialization.writeJSONObject(
+//           courses,
+//            toStream: outputStream!,
+//            options: NSJSONWritingOptions.PrettyPrinted,
+//            error: nil)
+//        outputStream?.close()
     }
     
     override func didReceiveMemoryWarning() {
