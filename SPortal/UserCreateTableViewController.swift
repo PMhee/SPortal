@@ -27,6 +27,7 @@ class UserCreateTableViewController: UITableViewController {
     let selectedCellHeight: CGFloat = 200.0
     let unselectedCellHeight: CGFloat = 44.0
     var sportType : String = "Select Type"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var a = NSBundle.mainBundle().objectForInfoDictionaryKey("storeData")!
@@ -97,6 +98,7 @@ class UserCreateTableViewController: UITableViewController {
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
         }
     }
+    //1
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

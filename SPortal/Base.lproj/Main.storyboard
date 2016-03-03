@@ -4511,6 +4511,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v8o-dk-QWo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.67843137249999996" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -4565,9 +4566,9 @@
         <image name="twitter2" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w4B-o6-buk"/>
-        <segue reference="1Mg-JS-qBe"/>
-        <segue reference="O16-NB-DiC"/>
+        <segue reference="stY-qh-A9v"/>
         <segue reference="vTE-n0-sT1"/>
+        <segue reference="xJs-6t-eQb"/>
+        <segue reference="1Mg-JS-qBe"/>
     </inferredMetricsTieBreakers>
 </document>
