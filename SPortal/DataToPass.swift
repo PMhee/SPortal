@@ -15,4 +15,6 @@ struct DataToPass{
     var author : String
     var price : String
     var image : String
+    var latitude : String
+    var longitude : String
 }
