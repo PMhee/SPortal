@@ -258,8 +258,7 @@
                                                 <exclude reference="fNv-bu-t9j"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="93" y="298" width="291" height="110"/>
+                                        <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <exclude reference="fNv-bu-t9j"/>
                                             </mask>
@@ -571,7 +570,7 @@
                                     <constraint firstItem="WrK-C5-9HB" firstAttribute="trailing" secondItem="B21-YM-UfL" secondAttribute="trailing" id="i7V-Hh-0La"/>
                                     <constraint firstItem="g3D-SN-91E" firstAttribute="top" secondItem="qBy-7e-kEe" secondAttribute="top" id="itV-hw-dSl"/>
                                     <constraint firstItem="aK8-oY-FNI" firstAttribute="top" secondItem="nP2-ao-wq9" secondAttribute="bottom" constant="1" id="kZv-MU-HiK">
-                                        <variation key="widthClass=compact" constant="18"/>
+                                        <variation key="widthClass=compact" constant="14"/>
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="nP2-ao-wq9" secondAttribute="trailing" id="ktC-pd-cdF">
                                         <variation key="widthClass=compact" constant="22"/>
