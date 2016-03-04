@@ -21,6 +21,7 @@ class InfoViewController: UIViewController{
 
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var label_job: UILabel!
+    
     @IBOutlet weak var stackview_people_like: UIStackView!
     
     @IBOutlet var image_profile_picture_back: UIImageView!
