@@ -23,8 +23,8 @@ class TrainerTableViewController: UITableViewController {
             var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             print("Synchronous \(jsonResult)")
             var a = jsonResult.valueForKey("events")!
-            for i in 0...1 {
-                events.append(DataToPass(type: a[i].valueForKey("type")! as! String,date: a[i].valueForKey("date")! as! String,time:  a[i].valueForKey("time")! as! String,place:  a[i].valueForKey("place")! as! String,author:  a[i].valueForKey("author")! as! String,price:  a[i].valueForKey("price")! as! String,image: a[i].valueForKey("image")! as! String))
+            for i in 0...a.count-1 {
+                events.append(DataToPass(type: a[i].valueForKey("type")! as! String,date: a[i].valueForKey("date")! as! String,time:  a[i].valueForKey("time")! as! String,place:  a[i].valueForKey("place")! as! String,author:  a[i].valueForKey("author")! as! String,price:  a[i].valueForKey("price")! as! String,image: a[i].valueForKey("image")! as! String,latitude: a[i].valueForKey("latitude")! as! String,longitude: a[i].valueForKey("longitude")! as! String))
             }
         }catch{
             

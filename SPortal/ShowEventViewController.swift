@@ -7,30 +7,36 @@
 //
 
 import UIKit
-
-class ShowEventViewController: UIViewController {
-    @IBOutlet weak var name: UIButton!
-    @IBOutlet weak var place: UIButton!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var image: UIImageView!
+import MapKit
+class ShowEventViewController: UIViewController,CLLocationManagerDelegate {
     
-    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var map: MKMapView!
+    @IBAction func clickName(sender: UIButton) {
+    }
+    let locationManager = CLLocationManager()
     var showEvent:DataToPass!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.name.setTitle(showEvent.author, forState: .Normal)
-        self.place.setTitle(showEvent.place, forState: .Normal)
-        self.price.text = showEvent.price
-        self.date.text = showEvent.date
-        self.type.text = showEvent.type
-        self.time.text = showEvent.time
-        image.image = UIImage(named: showEvent.image)
+        //self.name.setTitle(showEvent.author, forState: .Normal)
+        //self.place.setTitle(showEvent.place, forState: .Normal)
+        //self.price.text = showEvent.price
+        //self.date.text = showEvent.date
+        //self.type.text = showEvent.type
+        //self.time.text = showEvent.time
+        //image.image = UIImage(named: showEvent.image)
         // Do any additional setup after loading the view.
-       
+        locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
     }
-
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last! as CLLocation
+        let center = CLLocationCoordinate2D(latitude: Double(showEvent.latitude)!, longitude: Double(showEvent.longitude)!)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        print(region)
+        self.map.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
