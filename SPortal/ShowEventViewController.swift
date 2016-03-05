@@ -10,22 +10,20 @@ import UIKit
 import MapKit
 class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
-    @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var background: UIImageView!
-    @IBOutlet weak var time: UILabel!
-    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var place: UIButton!
-    @IBOutlet weak var typeImage: UIImageView!
-    @IBOutlet weak var type: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var map: MKMapView!
-    @IBAction func clickName(sender: UIButton) {
-    }
+    @IBOutlet weak var type: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var profilePic: UIImageView!
     let imageArray = ["weight bg","football bg","yoga bg","boxing bg"]
     let locationManager = CLLocationManager()
     var showEvent:DataToPass!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("background"+showEvent.bg)
         background.image = UIImage(named: showEvent.bg)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.3, alpha: 0.7), saturationDeltaFactor: 1.8)
         profilePic.image = UIImage(named: "profilePic")
         profilePic.layer.masksToBounds = false
@@ -40,8 +38,8 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         //image.image = UIImage(named: showEvent.image)
         // Do any additional setup after loading the view.
         let spot = MKPointAnnotation()
-        spot.coordinate.latitude = 13.73888
-        spot.coordinate.longitude = 100.52586
+        spot.coordinate.latitude = Double(showEvent.latitude)!
+        spot.coordinate.longitude = Double(showEvent.longitude)!
         self.map.addAnnotation(spot)
         locationManager.delegate = self
         self.locationManager.startUpdatingLocation()

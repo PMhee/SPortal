@@ -18,4 +18,6 @@ struct DataToPass{
     var latitude : String
     var longitude : String
     var bg : String
+    var attendant : String
+    var max : String
 }

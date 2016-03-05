@@ -24,6 +24,8 @@
 		B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */; };
 		B7BC89FB1C558FD500FB6073 /* TrainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */; };
 		B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FC1C56079D00FB6073 /* StatViewController.swift */; };
+		B7C6D42B1C8B45EF00CE75D1 /* showEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */; };
+		B7C6D42D1C8B4E2F00CE75D1 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */; };
 		B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */; };
 		B7CF8AD01C84918500107478 /* UI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CF8ACF1C84918500107478 /* UI.storyboard */; };
 		B7D1F7961C54B85800F376BC /* FitnessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D1F7951C54B85800F376BC /* FitnessTableViewController.swift */; };
@@ -75,6 +77,8 @@
 		B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMakeAppointmentViewController.swift; sourceTree = "<group>"; };
 		B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewController.swift; sourceTree = "<group>"; };
 		B7BC89FC1C56079D00FB6073 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
+		B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = showEvent.storyboard; sourceTree = "<group>"; };
+		B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = "<group>"; };
 		B7CF8ACF1C84918500107478 /* UI.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UI.storyboard; sourceTree = "<group>"; };
 		B7D1F7951C54B85800F376BC /* FitnessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessTableViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +141,6 @@
 		B75697DD1C3E3DC200A8FB3F /* SPortal */ = {
 			isa = PBXGroup;
 			children = (
-				B7FE68531C81F6E50026FB13 /* Resource */,
 				B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */,
 				B75697E01C3E3DC200A8FB3F /* ViewController.swift */,
 				B75697E21C3E3DC200A8FB3F /* Main.storyboard */,
@@ -160,6 +163,8 @@
 				B7585C871C81481200DE6980 /* DataToPass.swift */,
 				B7CF8ACF1C84918500107478 /* UI.storyboard */,
 				A62D23841C896177003E234A /* AchievementTableViewController.swift */,
+				B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */,
+				B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -180,13 +185,6 @@
 				B75698001C3E3DC300A8FB3F /* Info.plist */,
 			);
 			path = SPortalUITests;
-			sourceTree = "<group>";
-		};
-		B7FE68531C81F6E50026FB13 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +295,7 @@
 				B75697E91C3E3DC200A8FB3F /* LaunchScreen.storyboard in Resources */,
 				B75697E61C3E3DC200A8FB3F /* Assets.xcassets in Resources */,
 				B7CF8AD01C84918500107478 /* UI.storyboard in Resources */,
+				B7C6D42B1C8B45EF00CE75D1 /* showEvent.storyboard in Resources */,
 				B75697E41C3E3DC200A8FB3F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +323,7 @@
 			files = (
 				A62D23811C88B443003E234A /* UIImageEffects.swift in Sources */,
 				B75697E11C3E3DC200A8FB3F /* ViewController.swift in Sources */,
+				B7C6D42D1C8B4E2F00CE75D1 /* FriendsTableViewController.swift in Sources */,
 				B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */,
 				B7F4559B1C523D950031199B /* InfoViewController.swift in Sources */,
 				B7D1F7981C55151300F376BC /* TrainerViewController.swift in Sources */,
