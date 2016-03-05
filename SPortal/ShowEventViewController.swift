@@ -19,7 +19,6 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var map: MKMapView!
-    var blur :String = ""
     @IBAction func clickName(sender: UIButton) {
     }
     let imageArray = ["weight bg","football bg","yoga bg","boxing bg"]
@@ -27,17 +26,11 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
     var showEvent:DataToPass!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(showEvent.type)
-        switch showEvent.type {
-        case "Football" : self.blur = "football bg"
-        case "BodyBuilding" : self.blur = imageArray[0]
-        case "Yoga" : self.blur = imageArray[2]
-        case "Boxing" : self.blur = imageArray[3]
-        default : self.blur = ""
-        }
-        print("blur "+self.blur)
-        background.image = UIImage(named: blur)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
+        background.image = UIImage(named: showEvent.bg)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.3, alpha: 0.7), saturationDeltaFactor: 1.8)
         profilePic.image = UIImage(named: "profilePic")
+        profilePic.layer.masksToBounds = false
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
         self.name.text = showEvent.author
         self.place.setTitle(showEvent.place, forState: .Normal)
         //self.price.text = showEvent.price
