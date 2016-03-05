@@ -66,10 +66,16 @@ class AchievementTableViewController: UITableViewController {
     
     
     func loadSampleAchievement(){
-        let acheivement1 = Acheivement(image: UIImage(named: "achievement.png"),title: "Court N'Pop",date: "Fri, March 5")
-         let acheivement2 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Court N'Mind",date: "Fri, March 6")
-         let acheivement3 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Court N'Vava",date: "Fri, March 7")
-        acheivements += [acheivement1,acheivement2,acheivement3]
+        let acheivement1 = Acheivement(image: UIImage(named: "achievement.png"),title: "Man of the match",date: "Fri, March 7")
+         let acheivement2 = Acheivement(image: UIImage(named: "achievement.png"),title: "Join Sportal 10 times",date: "Fri, March 6")
+         let acheivement3 = Acheivement(image: UIImage(named: "achievement.png"),title: "Target achieved",date: "Fri, March 5")
+         let acheivement4 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Best pace",date: "")
+         let acheivement5 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Superstar of Sportal",date: "")
+         let acheivement6 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Longest distance",date: "")
+         let acheivement7 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "You will never walk alone",date: "")
+        
+        
+        acheivements += [acheivement1,acheivement2,acheivement3,acheivement4,acheivement5,acheivement6,acheivement7]
         
     }
     
