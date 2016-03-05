@@ -17,4 +17,5 @@ struct DataToPass{
     var image : String
     var latitude : String
     var longitude : String
+    var bg : String
 }
