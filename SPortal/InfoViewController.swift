@@ -128,7 +128,7 @@ class InfoViewController: UIViewController{
 
         //Set image_profile_picture_back to circle
         image_profile_picture_front.layer.masksToBounds = false
-        image_profile_picture_front.layer.cornerRadius = image_profile_picture_front.frame.height/2
+        image_profile_picture_front.layer.cornerRadius = 60
         image_profile_picture_front.clipsToBounds = true
         
         //set border label
