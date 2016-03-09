@@ -9,17 +9,12 @@
 import UIKit
 
 class FriendsTableViewController: UITableViewController {
-
-    struct Friend {
-        var image_profile: UIImage?
-        var name: String
-    }
     
     var friends = [Friend]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleFriend()
+        //loadSampleFriend()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,16 +39,16 @@ class FriendsTableViewController: UITableViewController {
         return friends.count
     }
     
-    func loadSampleFriend(){
-        let friend1 = Friend(image_profile: UIImage(named: "jjamie.jpg"),name: "JJamie Rashata")
-        let friend2 = Friend(image_profile: UIImage(named: "profilePic.jpg"),name: "Tanakorn Ratanajariya")
-        let friend3 = Friend(image_profile: UIImage(named: "kirk.jpg"),name: "Kirk Lertritpuwadol")
-        let friend4 = Friend(image_profile: UIImage(named: "best.jpg"),name: "Kittinun Kaewtae")
-        let friend5 = Friend(image_profile: UIImage(named: "off.jpg"),name: "Chanthawat Rattanapongphan")
-        
-        friends += [friend1,friend2,friend3,friend4,friend5]
-        
-    }
+//    func loadSampleFriend(){
+//        let friend1 = Friend(image_profile: UIImage(named: "jjamie.jpg"),name: "JJamie Rashata")
+//        let friend2 = Friend(image_profile: UIImage(named: "profilePic.jpg"),name: "Tanakorn Ratanajariya")
+//        let friend3 = Friend(image_profile: UIImage(named: "kirk.jpg"),name: "Kirk Lertritpuwadol")
+//        let friend4 = Friend(image_profile: UIImage(named: "best.jpg"),name: "Kittinun Kaewtae")
+//        let friend5 = Friend(image_profile: UIImage(named: "off.jpg"),name: "Chanthawat Rattanapongphan")
+//        
+//        friends += [friend1,friend2,friend3,friend4,friend5]
+//        
+//    }
 
 
     

@@ -11,7 +11,7 @@
         <!--Profile-->
         <scene sceneID="fmw-oB-exu">
             <objects>
-                <viewController id="o3R-ms-J5E" customClass="InfoViewController" customModule="SPortal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="o3R-ms-J5E" customClass="InfoViewController" customModule="SPortal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nhD-7N-nDF"/>
                         <viewControllerLayoutGuide type="bottom" id="iMP-iy-ItW"/>
@@ -65,7 +65,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <segue destination="S8L-hN-Z14" kind="show" id="Uka-EJ-JQ8"/>
+                                                    <segue destination="S8L-hN-Z14" kind="show" id="hMC-4i-DvJ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -119,7 +119,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <segue destination="XHC-EX-49o" kind="show" id="4b8-I6-3fV"/>
+                                                    <segue destination="XHC-EX-49o" kind="show" id="H6T-Xu-fcl"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -327,7 +327,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <segue destination="y8l-RF-C52" kind="show" identifier="friend" id="ovx-z2-x4W"/>
+                                                    <segue destination="y8l-RF-C52" kind="show" id="m1o-3o-Fcp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -831,7 +831,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFk-3X-rUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543.5" y="270"/>
+            <point key="canvasLocation" x="3184.5" y="270"/>
         </scene>
         <!--Friends-->
         <scene sceneID="ITf-pa-krA">
@@ -871,7 +871,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-9a-Ju1">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -920,7 +920,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qat-Hf-81V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="294"/>
+            <point key="canvasLocation" x="4086" y="270"/>
         </scene>
         <!--Statistic-->
         <scene sceneID="9U3-mC-zWP">
@@ -938,7 +938,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYY-zk-Iot" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="1054"/>
+            <point key="canvasLocation" x="3184.5" y="1044"/>
         </scene>
         <!--Acheivement-->
         <scene sceneID="iSb-v5-yIU">
@@ -1041,7 +1041,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFz-4d-3OE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="-400"/>
+            <point key="canvasLocation" x="3192" y="-416"/>
         </scene>
     </scenes>
     <resources>
