@@ -91,8 +91,11 @@ class NotiTableViewController: UITableViewController {
                 }
             }
         }
+        
         let bg = cell.viewWithTag(5) as UIView!
-        bg.backgroundColor(UIColor.blackColor())
+        if noti[indexPath.row].checked == true {
+            bg.backgroundColor = UIColor.whiteColor()
+        }
         return cell
     }
     

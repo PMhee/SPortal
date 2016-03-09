@@ -2635,7 +2635,7 @@
                                     <subviews>
                                         <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mW-hd-CzG">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.95426682692307696" green="0.95426682692307696" blue="0.95426682692307696" alpha="1" colorSpace="calibratedRGB"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="0.0" y="-9" width="400" height="116"/>
                                             </variation>
@@ -2736,7 +2736,7 @@
         <scene sceneID="6s0-dE-0tW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P3w-Fk-fuk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notification" image="write-2" id="z4S-mv-fm9"/>
+                    <tabBarItem key="tabBarItem" title="Notification" image="globe" id="z4S-mv-fm9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R6u-WB-bGa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2785,6 +2785,7 @@
         <image name="clock96" width="128" height="128"/>
         <image name="football bg" width="1889" height="730"/>
         <image name="football-ball" width="256" height="256"/>
+        <image name="globe" width="32" height="32"/>
         <image name="gym-weight" width="64" height="64"/>
         <image name="news2" width="32" height="32"/>
         <image name="placeholder8-2" width="128" height="128"/>
@@ -2794,7 +2795,6 @@
         <image name="tag77" width="128" height="128"/>
         <image name="three64" width="64" height="64"/>
         <image name="weight bg" width="658" height="240"/>
-        <image name="write-2" width="32" height="32"/>
         <image name="yoga bg" width="2000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
