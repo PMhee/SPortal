@@ -31,31 +31,6 @@ class TrainerTableViewController: UITableViewController {
         }
         var err: NSError
         print(response)
-//        var courses = [
-//            "IOS101": [
-//                "title" :"Foundation of iPhone Programming",
-//                "duration": 2,
-//                "starttime": 900,
-//                "endtime": 1700,
-//                "dates" : ["25/02/2015",
-//                    "09/03/2015"]
-//            ],
-//            "IOS301": [
-//                "title" :"Advanced iOS - iBeacon Programming",
-//                "duration": 1,
-//                "starttime": 900,
-//                "endtime": 1700,
-//                "dates" : ["12/03/2015"]
-//            ]
-//        ]
-//        var outputStream = NSOutputStream(toFileAtPath: urlPath, append: false)
-//        outputStream?.open()
-//        NSJSONSerialization.writeJSONObject(
-//           courses,
-//            toStream: outputStream!,
-//            options: NSJSONWritingOptions.PrettyPrinted,
-//            error: nil)
-//        outputStream?.close()
     }
     
     override func didReceiveMemoryWarning() {

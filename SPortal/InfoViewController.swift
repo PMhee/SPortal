@@ -32,8 +32,7 @@ class InfoViewController: UIViewController{
     @IBOutlet weak var label_football: UILabel!
     @IBOutlet weak var label_basketball: UILabel!
     @IBOutlet weak var label_batminton: UILabel!
-    
-    
+    var friends = [Friend]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +72,7 @@ class InfoViewController: UIViewController{
                         let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                         if let data = NSData(contentsOfURL: facebookProfileUrl!) {
                             //   self.friendImage.image = UIImage(data: data)
+                            self.friends.append(Friend(image_profile: UIImage(data:data),name:userNameArray[i].valueForKey("name") as! String))
                         }
                     }
                 }
@@ -122,7 +122,11 @@ class InfoViewController: UIViewController{
             
         }
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let des = segue.destinationViewController as? FriendsTableViewController{
+            des.friends = self.friends
+        }
+    }
     
     func setScreen(){
 
