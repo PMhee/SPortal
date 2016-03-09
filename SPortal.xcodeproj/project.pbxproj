@@ -27,6 +27,8 @@
 		B7C6D42B1C8B45EF00CE75D1 /* showEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */; };
 		B7C6D42D1C8B4E2F00CE75D1 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */; };
 		B7C957D01C8FA16000D07B05 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C957CF1C8FA16000D07B05 /* Friend.swift */; };
+		B7C957D41C9038CF00D07B05 /* NotiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C957D31C9038CF00D07B05 /* NotiTableViewController.swift */; };
+		B7C957D61C9039CF00D07B05 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C957D51C9039CF00D07B05 /* Notification.swift */; };
 		B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */; };
 		B7CF8AD01C84918500107478 /* UI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CF8ACF1C84918500107478 /* UI.storyboard */; };
 		B7F455971C522BF50031199B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F455961C522BF50031199B /* FBSDKCoreKit.framework */; };
@@ -79,6 +81,8 @@
 		B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = showEvent.storyboard; sourceTree = "<group>"; };
 		B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		B7C957CF1C8FA16000D07B05 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		B7C957D31C9038CF00D07B05 /* NotiTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTableViewController.swift; sourceTree = "<group>"; };
+		B7C957D51C9039CF00D07B05 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B7CACDE61C7D9A570049CD40 /* SelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = "<group>"; };
 		B7CF8ACF1C84918500107478 /* UI.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UI.storyboard; sourceTree = "<group>"; };
 		B7F455961C522BF50031199B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */,
 				B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */,
 				B7C957CF1C8FA16000D07B05 /* Friend.swift */,
+				B7C957D31C9038CF00D07B05 /* NotiTableViewController.swift */,
+				B7C957D51C9039CF00D07B05 /* Notification.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -330,7 +336,9 @@
 				B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */,
 				B78618391C63EA6000D71401 /* NewsFeedViewController.swift in Sources */,
 				B75697DF1C3E3DC200A8FB3F /* AppDelegate.swift in Sources */,
+				B7C957D61C9039CF00D07B05 /* Notification.swift in Sources */,
 				B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */,
+				B7C957D41C9038CF00D07B05 /* NotiTableViewController.swift in Sources */,
 				B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */,
 				A62D23851C896177003E234A /* AchievementTableViewController.swift in Sources */,
 				B7BC89FB1C558FD500FB6073 /* TrainerTableViewController.swift in Sources */,

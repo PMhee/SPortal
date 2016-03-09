@@ -2620,18 +2620,104 @@
         <!--Notification-->
         <scene sceneID="NKd-sp-LIS">
             <objects>
-                <tableViewController title="Notification" id="EDM-0P-yyX" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="021-Zw-Lgf">
+                <tableViewController title="Notification" id="EDM-0P-yyX" customClass="NotiTableViewController" customModule="SPortal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" id="021-Zw-Lgf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jXt-pz-61t">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="108" id="jXt-pz-61t">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jXt-pz-61t" id="6MT-Ty-bHX">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1mW-hd-CzG">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="-9" width="400" height="116"/>
+                                            </variation>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePic" translatesAutoresizingMaskIntoConstraints="NO" id="MFH-27-LbH">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="mFg-2l-hoL"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="mFg-2l-hoL"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="mFg-2l-hoL"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-4k-hDg">
+                                            <rect key="frame" x="113" y="-4" width="82" height="110"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tanakorn Rattanajariya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvS-Yb-bQ2">
+                                                    <rect key="frame" x="20" y="20" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add new Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgL-0f-sOl">
+                                                    <rect key="frame" x="20" y="44" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yesterday at 10:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2n3-yO-Z3e">
+                                                    <rect key="frame" x="20" y="69" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.58194944370000001" green="0.58194944370000001" blue="0.58194944370000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <variation key="widthClass=compact" axis="vertical"/>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MFH-27-LbH" firstAttribute="leading" secondItem="6MT-Ty-bHX" secondAttribute="leadingMargin" constant="14" id="143-nS-kgg"/>
+                                        <constraint firstItem="MFH-27-LbH" firstAttribute="top" secondItem="6MT-Ty-bHX" secondAttribute="topMargin" constant="8" id="ASw-iI-crl"/>
+                                        <constraint firstItem="dWp-4k-hDg" firstAttribute="top" secondItem="MFH-27-LbH" secondAttribute="top" id="Fzx-Dr-vxS">
+                                            <variation key="widthClass=compact" constant="11"/>
+                                        </constraint>
+                                        <constraint firstAttribute="bottomMargin" secondItem="MFH-27-LbH" secondAttribute="bottom" constant="13" id="O0D-YM-nbR"/>
+                                        <constraint firstItem="dWp-4k-hDg" firstAttribute="leading" secondItem="MFH-27-LbH" secondAttribute="trailing" constant="41" id="kUp-Vf-ujp">
+                                            <variation key="widthClass=compact" constant="20"/>
+                                        </constraint>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="1mW-hd-CzG"/>
+                                            <exclude reference="MFH-27-LbH"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="143-nS-kgg"/>
+                                            <exclude reference="ASw-iI-crl"/>
+                                            <exclude reference="O0D-YM-nbR"/>
+                                            <exclude reference="Fzx-Dr-vxS"/>
+                                            <exclude reference="kUp-Vf-ujp"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="1mW-hd-CzG"/>
+                                            <include reference="MFH-27-LbH"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="143-nS-kgg"/>
+                                            <include reference="ASw-iI-crl"/>
+                                            <include reference="O0D-YM-nbR"/>
+                                            <include reference="Fzx-Dr-vxS"/>
+                                            <include reference="kUp-Vf-ujp"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -2644,7 +2730,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNj-CK-Z9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3342" y="2679"/>
+            <point key="canvasLocation" x="3513" y="2812"/>
         </scene>
         <!--Notification-->
         <scene sceneID="6s0-dE-0tW">
@@ -2704,6 +2790,7 @@
         <image name="placeholder8-2" width="128" height="128"/>
         <image name="play111" width="32" height="32"/>
         <image name="profile5-3" width="32" height="32"/>
+        <image name="profilePic" width="592" height="592"/>
         <image name="tag77" width="128" height="128"/>
         <image name="three64" width="64" height="64"/>
         <image name="weight bg" width="658" height="240"/>
