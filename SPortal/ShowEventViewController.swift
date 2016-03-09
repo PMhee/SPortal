@@ -25,7 +25,7 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         super.viewDidLoad()
         print("background"+showEvent.bg)
         background.image = UIImage(named: showEvent.bg)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.3, alpha: 0.7), saturationDeltaFactor: 1.8)
-        profilePic.image = UIImage(named: "profilePic")
+        profilePic.image = UIImage(named: showEvent.pic)
         profilePic.layer.masksToBounds = false
         profilePic.layer.cornerRadius = profilePic.frame.height/2
         profilePic.clipsToBounds = true

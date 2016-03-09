@@ -22,6 +22,9 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-lP-2g6">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="212"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="212" id="CpF-fD-OwQ"/>
+                                        </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zFr-ik-3bw">
                                         <rect key="frame" x="145" y="28" width="111" height="121"/>

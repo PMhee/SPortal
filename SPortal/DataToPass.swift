@@ -20,4 +20,5 @@ struct DataToPass{
     var bg : String
     var attendant : String
     var max : String
+    var pic : String
 }

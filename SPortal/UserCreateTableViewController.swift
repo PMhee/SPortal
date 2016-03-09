@@ -43,9 +43,9 @@ class UserCreateTableViewController: UITableViewController {
     }
     func datePickerChanged(datePicker:UIDatePicker) {
         var dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
         var strDate = dateFormatter.stringFromDate(datePicker.date)
+        print(strDate)
         Date.text = strDate
     }
     func timePickerChanged(datePicker:UIDatePicker) {
