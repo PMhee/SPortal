@@ -843,10 +843,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="42r-yu-tgo">
-                                <rect key="frame" x="0.0" y="28" width="600" height="140"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="42r-yu-tgo" id="ZJn-65-9Nk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="139"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jjamie" translatesAutoresizingMaskIntoConstraints="NO" id="Ur2-By-4Cl">
@@ -891,10 +891,10 @@
                                             <exclude reference="ykY-9a-Ju1"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="8FD-GF-IPc"/>
-                                            <exclude reference="qic-Bq-f7a"/>
                                             <exclude reference="A6L-ze-sao"/>
                                             <exclude reference="L2T-CG-5Dr"/>
+                                            <exclude reference="8FD-GF-IPc"/>
+                                            <exclude reference="qic-Bq-f7a"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -903,10 +903,10 @@
                                             <include reference="ykY-9a-Ju1"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="8FD-GF-IPc"/>
-                                            <include reference="qic-Bq-f7a"/>
                                             <include reference="A6L-ze-sao"/>
                                             <include reference="L2T-CG-5Dr"/>
+                                            <include reference="8FD-GF-IPc"/>
+                                            <include reference="qic-Bq-f7a"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
