@@ -10,6 +10,10 @@ import UIKit
 
 class SelectTableViewController: UITableViewController {
 
+    @IBOutlet weak var bg1: UIImageView!
+    @IBOutlet weak var bg2: UIImageView!
+    @IBOutlet weak var bg3: UIImageView!
+    @IBOutlet weak var bg4: UIImageView!
     @IBOutlet weak var frame: UIView!
     @IBOutlet weak var frame1: UIView!
     @IBOutlet weak var frame2: UIView!
@@ -19,11 +23,14 @@ class SelectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var Aframe = [UIView]()
+        var Abg = [UIImageView]()
         Aframe.append(frame)
         Aframe.append(frame1)
         Aframe.append(frame2)
         Aframe.append(frame3)
+        Abg += [bg1,bg2,bg3,bg4]
         for i in 0...3 {
+//            Abg[i].image = Abg[i].image!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
             Aframe[i].layer.masksToBounds = false
             Aframe[i].layer.cornerRadius = 35
             Aframe[i].clipsToBounds = true

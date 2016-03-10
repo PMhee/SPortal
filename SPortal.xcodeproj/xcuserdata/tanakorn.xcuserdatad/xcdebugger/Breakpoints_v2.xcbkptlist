@@ -34,26 +34,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SPortal.AppDelegate.__deallocating_deinit"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/AppDelegate.swift"
-                  timestampString = "476621353.849248"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
                   symbolName = "SPortal.AppDelegate.init (SPortal.AppDelegate.Type)() -&gt; SPortal.AppDelegate"
                   moduleName = "SPortal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/AppDelegate.swift"
-                  timestampString = "476621353.849411"
+                  timestampString = "479279357.617317"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -68,7 +53,7 @@
                   moduleName = "SPortal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/AppDelegate.swift"
-                  timestampString = "476621353.849559"
+                  timestampString = "479279357.617543"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -196,11 +181,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "478199689.879283"
+            timestampString = "479281155.626302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +229,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "478199466.576149"
+            timestampString = "479281155.626302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -299,98 +284,6 @@
             endingLineNumber = "21"
             landmarkName = "FitnessTableViewController"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SPortal.FitnessTableViewController.events.getter : Swift.Array&lt;SPortal.FitnessTableViewController.event&gt;"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/FitnessTableViewController.swift"
-                  timestampString = "476621353.852624"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SPortal.FitnessTableViewController.events.setter : Swift.Array&lt;SPortal.FitnessTableViewController.event&gt;"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/FitnessTableViewController.swift"
-                  timestampString = "476621353.852791"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SPortal.FitnessTableViewController.events.materializeForSet : Swift.Array&lt;SPortal.FitnessTableViewController.event&gt;"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/FitnessTableViewController.swift"
-                  timestampString = "476621353.852921"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SPortal.FitnessTableViewController.init (SPortal.FitnessTableViewController.Type)(style : __C.UITableViewStyle) -&gt; SPortal.FitnessTableViewController"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/FitnessTableViewController.swift"
-                  timestampString = "476621353.853125"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "423">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SPortal.FitnessTableViewController.init (SPortal.FitnessTableViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; SPortal.FitnessTableViewController"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/FitnessTableViewController.swift"
-                  timestampString = "476621353.853292"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "487">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SPortal.FitnessTableViewController.init (SPortal.FitnessTableViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SPortal.FitnessTableViewController&gt;"
-                  moduleName = "SPortal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanakorn/Desktop/SPOT/SPortal/SPortal/FitnessTableViewController.swift"
-                  timestampString = "476621353.853425"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "423">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -400,11 +293,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "478199689.879283"
+            timestampString = "479281155.626302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -416,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "478199466.576149"
+            timestampString = "479281155.626302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "mapView(_:didSelectAnnotationView:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -448,11 +341,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/SelectTableViewController.swift"
-            timestampString = "478004161.441857"
+            timestampString = "479278707.482704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -501,6 +394,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPortal/EventTableViewController.swift"
+            timestampString = "479279578.903544"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>

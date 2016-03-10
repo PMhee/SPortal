@@ -15,6 +15,9 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
     var sportType:String = ""
     let locationManager = CLLocationManager()
     var locationtitle :String = ""
+    
+    @IBOutlet weak var confirm: UIButton!
+    @IBOutlet weak var cancel: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
             // Do any additional setup after loading the view.

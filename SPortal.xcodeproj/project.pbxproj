@@ -22,7 +22,7 @@
 		B79B47191C59DE90001E104A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B47181C59DE90001E104A /* GraphView.swift */; };
 		B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */; };
 		B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */; };
-		B7BC89FB1C558FD500FB6073 /* TrainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */; };
+		B7BC89FB1C558FD500FB6073 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FA1C558FD500FB6073 /* EventTableViewController.swift */; };
 		B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FC1C56079D00FB6073 /* StatViewController.swift */; };
 		B7C6D42B1C8B45EF00CE75D1 /* showEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */; };
 		B7C6D42D1C8B4E2F00CE75D1 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */; };
@@ -76,7 +76,7 @@
 		B79B47181C59DE90001E104A /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateTableViewController.swift; sourceTree = "<group>"; };
 		B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMakeAppointmentViewController.swift; sourceTree = "<group>"; };
-		B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTableViewController.swift; sourceTree = "<group>"; };
+		B7BC89FA1C558FD500FB6073 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		B7BC89FC1C56079D00FB6073 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		B7C6D42A1C8B45EF00CE75D1 /* showEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = showEvent.storyboard; sourceTree = "<group>"; };
 		B7C6D42C1C8B4E2F00CE75D1 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 				A62D23801C88B443003E234A /* UIImageEffects.swift */,
 				B7F4559C1C52636D0031199B /* FirstViewController.swift */,
 				B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */,
-				B7BC89FA1C558FD500FB6073 /* TrainerTableViewController.swift */,
+				B7BC89FA1C558FD500FB6073 /* EventTableViewController.swift */,
 				B7BC89FC1C56079D00FB6073 /* StatViewController.swift */,
 				B79B47181C59DE90001E104A /* GraphView.swift */,
 				B78618381C63EA6000D71401 /* NewsFeedViewController.swift */,
@@ -341,7 +341,7 @@
 				B7C957D41C9038CF00D07B05 /* NotiTableViewController.swift in Sources */,
 				B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */,
 				A62D23851C896177003E234A /* AchievementTableViewController.swift in Sources */,
-				B7BC89FB1C558FD500FB6073 /* TrainerTableViewController.swift in Sources */,
+				B7BC89FB1C558FD500FB6073 /* EventTableViewController.swift in Sources */,
 				B7F4559D1C52636D0031199B /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
