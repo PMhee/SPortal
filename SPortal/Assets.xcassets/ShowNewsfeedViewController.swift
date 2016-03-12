@@ -1,21 +1,25 @@
 //
-//  NewsFeedViewController.swift
+//  ShowNewsfeedViewController.swift
 //  SPortal
 //
-//  Created by Tanakorn on 2/5/2559 BE.
+//  Created by Tanakorn on 3/12/2559 BE.
 //  Copyright © 2559 Tanakorn. All rights reserved.
 //
 
 import UIKit
 
-class NewsFeedViewController: UIViewController {
+class ShowNewsfeedViewController: UIViewController {
+    @IBAction func clickInformation(sender: UIButton) {
+        if let requestUrl = NSURL(string: "http://www.gotorace.com/event/tri-dash-bangkok-2016-jan/") {
+            UIApplication.sharedApplication().openURL(requestUrl)
+        }
+    }
+    @IBOutlet var information: UIButton!
 
-    @IBOutlet weak var navView: UIView!
-    @IBOutlet weak var masterView: UIView!
-    @IBOutlet weak var menuView: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        information.layer.cornerRadius = 5
+        
         // Do any additional setup after loading the view.
     }
 

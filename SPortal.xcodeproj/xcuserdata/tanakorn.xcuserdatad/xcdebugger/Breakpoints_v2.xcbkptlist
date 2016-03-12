@@ -181,11 +181,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "479281155.626302"
+            timestampString = "479468780.733382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -229,11 +229,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "479281155.626302"
+            timestampString = "479468780.733382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -293,11 +293,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "479281155.626302"
+            timestampString = "479468780.733382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -309,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/UserMakeAppointmentViewController.swift"
-            timestampString = "479281155.626302"
+            timestampString = "479468780.733382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "mapView(_:didSelectAnnotationView:)"
             landmarkType = "5">
          </BreakpointContent>

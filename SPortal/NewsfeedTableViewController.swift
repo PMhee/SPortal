@@ -1,74 +1,36 @@
 //
-//  SelectTableViewController.swift
+//  NewsfeedTableViewController.swift
 //  SPortal
 //
-//  Created by Tanakorn on 2/24/2559 BE.
+//  Created by Tanakorn on 3/12/2559 BE.
 //  Copyright © 2559 Tanakorn. All rights reserved.
 //
 
 import UIKit
 
-class SelectTableViewController: UITableViewController {
-
-    @IBOutlet weak var bg1: UIImageView!
-    @IBOutlet weak var bg2: UIImageView!
-    @IBOutlet weak var bg3: UIImageView!
-    @IBOutlet weak var bg4: UIImageView!
-    @IBOutlet weak var frame: UIView!
-    @IBOutlet weak var frame1: UIView!
-    @IBOutlet weak var frame2: UIView!
-    @IBOutlet weak var frame3: UIView!
-    var place :String = ""
+class NewsfeedTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var Aframe = [UIView]()
-        var Abg = [UIImageView]()
-        Aframe.append(frame)
-        Aframe.append(frame1)
-        Aframe.append(frame2)
-        Aframe.append(frame3)
-        Abg += [bg1,bg2,bg3,bg4]
-        for i in 0...3 {
-//            Abg[i].image = Abg[i].image!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
-            Aframe[i].layer.masksToBounds = false
-            Aframe[i].layer.cornerRadius = 35
-            Aframe[i].clipsToBounds = true
-        }
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let des = segue.destinationViewController as? UserMakeAppointmentViewController{
-            if let identifier = segue.identifier{
-            switch identifier {
-            case "Football" : des.sportType = "Football"
-            case "BodyBuilding" : des.sportType = "BodyBuilding"
-            case "Yoga" : des.sportType = "Yoga"
-            case "Boxing" : des.sportType = "Boxing"
-            default : des.sportType = ""
-            }
-            }
-        }
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 1
+    }
+    override  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        return cell
     }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

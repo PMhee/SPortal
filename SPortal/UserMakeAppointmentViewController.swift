@@ -15,11 +15,11 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
     var sportType:String = ""
     let locationManager = CLLocationManager()
     var locationtitle :String = ""
-    
-    @IBOutlet weak var confirm: UIButton!
-    @IBOutlet weak var cancel: UIButton!
+    @IBOutlet var cancel: UIButton!
+    @IBOutlet var confirm: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
             // Do any additional setup after loading the view.
         self.map.delegate = self
         let SportComplex = MKPointAnnotation()
@@ -32,6 +32,8 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
         CU.coordinate.longitude = 101.52586
         CU.title = "Chulalongkorn University"
         CU.subtitle = "The 1st University in thailand"
+        cancel.layer.cornerRadius = 5
+        confirm.layer.cornerRadius = 5
         self.map.addAnnotation(CU)
         self.map.addAnnotation(SportComplex)
         if (CLLocationManager.locationServicesEnabled())
