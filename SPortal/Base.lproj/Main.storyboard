@@ -2945,7 +2945,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="GHv-VN-oOG" kind="show" id="tIH-qJ-1ds"/>
+                                            <segue destination="pU1-1O-Nrj" kind="show" id="K4n-CG-wFV"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qxK-T3-uBn">
@@ -3254,30 +3254,97 @@
             </objects>
             <point key="canvasLocation" x="3294" y="934"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="ddG-FV-Elu">
+        <!--Sport Players-->
+        <scene sceneID="1AO-Eb-v4X">
             <objects>
-                <tableViewController id="GHv-VN-oOG" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="F0g-B1-kIq">
+                <tableViewController title="Sport Players" id="pU1-1O-Nrj" customClass="showSportPlayerTableViewController" customModule="SPortal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="a09-CZ-HyR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1d5-Rv-9YW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="VYg-LC-qcu">
+                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1d5-Rv-9YW" id="zoq-q4-tM9">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VYg-LC-qcu" id="HGS-F3-Zx0">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jjamie" translatesAutoresizingMaskIntoConstraints="NO" id="HHK-R7-W92">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="YAB-Hd-iZ4"/>
+                                                <constraint firstAttribute="width" constant="40" id="fvC-Ev-JfT"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="YAB-Hd-iZ4"/>
+                                                    <exclude reference="fvC-Ev-JfT"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="YAB-Hd-iZ4"/>
+                                                    <include reference="fvC-Ev-JfT"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEj-Bh-Qj1">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="88" y="21" width="41" height="18"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BEj-Bh-Qj1" firstAttribute="centerY" secondItem="HGS-F3-Zx0" secondAttribute="centerY" id="Bik-mY-IOy"/>
+                                        <constraint firstItem="BEj-Bh-Qj1" firstAttribute="leading" secondItem="HHK-R7-W92" secondAttribute="trailing" constant="23" id="NZB-sI-oDr">
+                                            <variation key="widthClass=compact" constant="20"/>
+                                        </constraint>
+                                        <constraint firstItem="HHK-R7-W92" firstAttribute="leading" secondItem="HGS-F3-Zx0" secondAttribute="leadingMargin" constant="16" id="W0X-jO-6IU">
+                                            <variation key="widthClass=compact" constant="20"/>
+                                        </constraint>
+                                        <constraint firstItem="HHK-R7-W92" firstAttribute="centerY" secondItem="HGS-F3-Zx0" secondAttribute="centerY" id="Zyu-0y-o3W"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="HHK-R7-W92"/>
+                                            <exclude reference="BEj-Bh-Qj1"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="Bik-mY-IOy"/>
+                                            <exclude reference="NZB-sI-oDr"/>
+                                            <exclude reference="W0X-jO-6IU"/>
+                                            <exclude reference="Zyu-0y-o3W"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="HHK-R7-W92"/>
+                                            <include reference="BEj-Bh-Qj1"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="Bik-mY-IOy"/>
+                                            <include reference="NZB-sI-oDr"/>
+                                            <include reference="W0X-jO-6IU"/>
+                                            <include reference="Zyu-0y-o3W"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="GHv-VN-oOG" id="t3p-Ny-waL"/>
-                            <outlet property="delegate" destination="GHv-VN-oOG" id="atc-aX-ctP"/>
+                            <outlet property="dataSource" destination="pU1-1O-Nrj" id="eJn-5b-F3E"/>
+                            <outlet property="delegate" destination="pU1-1O-Nrj" id="GQi-p4-wir"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qfC-J0-EYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xdi-71-t6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4164" y="768"/>
+            <point key="canvasLocation" x="4140" y="666"/>
         </scene>
     </scenes>
     <resources>
@@ -3292,6 +3359,7 @@
         <image name="football bg" width="1889" height="730"/>
         <image name="football icon" width="256" height="256"/>
         <image name="globe" width="32" height="32"/>
+        <image name="jjamie" width="918" height="918"/>
         <image name="news2" width="32" height="32"/>
         <image name="placeholder8-2" width="128" height="128"/>
         <image name="play111" width="32" height="32"/>
