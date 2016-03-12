@@ -71,7 +71,6 @@ class SelectTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 4
     }
-
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
-class InfoViewController: UIViewController{
+class InfoViewController: UIViewController,UIScrollViewDelegate{
     
    
     @IBOutlet weak var age: UILabel!
@@ -37,6 +37,7 @@ class InfoViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
         setScreen()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
@@ -55,10 +56,19 @@ class InfoViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.contentOffset.x>0 {
-            scrollView.contentOffset.x = 0
-        }
+        
+        print(scrollView.contentOffset.y + scrollView.contentOffset.x)
+        //        if (scrollView.contentOffset.y != 0) {
+        //            var offset:CGPoint = scrollView.contentOffset
+        //            offset.y = 0
+        //            scrollView.contentOffset = offset
+        //        }
+        if (scrollView.contentOffset.x != 0) {
+            var offset:CGPoint = scrollView.contentOffset
+            offset.x = 0
+            scrollView.contentOffset = offset        }
     }
+
     func returnUserData()
     {
         // Get List Of Friends

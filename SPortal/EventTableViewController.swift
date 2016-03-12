@@ -13,6 +13,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
     let imageArray = ["fitness icon","yoga icon","boxing icon","fitness icon","fitness icon","football icon"]
     var events = [DataToPass]()
     var searchResult = [DataToPass]()
+    var selectedCellIndexPath: NSIndexPath?
     @IBOutlet weak var myTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +89,9 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
         attend.text = searchResult[indexPath.row].attendant + "/" + searchResult[indexPath.row].max
         var max :Int = Int(searchResult[indexPath.row].max)!
         var att :Int = Int(searchResult[indexPath.row].attendant)!
-        print((max-att)*100/max)
         if max - att == 0 {
             let join = cell.viewWithTag(10) as! UIImageView
-            print(searchResult[indexPath.row].image+" red")
             join.image = UIImage(named: "social red")
-            
         }else if 100-((max-att)*100/max) >= 70 {
             let join = cell.viewWithTag(10) as! UIImageView
             join.image = UIImage(named: "social orange")
@@ -105,17 +103,22 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
             join.image = UIImage(named: "social green")
         }
         if let time = cell.viewWithTag(7) as? UILabel{
-        time.text = String(searchResult[indexPath.row].time)
+            time.text = String(searchResult[indexPath.row].time)
         }
         if let icon = cell.viewWithTag(8) as? UIImageView{
             icon.image = UIImage(named: searchResult[indexPath.row].image)
         }
         if let type = cell.viewWithTag(9) as? UILabel{
-            type.text = String(searchResult[indexPath.row].type)
+            type.text = String(searchResult[indexPath.row].type).uppercaseString
         }
+        let views = cell.viewWithTag(11) as UIView!
+        views.layer.cornerRadius = 5
+        
+//        let back :UIView = UIView(frame: cell.frame)
+//        back.backgroundColor = UIColor(colorLiteralRed:171, green: 171, blue: 171, alpha: 1)
+//        cell.selectedBackgroundView = back
         return cell
     }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResult.count
     }
