@@ -78,7 +78,7 @@ class NotiTableViewController: UITableViewController {
                 date.text = String(Int(month))+" months ago"
                 }
             }else{
-                if day > 2 {
+                if day >= 2 {
                     date.text = String(Int(day))+" days ago"
                 }else if (Int(day) <= 2 && Int(day) >= 1) {
                     date.text = "yesterday"

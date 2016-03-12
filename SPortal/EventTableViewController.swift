@@ -42,10 +42,10 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
         searchResult.removeLast()
     }
     func addEvents(){
-        let event1 = DataToPass(type:"Boxing",date:"March 12, 2016",time:"10:40",place:"Chulalongkorn University",author:"Tanakorn Rattanajariya",price:"500",image:"boxing icon",latitude: "13.73888",longitude: "100.52586",bg: "boxing bg",attendant: "3",max:"5",pic:"profilePic")
+        let event1 = DataToPass(type:"Boxing",date:"March 12, 2016",time:"10:40",place:"Chulalongkorn University",author:"Tanakorn Rattanajariya",price:"500",image:"boxing icon",latitude: "13.73888",longitude: "100.52586",bg: "boxing bg",attendant: "1",max:"5",pic:"profilePic")
         let event2 = DataToPass(type:"Football",date:"March 13, 2016",time:"12:00",place:"Chulalongkorn University",author:"JJamie Ratchata",price:"120",image:"football icon",latitude: "13.73888",longitude: "100.52586",bg: "football bg",attendant: "7",max:"10",pic:"jjamie")
-        let event3 = DataToPass(type:"Workout",date:"March 14, 2016",time:"11:30",place:"Chulalongkorn University",author:"Chantawat Rattana",price:"700",image:"workout icon",latitude: "13.73888",longitude: "100.52586",bg: "workout bg",attendant: "2",max:"5",pic:"off")
-        let event4 = DataToPass(type:"yoga",date:"March 15, 2016",time:"10:30",place:"Chulalongkorn University",author:"Kittinun Kaewtae",price:"300",image:"yoga icon",latitude: "13.73888",longitude: "100.52586",bg: "yoga bg",attendant: "2",max:"5",pic:"best")
+        let event3 = DataToPass(type:"Workout",date:"March 14, 2016",time:"11:30",place:"Chulalongkorn University",author:"Chantawat Rattana",price:"700",image:"workout icon",latitude: "13.73888",longitude: "100.52586",bg: "workout bg",attendant: "5",max:"5",pic:"off")
+        let event4 = DataToPass(type:"yoga",date:"March 15, 2016",time:"10:30",place:"Chulalongkorn University",author:"Kittinun Kaewtae",price:"300",image:"yoga icon",latitude: "13.73888",longitude: "100.52586",bg: "yoga bg",attendant: "3",max:"5",pic:"best")
         events += [event1,event2,event3,event4]
         searchResult = events
     }
@@ -69,9 +69,9 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
     // MARK: - Table view data source
     override  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        if let imageView = cell.viewWithTag(1) as? UIImageView{
-        imageView.image = UIImage(named: searchResult[indexPath.row].bg)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
-        }
+//        if let imageView = cell.viewWithTag(1) as? UIImageView{
+//        imageView.image = UIImage(named: searchResult[indexPath.row].bg)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
+//        }
         if let author = cell.viewWithTag(2) as? UILabel{
         author.text = searchResult[indexPath.row].author
         }
@@ -79,18 +79,43 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
         place.text = searchResult[indexPath.row].place
         }
         if let price = cell.viewWithTag(4) as? UILabel{
-        price.text = searchResult[indexPath.row].price + " ฿"
+        price.text = searchResult[indexPath.row].price + " THB"
         }
         if let date = cell.viewWithTag(5) as? UILabel{
         date.text = searchResult[indexPath.row].date
         }
         let attend = cell.viewWithTag(6) as! UILabel
         attend.text = searchResult[indexPath.row].attendant + "/" + searchResult[indexPath.row].max
+        var max :Int = Int(searchResult[indexPath.row].max)!
+        var att :Int = Int(searchResult[indexPath.row].attendant)!
+        print((max-att)*100/max)
+        if max - att == 0 {
+            let join = cell.viewWithTag(10) as! UIImageView
+            print(searchResult[indexPath.row].image+" red")
+            join.image = UIImage(named: "social red")
+            
+        }else if 100-((max-att)*100/max) >= 70 {
+            let join = cell.viewWithTag(10) as! UIImageView
+            join.image = UIImage(named: "social orange")
+        }else if 100-((max-att)*100/max) >= 30 {
+            let join = cell.viewWithTag(10) as! UIImageView
+            join.image = UIImage(named: "social yellow")
+        }else{
+            let join = cell.viewWithTag(10) as! UIImageView
+            join.image = UIImage(named: "social green")
+        }
         if let time = cell.viewWithTag(7) as? UILabel{
         time.text = String(searchResult[indexPath.row].time)
         }
+        if let icon = cell.viewWithTag(8) as? UIImageView{
+            icon.image = UIImage(named: searchResult[indexPath.row].image)
+        }
+        if let type = cell.viewWithTag(9) as? UILabel{
+            type.text = String(searchResult[indexPath.row].type)
+        }
         return cell
     }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResult.count
     }

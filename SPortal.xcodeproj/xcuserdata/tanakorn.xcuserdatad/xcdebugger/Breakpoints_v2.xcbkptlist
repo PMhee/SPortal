@@ -325,11 +325,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPortal/InfoViewController.swift"
-            timestampString = "478518801.328846"
+            timestampString = "479284611.142749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "InfoViewController"
             landmarkType = "3">
          </BreakpointContent>

@@ -15,6 +15,7 @@ class InfoViewController: UIViewController{
     @IBOutlet weak var age: UILabel!
     @IBOutlet weak var gender: UILabel!
    
+    @IBOutlet weak var scrollView: UIScrollView!
 
     
     //new
@@ -41,8 +42,8 @@ class InfoViewController: UIViewController{
             
         })
         returnUserData()
-        
-        
+        scrollViewDidScroll(scrollView)
+        scrollView.directionalLockEnabled = true
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -53,7 +54,11 @@ class InfoViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.x>0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
     func returnUserData()
     {
         // Get List Of Friends

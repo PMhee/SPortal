@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -20,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6Q-M2-n8I">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H6Q-M2-n8I">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Bsh-CD-Fnf">
@@ -243,27 +242,6 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP2-ao-wq9">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="101" id="fNv-bu-t9j"/>
-                                        </constraints>
-                                        <string key="text">      I can't stand to fly. I'm not that naïve. I'm just out to find. The better part of me. I'm more than a bird,I'm more than a plane. I'm more than some prettyface beside a train. It's not easy to be me.</string>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="fNv-bu-t9j"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="constraints">
-                                                <exclude reference="fNv-bu-t9j"/>
-                                            </mask>
-                                        </variation>
-                                    </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aK8-oY-FNI">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <color key="backgroundColor" red="0.84052483970000003" green="0.84052483970000003" blue="0.84052483970000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -456,6 +434,27 @@
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" red="0.77820271600000002" green="0.76519755553478663" blue="0.48061800514432468" alpha="0.16214978448275863" colorSpace="calibratedRGB"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP2-ao-wq9">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="101" id="fNv-bu-t9j"/>
+                                        </constraints>
+                                        <string key="text">      I can't stand to fly. I'm not that naïve. I'm just out to find. The better part of me. I'm more than a bird,I'm more than a plane. I'm more than some prettyface beside a train. It's not easy to be me.</string>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fNv-bu-t9j"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <exclude reference="fNv-bu-t9j"/>
+                                            </mask>
+                                        </variation>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kdu-HA-fQt" firstAttribute="leading" secondItem="cu2-s1-jVd" secondAttribute="trailing" constant="21" id="01o-Nt-Utu">
@@ -513,6 +512,7 @@
                                     <constraint firstItem="u3f-t7-lFK" firstAttribute="top" secondItem="H6Q-M2-n8I" secondAttribute="top" constant="150" id="O9N-zF-d9g">
                                         <variation key="widthClass=compact" constant="164"/>
                                     </constraint>
+                                    <constraint firstItem="r17-uZ-riC" firstAttribute="leading" secondItem="H6Q-M2-n8I" secondAttribute="leading" constant="2" id="Ogv-mw-qU1"/>
                                     <constraint firstItem="GsB-Cj-UaC" firstAttribute="top" secondItem="8tt-ru-xoa" secondAttribute="bottom" constant="-1" id="Q6s-cW-h2w">
                                         <variation key="widthClass=compact" constant="8"/>
                                     </constraint>
@@ -562,7 +562,7 @@
                                         <variation key="widthClass=compact" constant="14"/>
                                     </constraint>
                                     <constraint firstAttribute="bottom" secondItem="KjY-cL-qlA" secondAttribute="bottom" constant="127" id="fZk-eM-OFE">
-                                        <variation key="widthClass=compact" constant="91"/>
+                                        <variation key="widthClass=compact" constant="105"/>
                                     </constraint>
                                     <constraint firstItem="u3f-t7-lFK" firstAttribute="centerX" secondItem="H6Q-M2-n8I" secondAttribute="centerX" id="gCo-Y4-Z0m">
                                         <variation key="widthClass=compact" constant="0.0"/>
@@ -577,7 +577,7 @@
                                         <variation key="widthClass=compact" constant="14"/>
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="nP2-ao-wq9" secondAttribute="trailing" id="ktC-pd-cdF">
-                                        <variation key="widthClass=compact" constant="30"/>
+                                        <variation key="widthClass=compact" constant="22"/>
                                     </constraint>
                                     <constraint firstItem="r17-uZ-riC" firstAttribute="width" secondItem="H6Q-M2-n8I" secondAttribute="width" multiplier="1:4" id="lAn-51-6k6"/>
                                     <constraint firstItem="r17-uZ-riC" firstAttribute="leading" secondItem="aK8-oY-FNI" secondAttribute="leading" id="lGm-qu-28d"/>
@@ -603,7 +603,6 @@
                                         <exclude reference="GsB-Cj-UaC"/>
                                         <exclude reference="u3f-t7-lFK"/>
                                         <exclude reference="WrK-C5-9HB"/>
-                                        <exclude reference="nP2-ao-wq9"/>
                                         <exclude reference="aK8-oY-FNI"/>
                                         <exclude reference="ai4-o8-r1e"/>
                                         <exclude reference="qBy-7e-kEe"/>
@@ -612,6 +611,7 @@
                                         <exclude reference="kdu-HA-fQt"/>
                                         <exclude reference="cu2-s1-jVd"/>
                                         <exclude reference="PBT-F5-Urx"/>
+                                        <exclude reference="nP2-ao-wq9"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="JcZ-yl-Jls"/>
@@ -672,6 +672,7 @@
                                         <exclude reference="Udb-9J-pPU"/>
                                         <exclude reference="vIl-rm-oPn"/>
                                         <exclude reference="Bpa-vX-tKd"/>
+                                        <exclude reference="Ogv-mw-qU1"/>
                                         <exclude reference="b35-gE-uLr"/>
                                         <exclude reference="lAn-51-6k6"/>
                                         <exclude reference="lGm-qu-28d"/>
@@ -696,7 +697,6 @@
                                         <include reference="GsB-Cj-UaC"/>
                                         <include reference="u3f-t7-lFK"/>
                                         <include reference="WrK-C5-9HB"/>
-                                        <include reference="nP2-ao-wq9"/>
                                         <include reference="aK8-oY-FNI"/>
                                         <include reference="ai4-o8-r1e"/>
                                         <include reference="qBy-7e-kEe"/>
@@ -705,6 +705,7 @@
                                         <include reference="kdu-HA-fQt"/>
                                         <include reference="cu2-s1-jVd"/>
                                         <include reference="PBT-F5-Urx"/>
+                                        <include reference="nP2-ao-wq9"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="JcZ-yl-Jls"/>
@@ -765,6 +766,7 @@
                                         <include reference="Udb-9J-pPU"/>
                                         <include reference="vIl-rm-oPn"/>
                                         <include reference="Bpa-vX-tKd"/>
+                                        <include reference="Ogv-mw-qU1"/>
                                         <exclude reference="b35-gE-uLr"/>
                                         <exclude reference="lAn-51-6k6"/>
                                         <include reference="lGm-qu-28d"/>
@@ -783,11 +785,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="H6Q-M2-n8I" firstAttribute="centerX" secondItem="hOS-U3-ilq" secondAttribute="centerX" id="MeM-8a-hY2"/>
+                            <constraint firstItem="H6Q-M2-n8I" firstAttribute="centerX" secondItem="hOS-U3-ilq" secondAttribute="centerX" id="MeM-8a-hY2">
+                                <variation key="widthClass=compact" constant="3"/>
+                            </constraint>
                             <constraint firstItem="H6Q-M2-n8I" firstAttribute="width" secondItem="hOS-U3-ilq" secondAttribute="width" id="OBX-02-bR9"/>
                             <constraint firstItem="H6Q-M2-n8I" firstAttribute="top" secondItem="hOS-U3-ilq" secondAttribute="top" id="VL0-Ok-lzw"/>
                             <constraint firstItem="H6Q-M2-n8I" firstAttribute="height" secondItem="hOS-U3-ilq" secondAttribute="height" id="ax2-n4-PNq"/>
-                            <constraint firstItem="H6Q-M2-n8I" firstAttribute="leading" secondItem="hOS-U3-ilq" secondAttribute="leadingMargin" constant="-23" id="jHv-hZ-KFZ"/>
+                            <constraint firstItem="H6Q-M2-n8I" firstAttribute="width" secondItem="hOS-U3-ilq" secondAttribute="width" id="hjN-Pg-q76">
+                                <variation key="widthClass=compact" constant="6"/>
+                            </constraint>
+                            <constraint firstItem="H6Q-M2-n8I" firstAttribute="leading" secondItem="hOS-U3-ilq" secondAttribute="leadingMargin" constant="-23" id="jHv-hZ-KFZ">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
                             <constraint firstItem="H6Q-M2-n8I" firstAttribute="bottom" secondItem="iMP-iy-ItW" secondAttribute="top" id="zPW-Xd-A5C"/>
                         </constraints>
                         <variation key="default">
@@ -799,6 +808,7 @@
                                 <exclude reference="OBX-02-bR9"/>
                                 <exclude reference="VL0-Ok-lzw"/>
                                 <exclude reference="ax2-n4-PNq"/>
+                                <exclude reference="hjN-Pg-q76"/>
                                 <exclude reference="jHv-hZ-KFZ"/>
                                 <exclude reference="zPW-Xd-A5C"/>
                             </mask>
@@ -812,6 +822,7 @@
                                 <exclude reference="OBX-02-bR9"/>
                                 <include reference="VL0-Ok-lzw"/>
                                 <include reference="ax2-n4-PNq"/>
+                                <include reference="hjN-Pg-q76"/>
                                 <include reference="jHv-hZ-KFZ"/>
                                 <include reference="zPW-Xd-A5C"/>
                             </mask>
@@ -826,6 +837,7 @@
                         <outlet property="label_football" destination="PBT-F5-Urx" id="C0W-Ef-pRD"/>
                         <outlet property="label_job" destination="u3f-t7-lFK" id="TyQ-6h-H0S"/>
                         <outlet property="label_name" destination="GsB-Cj-UaC" id="e3T-cG-wzd"/>
+                        <outlet property="scrollView" destination="H6Q-M2-n8I" id="jW9-YT-SFL"/>
                         <outlet property="stackview_people_like" destination="MLJ-zY-I6k" id="Kq9-m3-5Us"/>
                     </connections>
                 </viewController>
