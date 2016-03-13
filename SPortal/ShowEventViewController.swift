@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIScrollViewDelegate  {
     
+    @IBOutlet weak var viewPlayer: UIButton!
+    @IBOutlet weak var views: UIButton!
     @IBOutlet weak var scroll: UIScrollView!
     @IBOutlet weak var join: UIButton!
     @IBOutlet weak var attend: UILabel!
@@ -35,22 +37,22 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         profilePic.layer.cornerRadius = profilePic.frame.height/2
         profilePic.clipsToBounds = true
         self.attend.text = showEvent.attendant+"/"+showEvent.max
-        var max :Int = Int(showEvent.max)!
-        var att :Int = Int(showEvent.attendant)!
-        if max - att == 0 {
-            let join = users as UIImageView
-            join.image = UIImage(named: "social red")
-            
-        }else if 100-((max-att)*100/max) >= 70 {
-            let join = users as UIImageView
-            join.image = UIImage(named: "social orange")
-        }else if 100-((max-att)*100/max) >= 30 {
-            let join = users as UIImageView
-            join.image = UIImage(named: "social yellow")
-        }else{
-            let join = users as UIImageView
-            join.image = UIImage(named: "social green")
-        }
+//        var max :Int = Int(showEvent.max)!
+//        var att :Int = Int(showEvent.attendant)!
+//        if max - att == 0 {
+//            let join = users as UIImageView
+//            join.image = UIImage(named: "social red")
+//            
+//        }else if 100-((max-att)*100/max) >= 70 {
+//            let join = users as UIImageView
+//            join.image = UIImage(named: "social orange")
+//        }else if 100-((max-att)*100/max) >= 30 {
+//            let join = users as UIImageView
+//            join.image = UIImage(named: "social yellow")
+//        }else{
+//            let join = users as UIImageView
+//            join.image = UIImage(named: "social green")
+//        }
         map.layer.cornerRadius = 20
         self.name.text = showEvent.author
         self.place.setTitle(showEvent.place, forState: .Normal)

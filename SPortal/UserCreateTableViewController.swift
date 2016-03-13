@@ -40,6 +40,7 @@ class UserCreateTableViewController: UITableViewController {
         var strDate = dateFormatter.stringFromDate(today)
         Date.text = strDate
         Time.text = "10:00 AM"
+        finishTimeText.text = "11:00 AM"
         //var finish = Int(strTime)
         //finish = finish!+1
         LocationTitle.text = fromSegue
