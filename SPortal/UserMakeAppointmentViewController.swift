@@ -14,7 +14,7 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
     @IBOutlet weak var map: MKMapView!
     var sportType:String = ""
     let locationManager = CLLocationManager()
-    var locationtitle :String = ""
+    var locationtitle :String = "Didn't Selected"
     @IBOutlet var cancel: UIButton!
     @IBOutlet var confirm: UIButton!
     override func viewDidLoad() {
@@ -51,11 +51,11 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
      
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if let destination = segue.destinationViewController as? UserCreateTableViewController {
             if segue.identifier == "confirm"{
             destination.fromSegue = self.locationtitle
             destination.sportType = self.sportType
-            print(self.locationtitle)
             }
         }
     }

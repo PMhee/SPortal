@@ -9,37 +9,64 @@
 import UIKit
 
 class UserCreateTableViewController: UITableViewController {
+    @IBOutlet weak var max: UILabel!
     
-    @IBOutlet weak var Price: UILabel!
+    @IBOutlet var players: UISlider!
+    @IBOutlet weak var finishTimeText: UILabel!
+    @IBOutlet weak var finishTime: UIDatePicker!
     @IBOutlet weak var Time: UILabel!
     @IBOutlet weak var Date: UILabel!
     @IBOutlet weak var dates: UIDatePicker!
-    @IBAction func price(sender: UISlider) {
-        var current = Double(sender.value)*2000
-        let y = Double(round(current)/1)
-        Price.text = "\(y)"
-    }
     @IBOutlet weak var times: UIDatePicker!
     @IBOutlet weak var SportTT: UILabel!
     @IBOutlet weak var LocationTitle: UILabel!
+    @IBAction func playerSlider(sender: UISlider) {
+        var current = Double(sender.value)*10
+        let y = Int(round(current)/1)
+        max.text = "\(y)"
+    }
+    let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
     var fromSegue :String = "Select Place"
     var selectedCellIndexPath: NSIndexPath?
     let selectedCellHeight: CGFloat = 200.0
     let unselectedCellHeight: CGFloat = 44.0
     var sportType : String = "Select Type"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         var a = NSBundle.mainBundle().objectForInfoDictionaryKey("storeData")!
-        
+        var dateFormatter = NSDateFormatter()
+        let today = NSDate()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        var strDate = dateFormatter.stringFromDate(today)
+        Date.text = strDate
+        Time.text = "10:00 AM"
+        //var finish = Int(strTime)
+        //finish = finish!+1
         LocationTitle.text = fromSegue
         dates.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         times.addTarget(self, action: Selector("timePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        finishTime.addTarget(self, action: Selector("finishTimePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         SportTT.text = sportType
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    func calculatePrice(max:Int,place:String,type:String) ->Int{
+        var price :Int = 0
+        if place == "CU SportComplex" {
+            switch type{
+            case "Football" : price = 1200
+            case "BodyBuilding" : price = 2500
+            case "Yoga" : price = 500
+            case "Boxing" : price = 500
+            default:price = 0
+            }
+            if type == "Football" {
+                price = price/max
+            }
+        }
+        return price
     }
     func datePickerChanged(datePicker:UIDatePicker) {
         var dateFormatter = NSDateFormatter()
@@ -56,6 +83,13 @@ class UserCreateTableViewController: UITableViewController {
         Time.text = strDate
         
     }
+    func finishTimePickerChanged(datePicker:UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        var strDate = dateFormatter.stringFromDate(datePicker.date)
+        finishTimeText.text = strDate
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,11 +104,11 @@ class UserCreateTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 6
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if selectedCellIndexPath == indexPath {
-            if indexPath.row == 1 || indexPath.row == 0 {
+            if indexPath.row == 1 || indexPath.row == 0 || indexPath.row == 6 {
             return unselectedCellHeight
             }else
             {

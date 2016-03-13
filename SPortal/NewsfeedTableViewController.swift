@@ -9,7 +9,7 @@
 import UIKit
 
 class NewsfeedTableViewController: UITableViewController {
-
+    var news :NSArray!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,12 +24,20 @@ class NewsfeedTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func addEvent(){
+        
+    }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
-    override  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        
+        // Configure the cell...
+        let name = cell.viewWithTag(2) as! UILabel
+        
         return cell
     }
     /*

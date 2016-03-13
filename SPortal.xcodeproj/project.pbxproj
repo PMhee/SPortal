@@ -36,6 +36,7 @@
 		B7F455991C522C000031199B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F455981C522C000031199B /* FBSDKLoginKit.framework */; };
 		B7F4559B1C523D950031199B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4559A1C523D950031199B /* InfoViewController.swift */; };
 		B7F4559D1C52636D0031199B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4559C1C52636D0031199B /* FirstViewController.swift */; };
+		B7FEB0D31C95336E00929924 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FEB0D21C95336E00929924 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		B7F455981C522C000031199B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B7F4559A1C523D950031199B /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		B7F4559C1C52636D0031199B /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		B7FEB0D21C95336E00929924 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */,
 				B70D0C9C1C94208D002F7AFC /* ShowNewsfeedViewController.swift */,
 				B70D0C9E1C94299D002F7AFC /* showSportPlayerTableViewController.swift */,
+				B7FEB0D21C95336E00929924 /* News.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				B7F4559B1C523D950031199B /* InfoViewController.swift in Sources */,
 				B70D0C9B1C942061002F7AFC /* NewsfeedTableViewController.swift in Sources */,
 				B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */,
+				B7FEB0D31C95336E00929924 /* News.swift in Sources */,
 				B79B47191C59DE90001E104A /* GraphView.swift in Sources */,
 				B7585C881C81481200DE6980 /* DataToPass.swift in Sources */,
 				B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */,
