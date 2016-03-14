@@ -15,6 +15,8 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
     var sportType:String = ""
     let locationManager = CLLocationManager()
     var locationtitle :String = "Didn't Selected"
+    var lat : Double!
+    var lon : Double!
     @IBOutlet var cancel: UIButton!
     @IBOutlet var confirm: UIButton!
     override func viewDidLoad() {
@@ -32,8 +34,6 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
         CU.coordinate.longitude = 101.52586
         CU.title = "Chulalongkorn University"
         CU.subtitle = "The 1st University in thailand"
-        cancel.layer.cornerRadius = 5
-        confirm.layer.cornerRadius = 5
         self.map.addAnnotation(CU)
         self.map.addAnnotation(SportComplex)
         if (CLLocationManager.locationServicesEnabled())
@@ -48,7 +48,8 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
     }
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         self.locationtitle = ((view.annotation?.title)!)!
-     
+        self.lat = ((view.annotation?.coordinate.latitude))
+        self.lon = ((view.annotation?.coordinate.longitude))
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -56,6 +57,8 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
             if segue.identifier == "confirm"{
             destination.fromSegue = self.locationtitle
             destination.sportType = self.sportType
+            destination.latitude = self.lat
+            destination.longitude = self.lon
             }
         }
     }

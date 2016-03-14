@@ -23,6 +23,9 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBAction func clickJoin(sender: UIButton) {
+        
+    }
     let imageArray = ["weight bg","football bg","yoga bg","boxing bg"]
     let locationManager = CLLocationManager()
     var showEvent:DataToPass!
@@ -57,7 +60,7 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         self.name.text = showEvent.author
         self.place.setTitle(showEvent.place, forState: .Normal)
         //self.price.text = showEvent.price
-        self.date.text = "Date: "+showEvent.date+" Time: "+showEvent.time
+        self.date.text = "Date: "+showEvent.date+" Time: "+showEvent.time+"-"+showEvent.f_time
         self.type.text = showEvent.type.uppercaseString
         //image.image = UIImage(named: showEvent.image)
         // Do any additional setup after loading the view.
@@ -110,7 +113,33 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         }
         return view
     }
-
+    func joinEvent(){
+        let postEndPoint: String = "http://requestb.in/t4puk4t4"
+        let url = NSURL(string: postEndPoint)!
+        let session = NSURLSession.sharedSession()
+        let str = ["u_id":"1","e_id":"2","join":"yes"]
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        do{
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(str, options: NSJSONWritingOptions())
+            print(str)
+        }catch{
+            print("error cant post")
+        }
+        session.dataTaskWithRequest(request,completionHandler: {
+            (data:NSData?,response:NSURLResponse?,error: NSError?) -> Void in
+            guard let realResponse = response as? NSHTTPURLResponse where
+                realResponse.statusCode == 200 else{
+                    print("not 200")
+                    return
+            }
+            if let postString = NSString(data:data!,encoding:  NSUTF8StringEncoding) as? String {
+                print("POST:"+postString)
+            }
+        }).resume()
+    }
 
     /*
     // MARK: - Navigation

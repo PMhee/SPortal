@@ -21,6 +21,7 @@
 		B75697FF1C3E3DC300A8FB3F /* SPortalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697FE1C3E3DC300A8FB3F /* SPortalUITests.swift */; };
 		B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7585C851C8142C000DE6980 /* ShowEventViewController.swift */; };
 		B7585C881C81481200DE6980 /* DataToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7585C871C81481200DE6980 /* DataToPass.swift */; };
+		B75E6E481C96950B00B03B50 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E6E471C96950B00B03B50 /* testViewController.swift */; };
 		B79B47191C59DE90001E104A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B47181C59DE90001E104A /* GraphView.swift */; };
 		B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */; };
 		B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */; };
@@ -77,6 +78,7 @@
 		B75698001C3E3DC300A8FB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7585C851C8142C000DE6980 /* ShowEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
 		B7585C871C81481200DE6980 /* DataToPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataToPass.swift; sourceTree = "<group>"; };
+		B75E6E471C96950B00B03B50 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		B79B47181C59DE90001E104A /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateTableViewController.swift; sourceTree = "<group>"; };
 		B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMakeAppointmentViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				B70D0C9C1C94208D002F7AFC /* ShowNewsfeedViewController.swift */,
 				B70D0C9E1C94299D002F7AFC /* showSportPlayerTableViewController.swift */,
 				B7FEB0D21C95336E00929924 /* News.swift */,
+				B75E6E471C96950B00B03B50 /* testViewController.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */,
 				B7C957D41C9038CF00D07B05 /* NotiTableViewController.swift in Sources */,
 				B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */,
+				B75E6E481C96950B00B03B50 /* testViewController.swift in Sources */,
 				B70D0C9D1C94208D002F7AFC /* ShowNewsfeedViewController.swift in Sources */,
 				A62D23851C896177003E234A /* AchievementTableViewController.swift in Sources */,
 				B7BC89FB1C558FD500FB6073 /* EventTableViewController.swift in Sources */,

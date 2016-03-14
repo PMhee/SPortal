@@ -11,6 +11,10 @@ import UIKit
 class UserCreateTableViewController: UITableViewController {
     @IBOutlet weak var max: UILabel!
     
+    var price :Int!
+    
+    var latitude : Double!
+    var longitude :Double!
     @IBOutlet var players: UISlider!
     @IBOutlet weak var finishTimeText: UILabel!
     @IBOutlet weak var finishTime: UIDatePicker!
@@ -31,6 +35,9 @@ class UserCreateTableViewController: UITableViewController {
     let selectedCellHeight: CGFloat = 200.0
     let unselectedCellHeight: CGFloat = 44.0
     var sportType : String = "Select Type"
+    @IBAction func clickConfirm(sender: UIButton) {
+        check()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         var a = NSBundle.mainBundle().objectForInfoDictionaryKey("storeData")!
@@ -41,6 +48,7 @@ class UserCreateTableViewController: UITableViewController {
         Date.text = strDate
         Time.text = "10:00 AM"
         finishTimeText.text = "11:00 AM"
+        max.text = "Select max players"
         //var finish = Int(strTime)
         //finish = finish!+1
         LocationTitle.text = fromSegue
@@ -58,7 +66,7 @@ class UserCreateTableViewController: UITableViewController {
         if place == "CU SportComplex" {
             switch type{
             case "Football" : price = 1200
-            case "BodyBuilding" : price = 2500
+            case "Workout" : price = 2500
             case "Yoga" : price = 500
             case "Boxing" : price = 500
             default:price = 0
@@ -90,6 +98,18 @@ class UserCreateTableViewController: UITableViewController {
         var strDate = dateFormatter.stringFromDate(datePicker.date)
         finishTimeText.text = strDate
         
+    }
+    func check(){
+        if self.LocationTitle.text == "Didn't Selected" || self.max.text == "Select max players" {
+            let alertController = UIAlertController(title: "Error", message:
+                "You didn't completed the event", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else{
+            self.price = calculatePrice(Int(max.text!)!, place : LocationTitle.text!, type: SportTT.text!)
+            createEvent()
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -132,6 +152,33 @@ class UserCreateTableViewController: UITableViewController {
             // This ensures, that the cell is fully visible once expanded
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
         }
+    }
+    func createEvent(){
+        let postEndPoint: String = "http://requestb.in/t4puk4t4"
+        let url = NSURL(string: postEndPoint)!
+        let session = NSURLSession.sharedSession()
+        let str = ["e_id":"1","u_id":"1","type":self.SportTT.text!,"e_date":Date.text!,"time":Time.text!,"f_time":finishTimeText.text!,"place":LocationTitle.text!,"price":String(price),"latitude":String(latitude),"longitude":String(longitude),"attend":"1","max":max.text!]
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        do{
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(str, options: NSJSONWritingOptions())
+            print(str)
+        }catch{
+            print("error cant post")
+        }
+        session.dataTaskWithRequest(request,completionHandler: {
+            (data:NSData?,response:NSURLResponse?,error: NSError?) -> Void in
+            guard let realResponse = response as? NSHTTPURLResponse where
+                realResponse.statusCode == 200 else{
+                    print("not 200")
+                    return
+            }
+            if let postString = NSString(data:data!,encoding:  NSUTF8StringEncoding) as? String {
+                print("POST:"+postString)
+            }
+        }).resume()
     }
     //1
     /*

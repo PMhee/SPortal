@@ -11,6 +11,7 @@ struct DataToPass{
     var type : String
     var date : String
     var time : String
+    var f_time: String
     var place : String
     var author : String
     var price : String

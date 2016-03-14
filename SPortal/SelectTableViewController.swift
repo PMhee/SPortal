@@ -44,9 +44,10 @@ class SelectTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let des = segue.destinationViewController as? UserMakeAppointmentViewController{
             if let identifier = segue.identifier{
+                print(identifier)
             switch identifier {
             case "Football" : des.sportType = "Football"
-            case "BodyBuilding" : des.sportType = "BodyBuilding"
+            case "Workout" : des.sportType = "Workout"
             case "Yoga" : des.sportType = "Yoga"
             case "Boxing" : des.sportType = "Boxing"
             default : des.sportType = ""
