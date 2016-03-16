@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2428429CD9450921CF2A2BA /* Pods_SPortal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C605375FFD34FE17E2DFBAC /* Pods_SPortal.framework */; };
 		A62D23811C88B443003E234A /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D23801C88B443003E234A /* UIImageEffects.swift */; };
 		A62D23851C896177003E234A /* AchievementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D23841C896177003E234A /* AchievementTableViewController.swift */; };
 		B70D0C9B1C942061002F7AFC /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */; };
@@ -58,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66C0549CD9BD4FBB373C1E5A /* Pods-SPortal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPortal.release.xcconfig"; path = "Pods/Target Support Files/Pods-SPortal/Pods-SPortal.release.xcconfig"; sourceTree = "<group>"; };
+		7C605375FFD34FE17E2DFBAC /* Pods_SPortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E48050F1CB3F124C84B223F /* Pods-SPortal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPortal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SPortal/Pods-SPortal.debug.xcconfig"; sourceTree = "<group>"; };
 		A62D23801C88B443003E234A /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		A62D23841C896177003E234A /* AchievementTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewController.swift; sourceTree = "<group>"; };
 		B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			files = (
 				B7F455991C522C000031199B /* FBSDKLoginKit.framework in Frameworks */,
 				B7F455971C522BF50031199B /* FBSDKCoreKit.framework in Frameworks */,
+				A2428429CD9450921CF2A2BA /* Pods_SPortal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +129,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F7843E648AFEFF7E30A6415 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E48050F1CB3F124C84B223F /* Pods-SPortal.debug.xcconfig */,
+				66C0549CD9BD4FBB373C1E5A /* Pods-SPortal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AB3172CDC666363F3C56CD0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C605375FFD34FE17E2DFBAC /* Pods_SPortal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B75697D21C3E3DC200A8FB3F = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +155,8 @@
 				B75697F21C3E3DC300A8FB3F /* SPortalTests */,
 				B75697FD1C3E3DC300A8FB3F /* SPortalUITests */,
 				B75697DC1C3E3DC200A8FB3F /* Products */,
+				7F7843E648AFEFF7E30A6415 /* Pods */,
+				AB3172CDC666363F3C56CD0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B75698031C3E3DC300A8FB3F /* Build configuration list for PBXNativeTarget "SPortal" */;
 			buildPhases = (
+				08D039BD6EE07D94A368921B /* Check Pods Manifest.lock */,
 				B75697D71C3E3DC200A8FB3F /* Sources */,
 				B75697D81C3E3DC200A8FB3F /* Frameworks */,
 				B75697D91C3E3DC200A8FB3F /* Resources */,
+				F5AD126D8D292CCBD667D927 /* Embed Pods Frameworks */,
+				8E1F1E4702E8F3B827EBFC12 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,6 +353,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08D039BD6EE07D94A368921B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8E1F1E4702E8F3B827EBFC12 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SPortal/Pods-SPortal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5AD126D8D292CCBD667D927 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SPortal/Pods-SPortal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B75697D71C3E3DC200A8FB3F /* Sources */ = {
@@ -492,6 +567,7 @@
 		};
 		B75698041C3E3DC300A8FB3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E48050F1CB3F124C84B223F /* Pods-SPortal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -513,6 +589,7 @@
 		};
 		B75698051C3E3DC300A8FB3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66C0549CD9BD4FBB373C1E5A /* Pods-SPortal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

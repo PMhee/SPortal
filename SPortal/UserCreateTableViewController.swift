@@ -7,12 +7,10 @@
 //
 
 import UIKit
-
+import Alamofire
 class UserCreateTableViewController: UITableViewController {
     @IBOutlet weak var max: UILabel!
-    
     var price :Int!
-    
     var latitude : Double!
     var longitude :Double!
     @IBOutlet var players: UISlider!
@@ -24,6 +22,7 @@ class UserCreateTableViewController: UITableViewController {
     @IBOutlet weak var times: UIDatePicker!
     @IBOutlet weak var SportTT: UILabel!
     @IBOutlet weak var LocationTitle: UILabel!
+    var key :String!
     @IBAction func playerSlider(sender: UISlider) {
         var current = Double(sender.value)*10
         let y = Int(round(current)/1)
@@ -40,6 +39,13 @@ class UserCreateTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Alamofire.request(.GET, "http://192.168.43.138:3000/requestCsrf")
+            .responseString { response in
+                print("Response String: \(response.result.value)")
+                self.key = String(response.result.value!)
+                print(self.key)
+        }
         var a = NSBundle.mainBundle().objectForInfoDictionaryKey("storeData")!
         var dateFormatter = NSDateFormatter()
         let today = NSDate()
@@ -154,31 +160,12 @@ class UserCreateTableViewController: UITableViewController {
         }
     }
     func createEvent(){
-        let postEndPoint: String = "http://requestb.in/t4puk4t4"
-        let url = NSURL(string: postEndPoint)!
-        let session = NSURLSession.sharedSession()
-        let str = ["e_id":"1","u_id":"1","type":self.SportTT.text!,"e_date":Date.text!,"time":Time.text!,"f_time":finishTimeText.text!,"place":LocationTitle.text!,"price":String(price),"latitude":String(latitude),"longitude":String(longitude),"attend":"1","max":max.text!]
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        do{
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(str, options: NSJSONWritingOptions())
-            print(str)
-        }catch{
-            print("error cant post")
-        }
-        session.dataTaskWithRequest(request,completionHandler: {
-            (data:NSData?,response:NSURLResponse?,error: NSError?) -> Void in
-            guard let realResponse = response as? NSHTTPURLResponse where
-                realResponse.statusCode == 200 else{
-                    print("not 200")
-                    return
-            }
-            if let postString = NSString(data:data!,encoding:  NSUTF8StringEncoding) as? String {
-                print("POST:"+postString)
-            }
-        }).resume()
+        print(self.key)
+        let parameters = [
+            "events": ["e_id":"1","u_id":"1","type":self.SportTT.text!,"e_date":Date.text!,"time":Time.text!,"f_time":finishTimeText.text!,"place":LocationTitle.text!,"price":String(price),"latitude":String(latitude),"longitude":String(longitude),"attend":"1","max":max.text!],"_csrf":self.key
+        ]
+        Alamofire.request(.POST, "http://192.168.43.138:3000/addEvent", parameters: parameters as! [String : AnyObject], encoding: .JSON)
+    
     }
     //1
     /*

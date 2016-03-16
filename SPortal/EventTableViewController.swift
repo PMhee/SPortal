@@ -7,49 +7,66 @@
 //
 
 import UIKit
-
+import Alamofire
 class EventTableViewController: UITableViewController,UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     let imageArray = ["fitness icon","yoga icon","boxing icon","fitness icon","fitness icon","football icon"]
-    var events = [DataToPass]()
     var searchResult = [DataToPass]()
     var selectedCellIndexPath: NSIndexPath?
+    var events = [DataToPass]()
     @IBOutlet weak var myTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         addEvents()
-        
-//        let urlPath: String = "http://localhost/Project/sportTable.json"
-//        var url: NSURL = NSURL(string: urlPath)!
-//        var request1: NSURLRequest = NSURLRequest(URL: url)
-//        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
-//        var error: NSErrorPointer = nil
-//        do{
-//            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
-//            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-//            print("Synchronous \(jsonResult)")
-//            var a = jsonResult.valueForKey("events")!
-//            for i in 0...a.count-1 {
-//                events.append(DataToPass(type: a[i].valueForKey("type")! as! String,date: a[i].valueForKey("date")! as! String,time:  a[i].valueForKey("time")! as! String,place:  a[i].valueForKey("place")! as! String,author:  a[i].valueForKey("author")! as! String,price:  a[i].valueForKey("price")! as! String,image: a[i].valueForKey("image")! as! String,latitude: a[i].valueForKey("latitude")! as! String,longitude: a[i].valueForKey("longitude")! as! String,bg: a[i].valueForKey("bg")! as! String,attendant: a[i].valueForKey("attendant")! as! String,max: a[i].valueForKey("max")! as! String))
-//            }
-//        }catch{
-//            
-//        }
-//        var err: NSError
-//        print(response)
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("Search Button tapped")
+        //print("Search Button tapped")
         searchResult.removeLast()
     }
-    func addEvents(){
-        let event1 = DataToPass(type:"Boxing",date:"March 12, 2016",time:"10:40",f_time:"11:40",place:"Chulalongkorn University",author:"Tanakorn Rattanajariya",price:"500",image:"boxing icon",latitude: "13.73888",longitude: "100.52586",bg: "boxing bg",attendant: "1",max:"5",pic:"profilePic")
-        let event2 = DataToPass(type:"Football",date:"March 13, 2016",time:"12:00",f_time:"14:00",place:"Chulalongkorn University",author:"JJamie Ratchata",price:"120",image:"football icon",latitude: "13.73888",longitude: "100.52586",bg: "football bg",attendant: "7",max:"10",pic:"jjamie")
-        let event3 = DataToPass(type:"Workout",date:"March 14, 2016",time:"11:30",f_time:"12:40",place:"Chulalongkorn University",author:"Chantawat Rattana",price:"700",image:"workout icon",latitude: "13.73888",longitude: "100.52586",bg: "workout bg",attendant: "5",max:"5",pic:"off")
-        let event4 = DataToPass(type:"yoga",date:"March 15, 2016",time:"10:30",f_time:"11:40",place:"Chulalongkorn University",author:"Kittinun Kaewtae",price:"300",image:"yoga icon",latitude: "13.73888",longitude: "100.52586",bg: "yoga bg",attendant: "3",max:"5",pic:"best")
-        events += [event1,event2,event3,event4]
-        searchResult = events
+   func addEvents(){
+//        let event1 = DataToPass(type:"Boxing",date:"March 12, 2016",time:"10:40",f_time:"11:40",place:"Chulalongkorn University",author:"Tanakorn Rattanajariya",price:"500",latitude: "13.73888",longitude: "100.52586",bg: "boxing bg",attendant: "1",max:"5",pic:"profilePic")
+//        let event2 = DataToPass(type:"Football",date:"March 13, 2016",time:"12:00",f_time:"14:00",place:"Chulalongkorn University",author:"JJamie Ratchata",price:"120",latitude: "13.73888",longitude: "100.52586",bg: "football bg",attendant: "7",max:"10",pic:"jjamie")
+//        let event3 = DataToPass(type:"Workout",date:"March 14, 2016",time:"11:30",f_time:"12:40",place:"Chulalongkorn University",author:"Chantawat Rattana",price:"700",latitude: "13.73888",longitude: "100.52586",bg: "workout bg",attendant: "5",max:"5",pic:"off")
+//        let event4 = DataToPass(type:"yoga",date:"March 15, 2016",time:"10:30",f_time:"11:40",place:"Chulalongkorn University",author:"Kittinun Kaewtae",price:"300",latitude: "13.73888",longitude: "100.52586",bg: "yoga bg",attendant: "3",max:"5",pic:"best")
+//        events += [event1,event2,event3,event4]
+//        searchResult = events
+//    Alamofire.request(.GET, "http://localhost/Project/sportTable.json")
+//    .responseJSON { response in
+//    //print(String(response.result.value!.valueForKey("events")!.valueForKey("imm")!))
+//    do{
+//    let jsonResult : NSDictionary = try NSJSONSerialization.JSONObjectWithData(response.data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//    var a = jsonResult.valueForKey("events")!
+//    var events = [DataToPass]()
+//    for i in 0...jsonResult.valueForKey("events")!.count-1 {
+//    //print((a[i].valueForKey("type")! as! String)+(a[i].valueForKey("e_date")! as! String)+(a[i].valueForKey("time")! as! String)+(a[i].valueForKey("f_time")! as! String)+(a[i].valueForKey("place")! as! String)+(a[i].valueForKey("author")! as! String)+(a[i].valueForKey("price")! as! String)+(a[i].valueForKey("latitude")! as! String)+(a[i].valueForKey("longitude")! as! String)+(a[i].valueForKey("bg")! as! String)+(a[i].valueForKey("attendant")! as! String)+(a[i].valueForKey("max")! as! String)+(a[i].valueForKey("pic")! as! String))
+//    events.append(DataToPass(type:jsonResult.valueForKey("events")![i].valueForKey("type")! as! String,date:jsonResult.valueForKey("events")![i].valueForKey("e_date")! as! String,time:jsonResult.valueForKey("events")![i].valueForKey("time")! as! String,f_time:jsonResult.valueForKey("events")![i].valueForKey("f_time")! as! String,place:jsonResult.valueForKey("events")![i].valueForKey("place")! as! String,author:jsonResult.valueForKey("events")![i].valueForKey("author")! as! String,price:jsonResult.valueForKey("events")![i].valueForKey("price")! as! String,latitude:jsonResult.valueForKey("events")![i].valueForKey("latitude")! as! String,longitude:jsonResult.valueForKey("events")![i].valueForKey("longitude")! as! String,bg:jsonResult.valueForKey("events")![i].valueForKey("bg")! as! String,attendant:jsonResult.valueForKey("events")![i].valueForKey("attendant")! as! String,max:jsonResult.valueForKey("events")![i].valueForKey("max")! as! String,pic:jsonResult.valueForKey("events")![i].valueForKey("pic")! as! String))
+//    }
+//    self.searchResult = events
+//    }catch{
+//    
+//    }
+//    
+//    }
+    let urlPath: String = "http://localhost/Project/sportTable.json"
+    var url: NSURL = NSURL(string: urlPath)!
+    var request1: NSURLRequest = NSURLRequest(URL: url)
+    var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+    var error: NSErrorPointer = nil
+    do{
+        var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+        var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+        print("Synchronous \(jsonResult)")
+        var a = jsonResult.valueForKey("events")!
+        for i in 0...a.count-1 {
+            events.append(DataToPass(type: a[i].valueForKey("type")! as! String,date: a[i].valueForKey("e_date")! as! String,time:  a[i].valueForKey("time")! as! String,f_time:  a[i].valueForKey("f_time")! as! String,place:  a[i].valueForKey("place")! as! String,author:  a[i].valueForKey("author")! as! String,price:  a[i].valueForKey("price")! as! String,image: a[i].valueForKey("image")! as! String,latitude: a[i].valueForKey("latitude")! as! String,longitude: a[i].valueForKey("longitude")! as! String,bg: a[i].valueForKey("bg")! as! String,attendant: a[i].valueForKey("attendant")! as! String,max: a[i].valueForKey("max")! as! String,pic:  a[i].valueForKey("pic")! as! String))
+        }
+    }catch{
+        
     }
+    searchResult = events
+    var err: NSError
+    print(response)
+   }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,7 +79,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
             let des = segue.destinationViewController as? ShowEventViewController
             // your new view controller should have property that will store passed value
             var indexPath = self.tableView.indexPathForSelectedRow!
-            var dataToPass = events[indexPath.row]
+            var dataToPass = searchResult[indexPath.row]
             des?.showEvent = dataToPass
         }
         
@@ -73,7 +90,11 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
 //        if let imageView = cell.viewWithTag(1) as? UIImageView{
 //        imageView.image = UIImage(named: searchResult[indexPath.row].bg)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
 //        }
+        
+
+        print(self.searchResult.count)
         if let author = cell.viewWithTag(2) as? UILabel{
+        print(self.searchResult[indexPath.row].author)
         author.text = searchResult[indexPath.row].author
         }
         if let place = cell.viewWithTag(3) as? UILabel{
@@ -106,7 +127,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
             time.text = String(searchResult[indexPath.row].time)+"-"+searchResult[indexPath.row].f_time
         }
         if let icon = cell.viewWithTag(8) as? UIImageView{
-            icon.image = UIImage(named: searchResult[indexPath.row].image)
+          //  icon.image = UIImage(named: searchResult[indexPath.row].image)
         }
         if let type = cell.viewWithTag(9) as? UILabel{
             type.text = String(searchResult[indexPath.row].type).uppercaseString
