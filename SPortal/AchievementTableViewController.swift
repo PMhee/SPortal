@@ -9,8 +9,8 @@
 import UIKit
 
 class AchievementTableViewController: UITableViewController {
-
- 
+    
+    
     struct Acheivement{
         var image: UIImage?
         var title: String
@@ -24,28 +24,28 @@ class AchievementTableViewController: UITableViewController {
         loadSampleAchievement()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return acheivements.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("achievementCell", forIndexPath: indexPath)
@@ -67,63 +67,79 @@ class AchievementTableViewController: UITableViewController {
     
     func loadSampleAchievement(){
         let acheivement1 = Acheivement(image: UIImage(named: "achievement.png"),title: "Man of the match",date: "Fri, March 7")
-         let acheivement2 = Acheivement(image: UIImage(named: "achievement.png"),title: "Join Sportal 10 times",date: "Fri, March 6")
-         let acheivement3 = Acheivement(image: UIImage(named: "achievement.png"),title: "Target achieved",date: "Fri, March 5")
-         let acheivement4 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Best pace",date: "")
-         let acheivement5 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Superstar of Sportal",date: "")
-         let acheivement6 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Longest distance",date: "")
-         let acheivement7 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "You will never walk alone",date: "")
+        let acheivement2 = Acheivement(image: UIImage(named: "achievement.png"),title: "Join Sportal 10 times",date: "Fri, March 6")
+        let acheivement3 = Acheivement(image: UIImage(named: "achievement.png"),title: "Target achieved",date: "Fri, March 5")
+        let acheivement4 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Best pace",date: "")
+        let acheivement5 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Superstar of Sportal",date: "")
+        let acheivement6 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "Longest distance",date: "")
+        let acheivement7 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "You will never walk alone",date: "")
         
         
         acheivements += [acheivement1,acheivement2,acheivement3,acheivement4,acheivement5,acheivement6,acheivement7]
+        let urlPath: String = "http://localhost/Project/sportTable.json"
+//        var url: NSURL = NSURL(string: urlPath)!
+//        var request1: NSURLRequest = NSURLRequest(URL: url)
+//        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+//        var error: NSErrorPointer = nil
+//        do{
+//            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+//            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//            print("Synchronous \(jsonResult)")
+//            var a = jsonResult.valueForKey("events")!
+//            for i in 0...a.count-1 {
+//                acheivements.append(Acheivement(image: UIImage(named: a[i].valueForKey("image")! as! String), title: a[i].valueForKey("title")! as! String, date: a[i].valueForKey("date")! as! String))
+//            }
+//        }catch{
+//            
+//        }
         
     }
     
     
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // Return false if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    // Return false if you do not want the item to be re-orderable.
+    return true
     }
     */
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

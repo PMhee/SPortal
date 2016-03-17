@@ -34,13 +34,31 @@ class NotiTableViewController: UITableViewController {
     func addNoti(){
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy/H/mm/ss"
-        let someDate1 = dateFormatter.dateFromString("03/9/2016/13/45/04")
-        let someDate2 = dateFormatter.dateFromString("03/8/2016/10/00/05")
-        let someDate3 = dateFormatter.dateFromString("02/9/2016/18/01/30")
-        let noti1 = Notification(image_profile:"jjamie",name:"JJamie Ratchata",date:someDate1!,title:"Create an Event",checked:false)
-        let noti2 = Notification(image_profile:"kirk",name:"Kirk Lertritpuwadol",date:someDate2!,title:"Join Starwar Running Event",checked:false)
-        let noti3 = Notification(image_profile:"profilePic",name:"Tanakorn Rattanajariya",date:someDate3!,title:"Join an Event",checked:true)
-        noti += [noti1,noti2,noti3]
+        let someDate1 = "03/9/2016/13/45/04"
+        let someDate2 = "03/8/2016/10/00/05"
+        let someDate3 = "02/9/2016/18/01/30"
+
+        let noti1 = Notification(image_profile:"jjamie",name:"JJamie Ratchata",date:someDate1,title:"Create an Event",checked:"false")
+        let noti2 = Notification(image_profile:"kirk",name:"Kirk Lertritpuwadol",date:someDate2,title:"Join Starwar Running Event",checked:"false")
+        let noti3 = Notification(image_profile:"profilePic",name:"Tanakorn Rattanajariya",date:someDate3,title:"Join an Event",checked:"true")
+                noti += [noti1,noti2,noti3]
+//        let urlPath: String = "http://localhost/Project/sportTable.json"
+//            var url: NSURL = NSURL(string: urlPath)!
+//            var request1: NSURLRequest = NSURLRequest(URL: url)
+//            var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+//            var error: NSErrorPointer = nil
+//            do{
+//            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+//            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//            print("Synchronous \(jsonResult)")
+//            var a = jsonResult.valueForKey("events")!
+//            for i in 0...a.count-1 {
+//                noti.append(Notification(image_profile: a[i].valueForKey("image_profile")! as! String, name: a[i].valueForKey("name")! as! String, date: a[i].valueForKey("date") as! String, title: a[i].valueForKey("title") as! String, checked: a[i].valueForKey("check") as! String))
+//            }
+//            }catch{
+//            
+//            }
+
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -58,7 +76,10 @@ class NotiTableViewController: UITableViewController {
         title.text = noti[indexPath.row].title
         let date = cell.viewWithTag(4) as! UILabel
         let today = NSDate()
-        var interval = today.timeIntervalSinceDate(noti[indexPath.row].date)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy/H/mm/ss"
+        let someDate = dateFormatter.dateFromString(noti[indexPath.row].date)
+        let interval = today.timeIntervalSinceDate(someDate!)
         let (hr,  minf) = modf (interval / 3600)
         let (min, secf) = modf (60 * minf)
         let (day, hrf) = modf(hr / 24)
@@ -93,7 +114,7 @@ class NotiTableViewController: UITableViewController {
         }
         
         let bg = cell.viewWithTag(5) as UIView!
-        if noti[indexPath.row].checked == true {
+        if noti[indexPath.row].checked == "true" {
             bg.backgroundColor = UIColor.whiteColor()
         }
         return cell

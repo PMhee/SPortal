@@ -11,7 +11,7 @@ import UIKit
 struct Notification {
     var image_profile: String
     var name: String
-    var date: NSDate
+    var date: String
     var title: String
-    var checked : Bool
+    var checked : String
 }
