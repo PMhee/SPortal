@@ -13,6 +13,9 @@ class NotiTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addNoti()
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(3) as! UITabBarItem
+        tabItem.badgeValue = nil
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 
 class FirstViewController: UIViewController {
-
+    var userId : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,7 +30,6 @@ class FirstViewController: UIViewController {
             dispatch_get_main_queue(), closure)
     }
 
-  
 
 
     override func didReceiveMemoryWarning() {
@@ -52,17 +51,15 @@ class FirstViewController: UIViewController {
             {
                 self.performSegueWithIdentifier("goInfom", sender: self)
             }
-        })
-    }
-
-    /*
+            })
+}
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let des = segue.destinationViewController as? EventTableViewController{
+            des.user_id = self.userId
+        }
     }
-    */
-
 }

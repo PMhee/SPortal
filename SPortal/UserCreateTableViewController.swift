@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import FBSDKLoginKit
+import FBSDKCoreKit
 class UserCreateTableViewController: UITableViewController {
     @IBOutlet weak var max: UILabel!
     var price :Int!
@@ -23,6 +25,7 @@ class UserCreateTableViewController: UITableViewController {
     @IBOutlet weak var SportTT: UILabel!
     @IBOutlet weak var LocationTitle: UILabel!
     var key :String!
+    var user_id :String!
     @IBAction func playerSlider(sender: UISlider) {
         var current = Double(sender.value)*10
         let y = Int(round(current)/1)
@@ -37,15 +40,39 @@ class UserCreateTableViewController: UITableViewController {
     @IBAction func clickConfirm(sender: UIButton) {
         check()
     }
+    func returnUserData(){
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, age_range "])
+        
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                if let userNameArray : NSArray = result.valueForKey("data") as? NSArray
+                {
+                    for i in 0...userNameArray.count-1
+                    {
+                        let userID : NSString = userNameArray[i].valueForKey("id") as! NSString
+                        self.user_id = userID as String
+                    }
+                }
+            }
+        })
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Alamofire.request(.GET, "http://192.168.43.138:3000/requestCsrf")
-            .responseString { response in
-                print("Response String: \(response.result.value)")
-                self.key = String(response.result.value!)
-                print(self.key)
-        }
+        returnUserData()
+//        Alamofire.request(.GET, "http://192.168.43.138:3000/requestCsrf")
+//            .responseString { response in
+//                print("Response String: \(response.result.value)")
+//                self.key = String(response.result.value!)
+//                print(self.key)
+//        }
         var a = NSBundle.mainBundle().objectForInfoDictionaryKey("storeData")!
         var dateFormatter = NSDateFormatter()
         let today = NSDate()
@@ -162,7 +189,7 @@ class UserCreateTableViewController: UITableViewController {
     func createEvent(){
         print(self.key)
         let parameters = [
-            "events": ["e_id":"1","u_id":"1","type":self.SportTT.text!,"e_date":Date.text!,"time":Time.text!,"f_time":finishTimeText.text!,"place":LocationTitle.text!,"price":String(price),"latitude":String(latitude),"longitude":String(longitude),"attend":"1","max":max.text!],"_csrf":self.key
+            "events": ["e_id":"1","u_id":"1","type":self.SportTT.text!,"e_date":Date.text!,"time":Time.text!,"f_time":finishTimeText.text!,"place":LocationTitle.text!,"price":String(price),"latitude":String(latitude),"longitude":String(longitude),"attend":"1","max":max.text!],"_csrf":self.key,"user_id":self.user_id
         ]
         Alamofire.request(.POST, "http://192.168.43.138:3000/addEvent", parameters: parameters as! [String : AnyObject], encoding: .JSON)
     

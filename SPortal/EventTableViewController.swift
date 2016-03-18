@@ -14,10 +14,16 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
     var searchResult = [DataToPass]()
     var selectedCellIndexPath: NSIndexPath?
     var events = [DataToPass]()
+    var user_id : String!
     @IBOutlet weak var myTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         addEvents()
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(3) as! UITabBarItem
+        tabItem.badgeValue = "2"
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge , categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         //print("Search Button tapped")
@@ -127,7 +133,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
             time.text = String(searchResult[indexPath.row].time)+"-"+searchResult[indexPath.row].f_time
         }
         if let icon = cell.viewWithTag(8) as? UIImageView{
-          //  icon.image = UIImage(named: searchResult[indexPath.row].image)
+           icon.image = UIImage(named: searchResult[indexPath.row].image)
         }
         if let type = cell.viewWithTag(9) as? UILabel{
             type.text = String(searchResult[indexPath.row].type).uppercaseString
