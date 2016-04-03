@@ -12,6 +12,13 @@ import CoreLocation
 
 class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var map: MKMapView!
+    @IBAction func clickConfirm(sender: UIButton) {
+        if self.sportType == "Football" ||  self.sportType == "Basketball" || self.sportType == "Badminton" || self.sportType == "Tennis" || self.sportType == "BBGun" || self.sportType == "Baseball"{
+            performSegueWithIdentifier("goGroup", sender: self)
+        }else{
+            performSegueWithIdentifier("goSingle", sender: self)
+        }
+    }
     var sportType:String = ""
     let locationManager = CLLocationManager()
     var locationtitle :String = "Didn't Selected"
@@ -22,7 +29,7 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
         self.map.delegate = self
         let SportComplex = MKPointAnnotation()
         SportComplex.coordinate.latitude = 13.73888
@@ -52,31 +59,42 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
         self.lon = ((view.annotation?.coordinate.longitude))
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if let destination = segue.destinationViewController as? UserCreateTableViewController {
-            if segue.identifier == "confirm"{
-            destination.fromSegue = self.locationtitle
-            destination.sportType = self.sportType
-            destination.latitude = self.lat
-            destination.longitude = self.lon
+        print(self.sportType)
+        if self.sportType == "Football" ||  self.sportType == "Basketball" || self.sportType == "Badminton" || self.sportType == "Tennis" || self.sportType == "BBGun" || self.sportType == "Baseball" {
+            if let destination = segue.destinationViewController as? CreateGroupSportTableViewController {
+                destination.fromSegue = self.locationtitle
+                destination.sportType = self.sportType
+                destination.latitude = self.lat
+                destination.longitude = self.lon
+                print("sadasd")
+            }
+        }else{
+            if let destination = segue.destinationViewController as? UserCreateTableViewController {
+                print("qweqw")
+                destination.fromSegue = self.locationtitle
+                destination.sportType = self.sportType
+                destination.latitude = self.lat
+                destination.longitude = self.lon
+                
             }
         }
     }
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-            let identifier = "pin"
-            var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-                as? MKPinAnnotationView { // 2
-                    dequeuedView.annotation = annotation
-                    view = dequeuedView
-            } else {
-                // 3
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-            }
-            return view
+        let identifier = "pin"
+        if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) {
+            annotationView.annotation = annotation
+            return annotationView
+        } else {
+            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:identifier)
+            annotationView.enabled = true
+            annotationView.canShowCallout = true
+            
+            let btn = UIButton(type: .DetailDisclosure)
+            annotationView.rightCalloutAccessoryView = btn
+            return annotationView
+        }
+        
+        return nil
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -88,19 +106,19 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
         self.map.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
     }
-        override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     @IBAction func confirm(sender: UIButton) {
     }
-    }
-    /*
-    // MARK: - Navigation
+}
+/*
+// MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+// Get the new view controller using segue.destinationViewController.
+// Pass the selected object to the new view controller.
+}
+*/

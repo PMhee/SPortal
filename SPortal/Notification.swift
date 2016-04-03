@@ -13,5 +13,4 @@ struct Notification {
     var name: String
     var date: String
     var title: String
-    var checked : String
 }

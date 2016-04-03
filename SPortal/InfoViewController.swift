@@ -85,10 +85,6 @@ class InfoViewController: UIViewController,UIScrollViewDelegate{
                         print(userNameArray[i].valueForKey("name"))
                         let userID : NSString = userNameArray[i].valueForKey("id") as! NSString
                         let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
-                        if let data = NSData(contentsOfURL: facebookProfileUrl!) {
-                            //   self.friendImage.image = UIImage(data: data)
-                            self.friends.append(Friend(image_profile: UIImage(data:data),name:userNameArray[i].valueForKey("name") as! String))
-                        }
                     }
                 }
                 else {
@@ -139,7 +135,7 @@ class InfoViewController: UIViewController,UIScrollViewDelegate{
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let des = segue.destinationViewController as? FriendsTableViewController{
-            des.friends = self.friends
+            //des.friends = self.friends
         }
     }
     

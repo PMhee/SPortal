@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 struct Friend {
-    var image_profile: UIImage?
+    var image_profile: String
     var name: String
 }

@@ -2,18 +2,27 @@
 
 import UIKit
 import Foundation
+let text = "Tanakorn Rattanajariya"
+var count = 0;
+var range: Range<String.Index> = text.rangeOfString(" ")!
+var index: Int = text.startIndex.distanceTo(range.startIndex)
+for i in 0...index-1{
+    let index = text.startIndex.advancedBy(i)
+    print(text[index])
+    count++
+}
+text.substringWithRange(Range<String.Index>(start: text.startIndex.advancedBy(0), end: text.startIndex.advancedBy(index)))
+range = text.substringWithRange(Range<String.Index>(start: text.startIndex.advancedBy(index+1), end: text.endIndex.advancedBy(0))).rangeOfString("/")!
+var r = text.startIndex.distanceTo(range.startIndex)
+index++
+for i in index...index+r-1{
+    let index = text.startIndex.advancedBy(i)
+    print(text[index])
+    count++
+}
+count+=2
+text.substringWithRange(Range<String.Index>(start: text.startIndex.advancedBy(count), end: text.endIndex.advancedBy(0)))
 
-let morningOfChristmasComponents = NSDateComponents()
-morningOfChristmasComponents.year = 2014
-morningOfChristmasComponents.month = 12
-morningOfChristmasComponents.day = 25
-morningOfChristmasComponents.hour = 7
-morningOfChristmasComponents.minute = 0
-morningOfChristmasComponents.second = 0
-
-let morningOfChristmas = NSCalendar.currentCalendar().dateFromComponents(morningOfChristmasComponents)!
-
-let formatter = NSDateFormatter()
-formatter.dateStyle = NSDateFormatterStyle.LongStyle
-let dateString = formatter.stringFromDate(morningOfChristmas)
-let timeString = formatter.stringFromDate(morningOfChristmas)
+var t = "10:00-11:00"
+t.substringWithRange(Range<String.Index>(start: t.startIndex.advancedBy(0), end: t.endIndex.advancedBy(-6)))
+t.substringWithRange(Range<String.Index>(start: t.startIndex.advancedBy(6), end: t.endIndex.advancedBy(0)))

@@ -16,12 +16,13 @@ class AchievementTableViewController: UITableViewController {
         var title: String
         var date: String
     }
-    
-    var acheivements = [Acheivement]()
-    
+    var urlPath:String!
+    var userID : String!
+    var user = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleAchievement()
+        self.urlPath = "http://localhost:3000/getProfile/"+self.userID
+        getProfile()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -43,27 +44,57 @@ class AchievementTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return acheivements.count
+        return self.user[0].achievement.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("achievementCell", forIndexPath: indexPath)
-        
         // Configure the cell...
-        let achievement = acheivements[indexPath.row]
-        
         let image_achievement = cell.viewWithTag(1) as! UIImageView
-        image_achievement.image = achievement.image
+        if self.user[0].achievement[indexPath.row].valueForKey("checked")! as! NSObject == 0{
+            image_achievement.image = UIImage(named: "achievement_black")
+        }else {
+            image_achievement.image = UIImage(named: "achievement")
+        }
+        print((self.user[0].achievement[indexPath.row].valueForKey("title")! as! String))
         let title = cell.viewWithTag(2) as! UILabel
-        title.text = achievement.title
+        title.text = self.user[0].achievement[indexPath.row].valueForKey("title")! as! String
         let date = cell.viewWithTag(3) as! UILabel
-        date.text = achievement.date
+        date.text = (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).substringWithRange(Range<String.Index>(start: (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).startIndex.advancedBy(0), end: (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).startIndex.advancedBy(10)))
         
         return cell
     }
     
-    
+    func getProfile(){
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+        var error: NSErrorPointer = nil
+        do{
+            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            print("Synchronous \(jsonResult)")
+            var firstName:String = jsonResult.valueForKey("displayName")! as! String
+            var range: Range<String.Index> = firstName.rangeOfString(" ")!
+            var index: Int = firstName.startIndex.distanceTo(range.startIndex)
+            //                print(jsonResult.valueForKey("facebookId")! as! String)
+            //                print(jsonResult.valueForKey("displayName")! as! String)
+            //                print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
+            //                print(jsonResult.valueForKey("achievement")! as! NSArray)
+            //                print(jsonResult.valueForKey("notification")! as! NSArray)
+            //                print(jsonResult.valueForKey("friends")! as! NSArray)
+            //                print(jsonResult.valueForKey("favorite")! as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about")! as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+            self.user.append(data)
+        }catch{
+            
+        }
+        var err: NSError
+        print(response)
+        
+    }
+
     
     func loadSampleAchievement(){
         let acheivement1 = Acheivement(image: UIImage(named: "achievement.png"),title: "Man of the match",date: "Fri, March 7")
@@ -75,8 +106,8 @@ class AchievementTableViewController: UITableViewController {
         let acheivement7 = Acheivement(image: UIImage(named: "achievement_black.png"),title: "You will never walk alone",date: "")
         
         
-        acheivements += [acheivement1,acheivement2,acheivement3,acheivement4,acheivement5,acheivement6,acheivement7]
-        let urlPath: String = "http://localhost/Project/sportTable.json"
+        //acheivements += [acheivement1,acheivement2,acheivement3,acheivement4,acheivement5,acheivement6,acheivement7]
+        //let urlPath: String = "http://localhost/Project/sportTable.json"
 //        var url: NSURL = NSURL(string: urlPath)!
 //        var request1: NSURLRequest = NSURLRequest(URL: url)
 //        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil

@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'SPortal' do
 pod 'Alamofire', '~> 3.0'
+pod 'Charts/Realm'
 end
 
 target 'SPortalTests' do

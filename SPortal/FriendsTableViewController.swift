@@ -9,9 +9,9 @@
 import UIKit
 
 class FriendsTableViewController: UITableViewController {
-    
-    var friends = [Friend]()
-    
+    var urlPath :String!
+    var friends = [String]()
+    var user = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
         //loadSampleFriend()
@@ -49,25 +49,57 @@ class FriendsTableViewController: UITableViewController {
 //        friends += [friend1,friend2,friend3,friend4,friend5]
 //        
 //    }
+    func getProfile(){
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+        var error: NSErrorPointer = nil
+        do{
+            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            print("Synchronous \(jsonResult)")
+            var firstName:String = jsonResult.valueForKey("displayName")! as! String
+            var range: Range<String.Index> = firstName.rangeOfString(" ")!
+            var index: Int = firstName.startIndex.distanceTo(range.startIndex)
+            //                print(jsonResult.valueForKey("facebookId")! as! String)
+            //                print(jsonResult.valueForKey("displayName")! as! String)
+            //                print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
+            //                print(jsonResult.valueForKey("achievement")! as! NSArray)
+            //                print(jsonResult.valueForKey("notification")! as! NSArray)
+            //                print(jsonResult.valueForKey("friends")! as! NSArray)
+            //                print(jsonResult.valueForKey("favorite")! as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about")! as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+            self.user.append(data)
+        }catch{
+            
+        }
+        var err: NSError
+        print(response)
+        
+    }
 
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let des = segue.destinationViewController as? OtherViewController{
+            var indexPath = self.tableView.indexPathForSelectedRow!
+            des.userID = self.friends[indexPath.row]
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        self.urlPath = "http://localhost:3000/getProfile/"+(self.friends[indexPath.row])
+        getProfile()
         // Configure the cell...
-        let friend = friends[indexPath.row]
-        
         let image_profile = cell.viewWithTag(1) as! UIImageView
-        image_profile.image = friend.image_profile
+        image_profile.image = UIImage(named:self.user[indexPath.row].profilePic)
         image_profile.layer.masksToBounds = false
         image_profile.layer.cornerRadius = 20
         image_profile.clipsToBounds = true
         
         
         let name = cell.viewWithTag(2) as! UILabel
-        name.text = friend.name
+        name.text = self.user[indexPath.row].Username
         
         return cell
     }

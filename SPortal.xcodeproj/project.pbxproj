@@ -11,7 +11,6 @@
 		A62D23811C88B443003E234A /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D23801C88B443003E234A /* UIImageEffects.swift */; };
 		A62D23851C896177003E234A /* AchievementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62D23841C896177003E234A /* AchievementTableViewController.swift */; };
 		B70D0C9B1C942061002F7AFC /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */; };
-		B70D0C9D1C94208D002F7AFC /* ShowNewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D0C9C1C94208D002F7AFC /* ShowNewsfeedViewController.swift */; };
 		B70D0C9F1C94299D002F7AFC /* showSportPlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D0C9E1C94299D002F7AFC /* showSportPlayerTableViewController.swift */; };
 		B75697DF1C3E3DC200A8FB3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */; };
 		B75697E11C3E3DC200A8FB3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697E01C3E3DC200A8FB3F /* ViewController.swift */; };
@@ -22,9 +21,12 @@
 		B75697FF1C3E3DC300A8FB3F /* SPortalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75697FE1C3E3DC300A8FB3F /* SPortalUITests.swift */; };
 		B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7585C851C8142C000DE6980 /* ShowEventViewController.swift */; };
 		B7585C881C81481200DE6980 /* DataToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7585C871C81481200DE6980 /* DataToPass.swift */; };
+		B75AE2921CB057060058690F /* showNewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75AE2911CB057060058690F /* showNewFeedViewController.swift */; };
+		B75AE2941CB0FB1E0058690F /* addUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75AE2931CB0FB1E0058690F /* addUserViewController.swift */; };
 		B75E6E481C96950B00B03B50 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E6E471C96950B00B03B50 /* testViewController.swift */; };
 		B79B47191C59DE90001E104A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B47181C59DE90001E104A /* GraphView.swift */; };
 		B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */; };
+		B7A59CEB1CA238D600A9A9DA /* CreateGroupSportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A59CEA1CA238D600A9A9DA /* CreateGroupSportTableViewController.swift */; };
 		B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */; };
 		B7BC89FB1C558FD500FB6073 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FA1C558FD500FB6073 /* EventTableViewController.swift */; };
 		B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BC89FC1C56079D00FB6073 /* StatViewController.swift */; };
@@ -38,6 +40,8 @@
 		B7F455991C522C000031199B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7F455981C522C000031199B /* FBSDKLoginKit.framework */; };
 		B7F4559B1C523D950031199B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4559A1C523D950031199B /* InfoViewController.swift */; };
 		B7F4559D1C52636D0031199B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4559C1C52636D0031199B /* FirstViewController.swift */; };
+		B7FD5B751CA7B9F500A8249F /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FD5B741CA7B9F500A8249F /* OtherViewController.swift */; };
+		B7FD5B771CA8F23900A8249F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FD5B761CA8F23900A8249F /* User.swift */; };
 		B7FEB0D31C95336E00929924 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FEB0D21C95336E00929924 /* News.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +69,6 @@
 		A62D23801C88B443003E234A /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		A62D23841C896177003E234A /* AchievementTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementTableViewController.swift; sourceTree = "<group>"; };
 		B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
-		B70D0C9C1C94208D002F7AFC /* ShowNewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowNewsfeedViewController.swift; path = Assets.xcassets/ShowNewsfeedViewController.swift; sourceTree = "<group>"; };
 		B70D0C9E1C94299D002F7AFC /* showSportPlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showSportPlayerTableViewController.swift; sourceTree = "<group>"; };
 		B75697DB1C3E3DC200A8FB3F /* SPortal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPortal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,9 +85,12 @@
 		B75698001C3E3DC300A8FB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7585C851C8142C000DE6980 /* ShowEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
 		B7585C871C81481200DE6980 /* DataToPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataToPass.swift; sourceTree = "<group>"; };
+		B75AE2911CB057060058690F /* showNewFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showNewFeedViewController.swift; sourceTree = "<group>"; };
+		B75AE2931CB0FB1E0058690F /* addUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addUserViewController.swift; sourceTree = "<group>"; };
 		B75E6E471C96950B00B03B50 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		B79B47181C59DE90001E104A /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		B7A28C811C68A8CC00EF1301 /* UserCreateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateTableViewController.swift; sourceTree = "<group>"; };
+		B7A59CEA1CA238D600A9A9DA /* CreateGroupSportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSportTableViewController.swift; sourceTree = "<group>"; };
 		B7B2342F1C5385C400999E25 /* UserMakeAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMakeAppointmentViewController.swift; sourceTree = "<group>"; };
 		B7BC89FA1C558FD500FB6073 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		B7BC89FC1C56079D00FB6073 /* StatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		B7F455981C522C000031199B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B7F4559A1C523D950031199B /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		B7F4559C1C52636D0031199B /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		B7FD5B741CA7B9F500A8249F /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
+		B7FD5B761CA8F23900A8249F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B7FEB0D21C95336E00929924 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +184,7 @@
 				B75697DE1C3E3DC200A8FB3F /* AppDelegate.swift */,
 				B75697E01C3E3DC200A8FB3F /* ViewController.swift */,
 				B75697E21C3E3DC200A8FB3F /* Main.storyboard */,
+				B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */,
 				B75697E51C3E3DC200A8FB3F /* Assets.xcassets */,
 				B75697E71C3E3DC200A8FB3F /* LaunchScreen.storyboard */,
 				B75697EA1C3E3DC200A8FB3F /* Info.plist */,
@@ -196,11 +205,14 @@
 				B7C957CF1C8FA16000D07B05 /* Friend.swift */,
 				B7C957D31C9038CF00D07B05 /* NotiTableViewController.swift */,
 				B7C957D51C9039CF00D07B05 /* Notification.swift */,
-				B70D0C9A1C942061002F7AFC /* NewsfeedTableViewController.swift */,
-				B70D0C9C1C94208D002F7AFC /* ShowNewsfeedViewController.swift */,
 				B70D0C9E1C94299D002F7AFC /* showSportPlayerTableViewController.swift */,
 				B7FEB0D21C95336E00929924 /* News.swift */,
 				B75E6E471C96950B00B03B50 /* testViewController.swift */,
+				B7A59CEA1CA238D600A9A9DA /* CreateGroupSportTableViewController.swift */,
+				B7FD5B741CA7B9F500A8249F /* OtherViewController.swift */,
+				B7FD5B761CA8F23900A8249F /* User.swift */,
+				B75AE2911CB057060058690F /* showNewFeedViewController.swift */,
+				B75AE2931CB0FB1E0058690F /* addUserViewController.swift */,
 			);
 			path = SPortal;
 			sourceTree = "<group>";
@@ -407,9 +419,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FD5B771CA8F23900A8249F /* User.swift in Sources */,
 				B70D0C9F1C94299D002F7AFC /* showSportPlayerTableViewController.swift in Sources */,
 				B7C957D01C8FA16000D07B05 /* Friend.swift in Sources */,
 				A62D23811C88B443003E234A /* UIImageEffects.swift in Sources */,
+				B75AE2921CB057060058690F /* showNewFeedViewController.swift in Sources */,
 				B75697E11C3E3DC200A8FB3F /* ViewController.swift in Sources */,
 				B7C6D42D1C8B4E2F00CE75D1 /* FriendsTableViewController.swift in Sources */,
 				B7BC89FD1C56079D00FB6073 /* StatViewController.swift in Sources */,
@@ -418,15 +432,17 @@
 				B7B234301C5385C400999E25 /* UserMakeAppointmentViewController.swift in Sources */,
 				B7FEB0D31C95336E00929924 /* News.swift in Sources */,
 				B79B47191C59DE90001E104A /* GraphView.swift in Sources */,
+				B75AE2941CB0FB1E0058690F /* addUserViewController.swift in Sources */,
 				B7585C881C81481200DE6980 /* DataToPass.swift in Sources */,
+				B7A59CEB1CA238D600A9A9DA /* CreateGroupSportTableViewController.swift in Sources */,
 				B7585C861C8142C000DE6980 /* ShowEventViewController.swift in Sources */,
+				B7FD5B751CA7B9F500A8249F /* OtherViewController.swift in Sources */,
 				B75697DF1C3E3DC200A8FB3F /* AppDelegate.swift in Sources */,
 				B7C957D61C9039CF00D07B05 /* Notification.swift in Sources */,
 				B7CACDE71C7D9A570049CD40 /* SelectTableViewController.swift in Sources */,
 				B7C957D41C9038CF00D07B05 /* NotiTableViewController.swift in Sources */,
 				B7A28C821C68A8CC00EF1301 /* UserCreateTableViewController.swift in Sources */,
 				B75E6E481C96950B00B03B50 /* testViewController.swift in Sources */,
-				B70D0C9D1C94208D002F7AFC /* ShowNewsfeedViewController.swift in Sources */,
 				A62D23851C896177003E234A /* AchievementTableViewController.swift in Sources */,
 				B7BC89FB1C558FD500FB6073 /* EventTableViewController.swift in Sources */,
 				B7F4559D1C52636D0031199B /* FirstViewController.swift in Sources */,

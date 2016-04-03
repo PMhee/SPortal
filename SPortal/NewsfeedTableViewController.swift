@@ -27,17 +27,29 @@ class NewsfeedTableViewController: UITableViewController {
     func addEvent(){
         
     }
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let image_profile = cell.viewWithTag(1) as! UIButton
+        //image_profile.image = UIImage(named: newNoti[indexPath.row].image_profile)
+        image_profile.layer.masksToBounds = false
+        image_profile.layer.cornerRadius = 14
+        image_profile.clipsToBounds = true
         // Configure the cell...
-        let name = cell.viewWithTag(2) as! UILabel
-        
+        let userName = cell.viewWithTag(2) as! UIButton
+        let pic = cell.viewWithTag(3) as! UIImageView
+        let title = cell.viewWithTag(4) as! UILabel
+        let description = cell.viewWithTag(5) as! UILabel
+        let loveBut = cell.viewWithTag(6) as! UIButton
+        let love = cell.viewWithTag(7) as! UIButton
+        let comments  = cell.viewWithTag(8) as! UIButton
         return cell
     }
     /*

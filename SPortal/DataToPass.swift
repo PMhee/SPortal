@@ -8,18 +8,21 @@
 
 import Foundation
 struct DataToPass{
-    var type : String
-    var date : String
-    var time : String
-    var f_time: String
-    var place : String
-    var author : String
-    var price : String
-    var image : String
-    var latitude : String
-    var longitude : String
-    var bg : String
-    var attendant : String
-    var max : String
-    var pic : String
+    var type : NSString!
+    var date : String!
+    var time : String!
+    var f_time: String!
+    var place : String!
+    var author : String!
+    var price : Int!
+    var image : String!
+    var latitude : Double!
+    var longitude : Double!
+    var bg : String!
+    var join : NSArray!
+    var max : Int!
+    var pic : String!
+    var event_id : String!
+    var title : String!
+    var createdID = String!()
 }

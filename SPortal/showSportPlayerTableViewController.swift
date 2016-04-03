@@ -7,21 +7,41 @@
 //
 
 import UIKit
-
+import Alamofire
 class showSportPlayerTableViewController: UITableViewController {
     
     var friends = [Friend]()
-    
+    var joined : NSArray!
+    var userID : String!
+    var user = [User]()
+    var urlPath :String!
+    var eventID :String!
+    var key : String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFriend()
+        Alamofire.request(.GET, "http://localhost:3000/requestCsrf")
+            .responseString { response in
+                print("Response String: \(response.result.value)")
+                self.key = String(response.result.value!)
+                print(self.key)
+        }
+        //loadFriend()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        self.user = [User]()
+        super.viewWillAppear(true)
+        for i in 0...joined.count-1{
+        self.urlPath = "http://localhost:3000/getProfile/"+(self.joined[i].valueForKey("user_id") as! String)
+        getProfile()
+        
+        }
+        self.tableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,59 +49,93 @@ class showSportPlayerTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friends.count
+        return self.user.count
     }
     
-    func loadFriend(){
-        let friend1 = Friend(image_profile: UIImage(named: "jjamie.jpg"),name: "JJamie Rashata")
-        let friend2 = Friend(image_profile: UIImage(named: "profilePic.jpg"),name: "Tanakorn Ratanajariya")
-        let friend3 = Friend(image_profile: UIImage(named: "kirk.jpg"),name: "Kirk Lertritpuwadol")
-        let friend4 = Friend(image_profile: UIImage(named: "best.jpg"),name: "Kittinun Kaewtae")
-        let friend5 = Friend(image_profile: UIImage(named: "off.jpg"),name: "Chanthawat Rattanapongphan")
+    func getProfile(){
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
+        var error: NSErrorPointer = nil
+        do{
+            var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+            var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            print("Synchronous \(jsonResult)")
+            var firstName:String = jsonResult.valueForKey("displayName")! as! String
+            var range: Range<String.Index> = firstName.rangeOfString(" ")!
+            var index: Int = firstName.startIndex.distanceTo(range.startIndex)
+            //                print(jsonResult.valueForKey("facebookId")! as! String)
+            //                print(jsonResult.valueForKey("displayName")! as! String)
+            //                print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
+            //                print(jsonResult.valueForKey("achievement")! as! NSArray)
+            //                print(jsonResult.valueForKey("notification")! as! NSArray)
+            //                print(jsonResult.valueForKey("friends")! as! NSArray)
+            //                print(jsonResult.valueForKey("favorite")! as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about")! as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+            self.user.append(data)
+        }catch{
+            
+        }
+        var err: NSError
+        print(response)
         
-        friends += [friend1,friend2,friend3,friend4,friend5]
-//    let urlPath: String = "http://localhost/Project/sportTable.json"
-//    var url: NSURL = NSURL(string: urlPath)!
-//    var request1: NSURLRequest = NSURLRequest(URL: url)
-//    var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
-//    var error: NSErrorPointer = nil
-//    do{
-//    var dataVal: NSData =  try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
-//    var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-//    print("Synchronous \(jsonResult)")
-//    var a = jsonResult.valueForKey("events")!
-//    for i in 0...a.count-1 {
-//        friends.append(Friend(image_profile: UIImage(named: a[i].valueForKey("image_profile")! as! String), name: a[i].valueForKey("name")! as! String))
-//    }
-//    }catch{
-//    
-//    }
-//    var err: NSError
-}
+    }
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        
+        if(indexPath.row>0){
+            return UITableViewCellEditingStyle.Delete
+            
+        }
+        return UITableViewCellEditingStyle.None
+        
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // Delete the row from the data source
+            let parameters = ["message":["eventId":self.eventID,"user_id":self.joined[indexPath.row].valueForKey("user_id") as! String],"_csrf":self.key
+            ]
+            Alamofire.request(.POST, "http://localhost:3000/removePlayer", parameters:parameters as? [String : AnyObject], encoding: .JSON)
+            self.user.removeAtIndex(indexPath.row)
+            //print(self.user.count)
+            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.tableView.reloadData()
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+
+    }
 override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-    
-    
     // Configure the cell...
+    cell.selectionStyle = UITableViewCellSelectionStyle.None
     let image_profile = cell.viewWithTag(1) as! UIImageView
-    image_profile.image = friends[indexPath.row].image_profile
+    print(indexPath.row)
+    image_profile.image = UIImage(named:self.user[indexPath.row].profilePic)
     image_profile.layer.masksToBounds = false
     image_profile.layer.cornerRadius = 20
     image_profile.clipsToBounds = true
-    
-    
     let name = cell.viewWithTag(2) as! UILabel
-    name.text = friends[indexPath.row].name
-    
+    name.text = self.user[indexPath.row].Username
+//    let remove = cell.viewWithTag(3) as! UIButton
+//    if indexPath.row == 0 {
+//        remove.hidden = true
+//    }
+    let label = cell.viewWithTag(3) as! UILabel
+    if(indexPath.row == 0){
+        label.hidden = true
+    }
     return cell
 }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let des = segue.destinationViewController as? OtherViewController{
+            var indexPath = self.tableView.indexPathForSelectedRow!
+            des.userID = self.joined[indexPath.row].valueForKey("user_id") as! String
+        }
+    }
 }
 
 /*
