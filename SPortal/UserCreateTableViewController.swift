@@ -95,7 +95,7 @@ class UserCreateTableViewController: UITableViewController,UITextFieldDelegate {
         finishTimeText.text = "11:00 AM"
         self.sendFinHour = "11:00"
         max.text = "Select max players"
-        
+        self.putTitle.delegate = self
         //var finish = Int(strTime)
         //finish = finish!+1
         LocationTitle.text = fromSegue
@@ -117,9 +117,9 @@ class UserCreateTableViewController: UITableViewController,UITextFieldDelegate {
         let newLength = currentCharacterCount + string.characters.count - range.length
         return newLength <= 24
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
+    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+        userText.resignFirstResponder()
+        return true;
     }
     func calculatePrice(max:Int,place:String,type:String) ->Int{
         var price :Int = 0
@@ -193,6 +193,7 @@ class UserCreateTableViewController: UITableViewController,UITextFieldDelegate {
         print(self.sendFinHour)
 
     }
+    
     func check(){
         if self.LocationTitle.text == "Didn't Selected" || self.max.text == "Select max players" {
             let alertController = UIAlertController(title: "Error", message:
@@ -205,6 +206,7 @@ class UserCreateTableViewController: UITableViewController,UITextFieldDelegate {
             createEvent()
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -252,14 +254,13 @@ class UserCreateTableViewController: UITableViewController,UITextFieldDelegate {
         let icon = self.SportTT.text!+" icon"
         let bg = self.SportTT.text!+" bg"
         self.sendFinHour = self.sendDate+" "+self.sendFinHour+".000Z"
-        let joinPerson : NSString = self.user_id
+        let joinPerson : NSDictionary = ["user_id":self.user_id]
         let eventID = self.user_id
         let description:String = createTitle.text!
         let parameters = [
             "message": ["type":self.SportTT.text!,"startTime":self.sendDate+" "+self.sendStartHour+".000Z","finishTime":self.sendFinHour,"place":LocationTitle.text!,"latitude":String(latitude),"longitude":String(longitude),"maxPerson":max.text!,"createdId":eventID,"description":description,"author":self.userName,"price":self.price,"image":icon,"bg":bg,"pic":self.firstName,"joinPerson":joinPerson],"_csrf":self.key
         ]
         Alamofire.request(.POST, "http://localhost:3000/addEvent", parameters: parameters as! [String : AnyObject], encoding: .JSON)
-        
     }
         //1
     /*

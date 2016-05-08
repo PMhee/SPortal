@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class testViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -53,47 +53,59 @@ class testViewController: UIViewController {
 //                print("POST:"+postString)
 //            }
 //        }).resume()
-        let myUrl = NSURL(string: "http://192.168.43.138:3000/addEvent")
-        let request = NSMutableURLRequest(URL:myUrl!)
-        request.HTTPMethod = "POST"
-        // Compose a query string
-        let postString = "firstName=James&lastName=Bond"
-        
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil
-            {
-                print("error=\(error)")
-                return
-            }
-            
-            // You can print out response object
-            print("response = \(response)")
-            
-            // Print out response body
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
-            //Let’s convert response sent from a server side script to a NSDictionary object:
-            
-            var err: NSError?
-            do{
-            var myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
-            
-            if let parseJSON = myJSON {
-                // Now we can access value of First Name by its key
-                var firstNameValue = parseJSON["firstName"] as? String
-                print("firstNameValue: \(firstNameValue)")
-            }
-            }catch{
-                
-            }
-            
+//        let myUrl = NSURL(string: "http://192.168.43.138:3000/addEvent")
+//        let request = NSMutableURLRequest(URL:myUrl!)
+//        request.HTTPMethod = "POST"
+//        // Compose a query string
+//        let postString = "firstName=James&lastName=Bond"
+//        
+//        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+//        
+//        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+//            data, response, error in
+//            
+//            if error != nil
+//            {
+//                print("error=\(error)")
+//                return
+//            }
+//            
+//            // You can print out response object
+//            print("response = \(response)")
+//            
+//            // Print out response body
+//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("responseString = \(responseString)")
+//            //Let’s convert response sent from a server side script to a NSDictionary object:
+//            
+//            var err: NSError?
+//            do{
+//            var myJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            if let parseJSON = myJSON {
+//                // Now we can access value of First Name by its key
+//                var firstNameValue = parseJSON["firstName"] as? String
+//                print("firstNameValue: \(firstNameValue)")
+//            }
+//            }catch{
+//                
+//            }
+//            
+//        }
+//        
+//        task.resume()
+        let param = ["username":"5530237221","password":"hkpefatn"]
+        Alamofire.request(.POST, "https://mis.cp.eng.chula.ac.th/mobile/?q=api/signIn", parameters:param, encoding: .JSON)
+        Alamofire.request(.GET, "https://mis.cp.eng.chula.ac.th/mobile/?q=api/signIn")
+            .responseString { response in
+                print("Success: \(response.result.isSuccess)")
+                print("Response String: \(response.result.value)")
+                if let httpError = response.result.error {
+                    let statusCode = httpError.code
+                } else { //no errors
+                    let statusCode = (response.response?.statusCode)!
+                }
         }
-        
-        task.resume()
     }
     
     override func didReceiveMemoryWarning() {

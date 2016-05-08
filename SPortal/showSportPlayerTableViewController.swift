@@ -8,17 +8,22 @@
 
 import UIKit
 import Alamofire
+import FBSDKLoginKit
+import FBSDKCoreKit
 class showSportPlayerTableViewController: UITableViewController {
     
     var friends = [Friend]()
     var joined : NSArray!
     var userID : String!
+    var user_id : String!
     var user = [User]()
     var urlPath :String!
     var eventID :String!
     var key : String!
+    var author : Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         Alamofire.request(.GET, "http://localhost:3000/requestCsrf")
             .responseString { response in
                 print("Response String: \(response.result.value)")
@@ -32,9 +37,27 @@ class showSportPlayerTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    func returnUserData(){
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, age_range "])
+        
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched users: \(result)")
+                self.user_id = result.valueForKey("id")! as! String
+            }
+        })
+    }
+
     override func viewWillAppear(animated: Bool) {
-        self.user = [User]()
         super.viewWillAppear(true)
+        self.user = [User]()
+        returnUserData()
         for i in 0...joined.count-1{
         self.urlPath = "http://localhost:3000/getProfile/"+(self.joined[i].valueForKey("user_id") as! String)
         getProfile()
@@ -75,7 +98,7 @@ class showSportPlayerTableViewController: UITableViewController {
             //                print(jsonResult.valueForKey("notification")! as! NSArray)
             //                print(jsonResult.valueForKey("friends")! as! NSArray)
             //                print(jsonResult.valueForKey("favorite")! as! NSArray)
-            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about")! as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId") as? String,Username:jsonResult.valueForKey("displayName") as? String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement") as? NSArray,notification:jsonResult.valueForKey("notification") as? NSArray,friends:jsonResult.valueForKey("friends") as? NSArray,favourite:jsonResult.valueForKey("favorite") as? NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as? NSArray,receipt:jsonResult.valueForKey("receipt") as? NSArray,stat:jsonResult.valueForKey("stat") as? NSArray,newFeed:jsonResult.valueForKey("newFeed") as? NSArray)
             self.user.append(data)
         }catch{
             
@@ -85,13 +108,17 @@ class showSportPlayerTableViewController: UITableViewController {
         
     }
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        
-        if(indexPath.row>0){
-            return UITableViewCellEditingStyle.Delete
-            
+        if self.author == true{
+            if(indexPath.row>0){
+                return UITableViewCellEditingStyle.Delete
+                
+            }else{
+                UITableViewCellEditingStyle.None
+            }
+        }else{
+            return UITableViewCellEditingStyle.None
         }
         return UITableViewCellEditingStyle.None
-        
     }
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -127,6 +154,15 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
     let label = cell.viewWithTag(3) as! UILabel
     if(indexPath.row == 0){
         label.hidden = true
+    }
+        if self.author == false {
+            label.hidden = true
+        }else{
+            if indexPath.row == 0 {
+                label.hidden = true
+            }else{
+            label.hidden = false
+            }
     }
     return cell
 }

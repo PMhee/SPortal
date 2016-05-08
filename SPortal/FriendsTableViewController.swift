@@ -10,7 +10,7 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
     var urlPath :String!
-    var friends = [String]()
+    var friends = [Friend]()
     var user = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,7 @@ class FriendsTableViewController: UITableViewController {
 //        
 //    }
     func getProfile(){
+        self.friends = [Friend]()
         var url: NSURL = NSURL(string: urlPath)!
         var request1: NSURLRequest = NSURLRequest(URL: url)
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
@@ -68,7 +69,7 @@ class FriendsTableViewController: UITableViewController {
             //                print(jsonResult.valueForKey("notification")! as! NSArray)
             //                print(jsonResult.valueForKey("friends")! as! NSArray)
             //                print(jsonResult.valueForKey("favorite")! as! NSArray)
-            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about")! as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId") as? String,Username:jsonResult.valueForKey("displayName") as? String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement") as? NSArray,notification:jsonResult.valueForKey("notification") as? NSArray,friends:jsonResult.valueForKey("friends") as? NSArray,favourite:jsonResult.valueForKey("favorite") as? NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as? NSArray,receipt:jsonResult.valueForKey("receipt") as? NSArray,stat:jsonResult.valueForKey("stat") as? NSArray,newFeed:jsonResult.valueForKey("newFeed") as? NSArray)
             self.user.append(data)
         }catch{
             
@@ -81,14 +82,15 @@ class FriendsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let des = segue.destinationViewController as? OtherViewController{
             var indexPath = self.tableView.indexPathForSelectedRow!
-            des.userID = self.friends[indexPath.row]
+            print(self.friends[indexPath.row].user_id)
+            des.userID = self.friends[indexPath.row].user_id
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        self.urlPath = "http://localhost:3000/getProfile/"+(self.friends[indexPath.row])
+        self.urlPath = "http://localhost:3000/getProfile/"+(self.friends[indexPath.row].user_id)
         getProfile()
         // Configure the cell...
         let image_profile = cell.viewWithTag(1) as! UIImageView

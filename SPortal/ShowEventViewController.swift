@@ -13,6 +13,8 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIScrollViewDelegate  {
     
+    @IBOutlet var stadium: UIImageView!
+    @IBOutlet var tt: UILabel!
     @IBOutlet weak var viewPlayer: UIButton!
     @IBOutlet weak var views: UIButton!
     @IBOutlet weak var scroll: UIScrollView!
@@ -54,14 +56,16 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         returnUserData()
         scroll.delegate = self
         background.image = UIImage(named: showEvent.bg)!//.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.7), saturationDeltaFactor: 1.8)
-        profilePic.image = UIImage(named: showEvent.pic)
-        profilePic.layer.masksToBounds = false
-        profilePic.layer.cornerRadius = profilePic.frame.height/2
-        profilePic.clipsToBounds = true
+        //        profilePic.image = UIImage(named: showEvent.pic)
+        //        profilePic.layer.masksToBounds = false
+        //        profilePic.layer.cornerRadius = 33
+        //        profilePic.clipsToBounds = true
+        self.stadium.image = UIImage(named: self.showEvent.place+" stadium")
+        self.tt.text = self.showEvent.title
         if self.events.count > 0{
-        self.attend.text = String(self.events[0].join.count)+"/"+String(showEvent.max)
+            self.attend.text = String(self.events[0].join.count)+"/"+String(showEvent.max)
         }else{
-        self.attend.text = String(showEvent.join.count)+"/"+String(showEvent.max)
+            self.attend.text = String(showEvent.join.count)+"/"+String(showEvent.max)
         }
         //        var max :Int = Int(showEvent.max)!
         //        var att :Int = Int(showEvent.attendant)!
@@ -79,8 +83,8 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         //            let join = users as UIImageView
         //            join.image = UIImage(named: "social green")
         //        }
-        map.layer.cornerRadius = 20
-        self.name.text = showEvent.author
+        //map.layer.cornerRadius = 20
+        //        self.name.text = showEvent.author
         self.place.setTitle(showEvent.place, forState: .Normal)
         //self.price.text = showEvent.price
         self.date.text = "Date: "+showEvent.date.substringWithRange(Range<String.Index>(start: showEvent.date.startIndex.advancedBy(0), end: showEvent.date.endIndex.advancedBy(-14)))+" Time: "+showEvent.date.substringWithRange(Range<String.Index>(start: showEvent.time.startIndex.advancedBy(11), end: showEvent.time.endIndex.advancedBy(-8)))+"-"+showEvent.f_time.substringWithRange(Range<String.Index>(start: showEvent.f_time.startIndex.advancedBy(11), end: showEvent.f_time.endIndex.advancedBy(-8)))
@@ -107,9 +111,9 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
             var jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             print("Synchronous \(jsonResult)")
             if jsonResult.count>0{
-                    let data :DataToPass = DataToPass(type:jsonResult.valueForKey("type")! as! String,date:jsonResult.valueForKey("startTime")! as! String,time:jsonResult.valueForKey("startTime")! as! String,f_time:jsonResult.valueForKey("finishTime")! as! String,place:jsonResult.valueForKey("place")! as! String,author:jsonResult.valueForKey("author")! as! String,price:jsonResult.valueForKey("price")! as! Int,image:jsonResult.valueForKey("image")! as! String,latitude:jsonResult.valueForKey("latitude")! as! Double,longitude:jsonResult.valueForKey("longitude")! as! Double,bg:jsonResult.valueForKey("bg")! as! String,join:jsonResult.valueForKey("joinPerson")! as! NSArray,max:jsonResult.valueForKey("maxPerson")! as! Int,pic:jsonResult.valueForKey("pic")! as! String,event_id:jsonResult.valueForKey("_id")! as! String,title:jsonResult.valueForKey("description")! as! String,createdID:jsonResult.valueForKey("createdId")! as! String)
-                    events.append(data)
-                    //events.append(DataToPass(type: jsonResult.valueForKey("type")[i] as! String,date: jsonResult.valueForKey("startTime")[i] as! String,time:  jsonResult.valueForKey("starttime")[i] as! String,f_time:  jsonResult.valueForKey("finishTime")[i] as! String,place:  jsonResult.valueForKey("place")[i] as! String,author:  jsonResult.valueForKey("author")[i] as! String,price:  jsonResult.valueForKey("price")[i] as! Int,image: jsonResult.valueForKey("image")[i] as! String,latitude: jsonResult.valueForKey("latitude")[i] as! Double,longitude: jsonResult.valueForKey("longitude")[i] as! Double,bg: jsonResult.valueForKey("bg")[i] as! String,join: jsonResult.valueForKey("joinPerson")[i] as! NSArray,max: jsonResult.valueForKey("maxPerson")[i] as! Int,pic:  jsonResult.valueForKey("pic")[i] as! String))
+                let data :DataToPass = DataToPass(type:jsonResult.valueForKey("type")! as! String,date:jsonResult.valueForKey("startTime")! as! String,time:jsonResult.valueForKey("startTime")! as! String,f_time:jsonResult.valueForKey("finishTime")! as! String,place:jsonResult.valueForKey("place")! as! String,author:jsonResult.valueForKey("author")! as! String,price:jsonResult.valueForKey("price")! as! Int,image:jsonResult.valueForKey("image")! as! String,latitude:jsonResult.valueForKey("latitude")! as! Double,longitude:jsonResult.valueForKey("longitude")! as! Double,bg:jsonResult.valueForKey("bg")! as! String,join:jsonResult.valueForKey("joinPerson")! as? NSArray,max:jsonResult.valueForKey("maxPerson")! as! Int,pic:jsonResult.valueForKey("pic")! as! String,event_id:jsonResult.valueForKey("_id")! as! String,title:jsonResult.valueForKey("description")! as! String,createdID:jsonResult.valueForKey("createdId")! as! String)
+                events.append(data)
+                //events.append(DataToPass(type: jsonResult.valueForKey("type")[i] as! String,date: jsonResult.valueForKey("startTime")[i] as! String,time:  jsonResult.valueForKey("starttime")[i] as! String,f_time:  jsonResult.valueForKey("finishTime")[i] as! String,place:  jsonResult.valueForKey("place")[i] as! String,author:  jsonResult.valueForKey("author")[i] as! String,price:  jsonResult.valueForKey("price")[i] as! Int,image: jsonResult.valueForKey("image")[i] as! String,latitude: jsonResult.valueForKey("latitude")[i] as! Double,longitude: jsonResult.valueForKey("longitude")[i] as! Double,bg: jsonResult.valueForKey("bg")[i] as! String,join: jsonResult.valueForKey("joinPerson")[i] as! NSArray,max: jsonResult.valueForKey("maxPerson")[i] as! Int,pic:  jsonResult.valueForKey("pic")[i] as! String))
                 
             }
         }catch{
@@ -132,10 +136,28 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
                 self.userName = result.valueForKey("name") as! String
                 self.firstName = result.valueForKey("first_name") as! String
                 self.join.layer.cornerRadius = 5
+                //self.user_id = "1289318187750398"
                 if self.user_id == self.showEvent.join[0].valueForKey("user_id") as! String{
-                    self.join.setTitle("Cancel", forState: .Normal)
+                    if self.showEvent.join.count == self.showEvent.max{
+                        self.join.setTitle("Reserve", forState: .Normal)
+                    }else{
+                        self.join.setTitle("Cancel", forState: .Normal)
+                    }
                 }else{
+                    var found = 0
+                    for i in 0...self.showEvent.join.count-1{
+                        print(self.showEvent.join[i].valueForKey("user_id"))
+                        
+                        if self.user_id == self.showEvent.join[i].valueForKey("user_id") as! String {
+                            print("found")
+                            found++
+                        }
+                    }
+                    if found > 0 {
+                        self.join.setTitle("LEAVE", forState: .Normal)
+                    }else{
                     self.join.setTitle("JOIN (\(self.showEvent.price) THB)", forState: .Normal)
+                    }
                 }
                 self.join.hidden = false
             }
@@ -144,11 +166,11 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         //print(scrollView.contentOffset.y + scrollView.contentOffset.x)
-//        if (scrollView.contentOffset.y != 0) {
-//            var offset:CGPoint = scrollView.contentOffset
-//            offset.y = 0
-//            scrollView.contentOffset = offset
-//        }
+        //        if (scrollView.contentOffset.y != 0) {
+        //            var offset:CGPoint = scrollView.contentOffset
+        //            offset.y = 0
+        //            scrollView.contentOffset = offset
+        //        }
         if (scrollView.contentOffset.x != 0) {
             var offset:CGPoint = scrollView.contentOffset
             offset.x = 0
@@ -184,6 +206,8 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         return view
     }
     func joinEvent(){
+//                self.userName = "JJamie Ratchata"
+//                self.user_id = "1289318187750398"
         var firstName:String = self.userName
         var range: Range<String.Index> = firstName.rangeOfString(" ")!
         var index: Int = firstName.startIndex.distanceTo(range.startIndex)
@@ -192,35 +216,90 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         let date = NSDate()
         var day = (String(date).substringWithRange(Range<String.Index>(start: String(date).startIndex.advancedBy(0), end: String(date).startIndex.advancedBy(10))))
         var hour = (String(date).substringWithRange(Range<String.Index>(start: String(date).startIndex.advancedBy(11), end: String(date).startIndex.advancedBy(19))))
-        
-        let param = [
-            
-            "noti" : ["user_id":showEvent.createdID,"date":day+"T"+hour+".000Z","name":self.userName,"title":"Joined your event","image":self.firstName],"_csrf":self.key
+        var change : Int = Int(hour.substringWithRange(Range<String.Index>(start:hour.startIndex.advancedBy(0),end:hour.startIndex.advancedBy(2))))!
+        change+=7
+        hour = (String(date).substringWithRange(Range<String.Index>(start: String(date).startIndex.advancedBy(13), end: String(date).startIndex.advancedBy(19))))
+        let user :String = self.showEvent.join[0].valueForKey("user_id") as! String
+        let param = ["noti" : ["user_id":user,"date":day+"T"+String(change)+hour+".000Z","name":self.userName,"title":"Joined your event","image":firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),"eventId":showEvent.event_id],"_csrf":self.key
         ]
         var found = 0
         for i in 0...showEvent.join.count-1{
-            print(showEvent.join[i])
+            print(showEvent.join[i].valueForKey("user_id"))
+            
             if self.user_id == showEvent.join[i].valueForKey("user_id") as! String {
                 print("found")
                 found++
             }
         }
         print("found"+String(found))
+        
         if found==0{
+            
             print("hello")
+            if self.showEvent.join.count+1 == self.showEvent.max{
+                var param = ["noti" : ["user_id":user,"date":day+"T"+String(change)+hour+".000Z","name":self.userName,"title":"Your Event is ready","image":"iTunesArtwork","eventId":showEvent.event_id],"_csrf":self.key
+                ]
+                Alamofire.request(.POST, "http://localhost:3000/joinEvent", parameters:parameters as! [String : AnyObject], encoding: .JSON)
+                Alamofire.request(.POST, "http://localhost:3000/addNewNotification", parameters:param as! [String : AnyObject], encoding: .JSON)
+                param = ["noti" : ["user_id":user,"date":day+"T"+String(change)+hour+".000Z","name":self.userName,"title":"Joined your event","image":firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),"eventId":showEvent.event_id],"_csrf":self.key
+                ]
+                Alamofire.request(.POST, "http://localhost:3000/addNewNotification", parameters:param as! [String : AnyObject], encoding: .JSON)
+            }else{
             Alamofire.request(.POST, "http://localhost:3000/joinEvent", parameters:parameters as! [String : AnyObject], encoding: .JSON)
             Alamofire.request(.POST, "http://localhost:3000/addNewNotification", parameters:param as! [String : AnyObject], encoding: .JSON)
+            }
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }else{
-            let alertController = UIAlertController(title: "Warning", message:
-                "You want to cancle this Event?", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-                print("Handle Ok logic here")
-                let parameters = ["message":["eventId":self.showEvent.event_id],"_csrf":self.key]
-                Alamofire.request(.POST, "http://localhost:3000/removeEvent", parameters:parameters as! [String : AnyObject], encoding: .JSON)
-                self.navigationController?.popToRootViewControllerAnimated(true)
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            if self.user_id == showEvent.join[0].valueForKey("user_id") as! String{
+                if self.showEvent.join.count == self.showEvent.max {
+                    let alertController = UIAlertController(title: "Warning", message:
+                        "You want to reserve this Event?", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                        print("Handle Ok logic here")
+                        let parameters = ["message":["user_id":self.user_id,"date":day+"T"+String(change)+hour+".000Z","price":self.showEvent.price,"place":self.showEvent.place,"name":self.userName,"event":self.showEvent.type],"_csrf":self.key]
+                        Alamofire.request(.POST, "http://localhost:3000/addReceipt", parameters:parameters as! [String : AnyObject], encoding: .JSON)
+                        let param = ["message":["eventId":self.showEvent.event_id],"_csrf":self.key]
+                        Alamofire.request(.POST, "http://localhost:3000/removeEvent", parameters:param as! [String : AnyObject], encoding: .JSON)
+                        for i in 0...self.showEvent.join.count-1 {
+                            let user : String = self.showEvent.join[i].valueForKey("user_id") as! String
+                            let parameter = [
+                                "noti" : ["user_id":user,"date":day+"T"+String(change)+hour+".000Z","name":self.userName,"title":"Reserved an event","image":self.firstName,"eventId":"Receipt"],"_csrf":self.key
+                            ]
+                            Alamofire.request(.POST, "http://localhost:3000/addNewNotification", parameters:parameter as! [String : AnyObject], encoding: .JSON)
+                        }
+                        self.performSegueWithIdentifier("goReceipt", sender: self)
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                }else{
+                    let alertController = UIAlertController(title: "Warning", message:
+                        "Do you want to cancle this Event?", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                        print("Handle Ok logic here")
+                        let parameters = ["message":["eventId":self.showEvent.event_id],"_csrf":self.key]
+                        Alamofire.request(.POST, "http://localhost:3000/removeEvent", parameters:parameters as! [String : AnyObject], encoding: .JSON)
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+            }else{
+                
+                let alertController = UIAlertController(title: "Warning", message:
+                    "Do you want to out this Event?", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (action: UIAlertAction!) in
+                    print("Handle Ok logic here")
+                    print(self.showEvent.event_id+"llll")
+                    let parameters = ["message":["eventId":self.showEvent.event_id,"user_id":self.user_id],"_csrf":self.key
+                    ]
+                    Alamofire.request(.POST, "http://localhost:3000/removePlayer", parameters:parameters as? [String : AnyObject], encoding: .JSON)
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }))
+
+                alertController.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
         }
         
     }
@@ -228,17 +307,25 @@ class ShowEventViewController: UIViewController,CLLocationManagerDelegate,MKMapV
         if let des = segue.destinationViewController as? showSportPlayerTableViewController{
             des.joined = self.events[0].join
             des.eventID = self.showEvent.event_id
+            if self.user_id != nil{
+            if self.user_id == self.showEvent.join[0].valueForKey("user_id") as! String{
+                des.author = true
+            }else{ des.author = false}
+            }
+        }
+        if let des = segue.destinationViewController as? showRecipeViewController{
+            des.user_id = self.showEvent.join[0].valueForKey("user_id") as! String
         }
     }
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

@@ -60,9 +60,15 @@ class AchievementTableViewController: UITableViewController {
         print((self.user[0].achievement[indexPath.row].valueForKey("title")! as! String))
         let title = cell.viewWithTag(2) as! UILabel
         title.text = self.user[0].achievement[indexPath.row].valueForKey("title")! as! String
+         if self.user[0].achievement[indexPath.row].valueForKey("checked")! as! NSObject == 0{
         let date = cell.viewWithTag(3) as! UILabel
         date.text = (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).substringWithRange(Range<String.Index>(start: (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).startIndex.advancedBy(0), end: (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).startIndex.advancedBy(10)))
-        
+            date.hidden = true
+         }else{
+            let date = cell.viewWithTag(3) as! UILabel
+            date.text = (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).substringWithRange(Range<String.Index>(start: (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).startIndex.advancedBy(0), end: (self.user[0].achievement[indexPath.row].valueForKey("date")! as! String).startIndex.advancedBy(10)))
+            
+        }
         return cell
     }
     
@@ -85,7 +91,7 @@ class AchievementTableViewController: UITableViewController {
             //                print(jsonResult.valueForKey("notification")! as! NSArray)
             //                print(jsonResult.valueForKey("friends")! as! NSArray)
             //                print(jsonResult.valueForKey("favorite")! as! NSArray)
-            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about")! as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId") as? String,Username:jsonResult.valueForKey("displayName") as? String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement") as? NSArray,notification:jsonResult.valueForKey("notification") as? NSArray,friends:jsonResult.valueForKey("friends") as? NSArray,favourite:jsonResult.valueForKey("favorite") as? NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as? NSArray,receipt:jsonResult.valueForKey("receipt") as? NSArray,stat:jsonResult.valueForKey("stat") as? NSArray,newFeed:jsonResult.valueForKey("newFeed") as? NSArray)
             self.user.append(data)
         }catch{
             

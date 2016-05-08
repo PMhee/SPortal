@@ -1,5 +1,4 @@
 import UIKit
-
 @IBDesignable class GraphView: UIView {
     var graphPoints:[Int] = [4, 2, 6, 4, 5, 8, 3]
     //1 - the properties for the gradient

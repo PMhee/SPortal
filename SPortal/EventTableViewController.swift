@@ -30,50 +30,61 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge , categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         let refreshControl = UIRefreshControl()
+        let dismiss = UIGestureRecognizer(target: self, action: "dismissS:")
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        self.view.addGestureRecognizer(dismiss)
         tableView.addSubview(refreshControl)
     }
     func dismissS(sender:UITapGestureRecognizer){
         self.searchBar.resignFirstResponder()
+        self.searchActive = true
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         returnUserData()
         addEvents()
+        
         self.tableView.reloadData()
     }
     func refresh(refreshControl: UIRefreshControl) {
         // Do your job, when done:
-        addEvents()
-        self.tableView.reloadData()
+        searchActive = true
         refreshControl.endRefreshing()
     }
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false;
-        searchBar.resignFirstResponder()
-        addEvents()
+        //when clicked
+        searchActive = true
         self.tableView.reloadData()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = true
         searchBar.resignFirstResponder()
-        addEvents()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = true
+        searchBar.resignFirstResponder()
         self.tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
+        searchActive = true
         searchBar.resignFirstResponder()
+
+    }
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        searchBar.resignFirstResponder()
+        return true
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchActive{
             self.search(searchText)
             self.tableView.reloadData()
+            if searchText == ""{
+                addEvents()
+                self.tableView.reloadData()
+            }
         }
     }
     func returnUserData()
@@ -90,10 +101,17 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
                 self.getProfile()
                 let tabArray = self.tabBarController?.tabBar.items as NSArray!
                 let tabItem = tabArray.objectAtIndex(3) as! UITabBarItem
+                print(self.user.count)
+                if self.user.count > 0{
+                if self.user[0].newNotification == nil{
+                    
+                }else{
                 if(self.user[0].newNotification.count == 0){
                     tabItem.badgeValue = nil
                 }else{
                 tabItem.badgeValue = String(self.user[0].newNotification.count)
+                }
+                }
                 }
                 var noti = ["user_id":self.user_id]
             }
@@ -101,7 +119,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
     }
     func getProfile(){
         self.user = [User]()
-        let urlPath: String = "http://localhost:3000/getProfile/"+self.user_id
+        let urlPath: String = "http://localhost:3000/getProfile/"+self.user_id//"1289318187750398"
         var url: NSURL = NSURL(string: urlPath)!
         var request1: NSURLRequest = NSURLRequest(URL: url)
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse? >= nil
@@ -113,18 +131,17 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
             var firstName:String = jsonResult.valueForKey("displayName")! as! String
             var range: Range<String.Index> = firstName.rangeOfString(" ")!
             var index: Int = firstName.startIndex.distanceTo(range.startIndex)
-            //                print(jsonResult.valueForKey("facebookId")! as! String)
-            //                print(jsonResult.valueForKey("displayName")! as! String)
-            //                print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
-            //                print(jsonResult.valueForKey("achievement")! as! NSArray)
-            //                print(jsonResult.valueForKey("notification")! as! NSArray)
-            //                print(jsonResult.valueForKey("friends")! as! NSArray)
-            //                print(jsonResult.valueForKey("favorite")! as! NSArray)
-            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+//                            print(jsonResult.valueForKey("facebookId")! as! String)
+//                            print(jsonResult.valueForKey("displayName")! as! String)
+//                            print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
+//                            print(jsonResult.valueForKey("achievement")! as! NSArray)
+//                            print(jsonResult.valueForKey("notification")! as! NSArray)
+//                            print(jsonResult.valueForKey("friends")! as! NSArray)
+//                            print(jsonResult.valueForKey("favorite")! as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId") as? String,Username:jsonResult.valueForKey("displayName") as? String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement") as? NSArray,notification:jsonResult.valueForKey("notification") as? NSArray,friends:jsonResult.valueForKey("friends") as? NSArray,favourite:jsonResult.valueForKey("favorite") as? NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as? NSArray,receipt:jsonResult.valueForKey("receipt") as? NSArray,stat:jsonResult.valueForKey("stat") as? NSArray,newFeed:jsonResult.valueForKey("newFeed") as? NSArray)
             print(data)
             self.user.append(data)
         }catch{
-            
         }
         var err: NSError
         print(response)
@@ -167,7 +184,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
             print("Synchronous \(jsonResult)")
             if jsonResult.count>0{
                 for i in 0...jsonResult.count-1 {
-                    let data :DataToPass = DataToPass(type:jsonResult.valueForKey("type")[i] as! String,date:jsonResult.valueForKey("startTime")[i] as! String,time:jsonResult.valueForKey("startTime")[i] as! String,f_time:jsonResult.valueForKey("finishTime")[i] as! String,place:jsonResult.valueForKey("place")[i] as! String,author:jsonResult.valueForKey("author")[i] as! String,price:jsonResult.valueForKey("price")[i] as! Int,image:jsonResult.valueForKey("image")[i] as! String,latitude:jsonResult.valueForKey("latitude")[i] as! Double,longitude:jsonResult.valueForKey("longitude")[i] as! Double,bg:jsonResult.valueForKey("bg")[i] as! String,join:jsonResult.valueForKey("joinPerson")[i] as! NSArray,max:jsonResult.valueForKey("maxPerson")[i] as! Int,pic:jsonResult.valueForKey("pic")[i] as! String,event_id:jsonResult.valueForKey("_id")[i] as! String,title:jsonResult.valueForKey("description")[i] as! String,createdID:jsonResult.valueForKey("createdId")[i] as! String)
+                    let data :DataToPass = DataToPass(type:jsonResult.valueForKey("type")[i] as! String,date:jsonResult.valueForKey("startTime")[i] as! String,time:jsonResult.valueForKey("startTime")[i] as! String,f_time:jsonResult.valueForKey("finishTime")[i] as! String,place:jsonResult.valueForKey("place")[i] as! String,author:jsonResult.valueForKey("author")[i] as! String,price:jsonResult.valueForKey("price")[i] as! Int,image:jsonResult.valueForKey("image")[i] as! String,latitude:jsonResult.valueForKey("latitude")[i] as! Double,longitude:jsonResult.valueForKey("longitude")[i] as! Double,bg:jsonResult.valueForKey("bg")[i] as! String,join:jsonResult.valueForKey("joinPerson")[i] as? NSArray,max:jsonResult.valueForKey("maxPerson")[i] as! Int,pic:jsonResult.valueForKey("pic")[i] as! String,event_id:jsonResult.valueForKey("_id")[i] as! String,title:jsonResult.valueForKey("description")[i] as! String,createdID:jsonResult.valueForKey("createdId")[i] as! String)
                     events.append(data)
                     //events.append(DataToPass(type: jsonResult.valueForKey("type")[i] as! String,date: jsonResult.valueForKey("startTime")[i] as! String,time:  jsonResult.valueForKey("starttime")[i] as! String,f_time:  jsonResult.valueForKey("finishTime")[i] as! String,place:  jsonResult.valueForKey("place")[i] as! String,author:  jsonResult.valueForKey("author")[i] as! String,price:  jsonResult.valueForKey("price")[i] as! Int,image: jsonResult.valueForKey("image")[i] as! String,latitude: jsonResult.valueForKey("latitude")[i] as! Double,longitude: jsonResult.valueForKey("longitude")[i] as! Double,bg: jsonResult.valueForKey("bg")[i] as! String,join: jsonResult.valueForKey("joinPerson")[i] as! NSArray,max: jsonResult.valueForKey("maxPerson")[i] as! Int,pic:  jsonResult.valueForKey("pic")[i] as! String))
                 }
@@ -273,7 +290,7 @@ class EventTableViewController: UITableViewController,UISearchBarDelegate {
         attend.text = String(searchResult[indexPath.row].join.count) + "/" + String(searchResult[indexPath.row].max)
         var max :Int = searchResult[indexPath.row].max
         var att :Int = searchResult[indexPath.row].join.count
-        if max - att == 0 {
+        if max - att <= 0 {
             let join = cell.viewWithTag(10) as! UIImageView
             join.image = UIImage(named: "social red")
         }else if 100-((max-att)*100/max) >= 70 {

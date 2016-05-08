@@ -51,19 +51,35 @@ class NotiTableViewController: UITableViewController {
                 self.getProfile()
                 self.addNoti()
                 self.tableView.reloadData()
+                if self.user[0].newNotification != nil {
                 if(self.user[0].newNotification.count >= 1) {
                     for i in 0...self.user[0].newNotification.count-1{
                         let param = [
-                            "noti" : ["user_id":self.user_id,"date":self.user[0].newNotification[i].valueForKey("date") as! String,"name":self.user[0].newNotification[i].valueForKey("name") as! String,"title":self.user[0].newNotification[i].valueForKey("title") as! String,"image":self.user[0].newNotification[i].valueForKey("image") as! String],"_csrf":self.key
+                            "noti" : ["user_id":self.user_id,"date":self.user[0].newNotification[i].valueForKey("date") as! String,"name":self.user[0].newNotification[i].valueForKey("name") as! String,"title":self.user[0].newNotification[i].valueForKey("title") as! String,"image":self.user[0].newNotification[i].valueForKey("image") as! String,"eventId":self.user[0].newNotification[i].valueForKey("eventID") as! String],"_csrf":self.key
                         ]
                         Alamofire.request(.POST, "http://localhost:3000/addNotification", parameters:param as! [String : AnyObject], encoding: .JSON)
                         Alamofire.request(.POST, "http://localhost:3000/removeNewNotification", parameters:param as! [String : AnyObject], encoding: .JSON)
                     }
                 }
+                }
             }
         })
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let des = segue.destinationViewController as? ShowNotificationViewController{
+            var indexPath = self.tableView.indexPathForSelectedRow!
+            print(indexPath.row)
+            if indexPath.row < newNoti.count{
+            des.event_id = self.user[0].newNotification[indexPath.row].valueForKey("eventID") as! String
+            }else{
+            var index = indexPath.row
+            index -= self.user[0].newNotification.count
+            index = (self.user[0].notification.count-1) - index
+            des.event_id = self.user[0].notification[index].valueForKey("eventID") as! String
+                print(self.user[0].notification[index].valueForKey("eventID") as! String)
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,14 +104,14 @@ class NotiTableViewController: UITableViewController {
             var firstName:String = jsonResult.valueForKey("displayName")! as! String
             var range: Range<String.Index> = firstName.rangeOfString(" ")!
             var index: Int = firstName.startIndex.distanceTo(range.startIndex)
-            //                print(jsonResult.valueForKey("facebookId")! as! String)
-            //                print(jsonResult.valueForKey("displayName")! as! String)
-            //                print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
-            //                print(jsonResult.valueForKey("achievement")! as! NSArray)
-            //                print(jsonResult.valueForKey("notification")! as! NSArray)
-            //                print(jsonResult.valueForKey("friends")! as! NSArray)
-            //                print(jsonResult.valueForKey("favorite")! as! NSArray)
-            let data :User = User(UserID:jsonResult.valueForKey("facebookId")! as! String,Username:jsonResult.valueForKey("displayName")! as! String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement")! as! NSArray,notification:jsonResult.valueForKey("notification")! as! NSArray,friends:jsonResult.valueForKey("friends")! as! NSArray,favourite:jsonResult.valueForKey("favorite")! as! NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as! NSArray)
+//                            print(jsonResult.valueForKey("facebookId")! as! String)
+//                            print(jsonResult.valueForKey("displayName")! as! String)
+//                            print(firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))))
+//                            print(jsonResult.valueForKey("achievement")! as! NSArray)
+//                            print(jsonResult.valueForKey("notification")! as! NSArray)
+//                            print(jsonResult.valueForKey("friends")! as! NSArray)
+//                            print(jsonResult.valueForKey("favorite")! as! NSArray)
+            let data :User = User(UserID:jsonResult.valueForKey("facebookId") as? String,Username:jsonResult.valueForKey("displayName") as? String,profilePic:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),achievement:jsonResult.valueForKey("achievement") as? NSArray,notification:jsonResult.valueForKey("notification") as? NSArray,friends:jsonResult.valueForKey("friends") as? NSArray,favourite:jsonResult.valueForKey("favorite") as? NSArray,About:jsonResult.valueForKey("about") as! String,newNotification:jsonResult.valueForKey("newNotification") as? NSArray,receipt:jsonResult.valueForKey("receipt") as? NSArray,stat:jsonResult.valueForKey("stat") as? NSArray,newFeed:jsonResult.valueForKey("newFeed") as? NSArray)
             self.user.append(data)
         }catch{
             
@@ -106,6 +122,7 @@ class NotiTableViewController: UITableViewController {
     func addNoti(){
         self.noti = [Notification]()
         self.newNoti = [Notification]()
+        if self.user[0].newNotification != nil {
         if self.user[0].newNotification.count > 0{
         for i in 0...self.user[0].newNotification.count-1{
             var day = (self.user[0].newNotification[i].valueForKey("date") as! String).substringWithRange(Range<String.Index>(start: (self.user[0].newNotification[i].valueForKey("date")as! String).startIndex.advancedBy(0), end: (self.user[0].newNotification[i].valueForKey("date") as! String).startIndex.advancedBy(10)))
@@ -120,12 +137,17 @@ class NotiTableViewController: UITableViewController {
             //                            print(interval)
         }
         }
+        }
         self.noti += self.newNoti
-                for i in 0...self.user[0].notification.count-1{
+        if self.user[0].notification != nil {
+        if self.user[0].notification.count>0{
+            var i = user[0].notification.count-1
+                while i >= 0{
                     var day = (self.user[0].notification[i].valueForKey("date") as! String).substringWithRange(Range<String.Index>(start: (self.user[0].notification[i].valueForKey("date")as! String).startIndex.advancedBy(0), end: (self.user[0].notification[i].valueForKey("date") as! String).startIndex.advancedBy(10)))
                     var hour = (self.user[0].notification[i].valueForKey("date") as! String).substringWithRange(Range<String.Index>(start: (self.user[0].notification[i].valueForKey("date")as! String).startIndex.advancedBy(11), end: (self.user[0].notification[i].valueForKey("date") as! String).startIndex.advancedBy(19)))
                     let notification = Notification(image_profile:self.user[0].notification[i].valueForKey("image") as! String,name:self.user[0].notification[i].valueForKey("name") as! String,date:day+"-"+hour,title:self.user[0].notification[i].valueForKey("title") as! String)
                     self.noti.append(notification)
+                    i--
                     //                            let dateFormatter = NSDateFormatter()
                     //                            dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
                     //                            let someDate = dateFormatter.dateFromString(day+"-"+hour)
@@ -133,6 +155,8 @@ class NotiTableViewController: UITableViewController {
                     //                            let interval = today.timeIntervalSinceDate(someDate!)
                     //                            print(interval)
                 }
+        }
+        }
 //        let someDate1 = "03/9/2016/13/45/04"
 //        let someDate2 = "03/8/2016/10/00/05"
 //        let someDate3 = "02/9/2016/18/01/30"
@@ -165,6 +189,9 @@ class NotiTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("newCell", forIndexPath: indexPath)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+           if self.newNoti[indexPath.row].title == "Reserved an event" {
+                cell.userInteractionEnabled = false
+            }
             let image_profile = cell.viewWithTag(1) as! UIImageView
             image_profile.image = UIImage(named: newNoti[indexPath.row].image_profile)
             image_profile.layer.masksToBounds = false
@@ -205,7 +232,11 @@ class NotiTableViewController: UITableViewController {
                         date.text = "yesterday"
                     }else{
                         if Int(hr) < 1 {
+                            if Int(min) < 2{
+                            date.text = "Just now"
+                            }else{
                             date.text = String(Int(min))+" minuits ago"
+                            }
                         }else if Int(hr) == 1{
                             date.text = String(Int(hr))+" hour ago"
                         }else{
@@ -218,6 +249,10 @@ class NotiTableViewController: UITableViewController {
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+            if self.noti[indexPath.row].title == "Reserved an event" {
+                print("llk")
+                cell.userInteractionEnabled = false
+            }
         let image_profile = cell.viewWithTag(1) as! UIImageView
         image_profile.image = UIImage(named: noti[indexPath.row].image_profile)
         image_profile.layer.masksToBounds = false
@@ -258,7 +293,12 @@ class NotiTableViewController: UITableViewController {
                     date.text = "yesterday"
                 }else{
                     if Int(hr) < 1 {
-                        date.text = String(Int(min))+" minuits ago"
+                        if Int(min) < 2{
+                            date.text = "Just now"
+                        }else{
+                            date.text = String(Int(min))+" minuits ago"
+                        }
+
                     }else if Int(hr) == 1{
                         date.text = String(Int(hr))+" hour ago"
                     }else{

@@ -17,4 +17,7 @@ struct User {
     var favourite = NSArray!()
     var About = String!()
     var newNotification = NSArray!()
+    var receipt = NSArray!()
+    var stat = NSArray!()
+    var newFeed = NSArray!()
 }

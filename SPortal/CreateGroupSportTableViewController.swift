@@ -35,7 +35,7 @@ class CreateGroupSportTableViewController: UITableViewController,UITextFieldDele
     var userName: String!
     var firstName: String!
     @IBAction func click10(sender: UIButton) {
-        Time.text = sender.titleLabel?.text
+        Time.text = (sender.titleLabel?.text)!
     }
     @IBAction func click11(sender: UIButton) {
         Time.text = sender.titleLabel?.text
@@ -130,7 +130,7 @@ class CreateGroupSportTableViewController: UITableViewController,UITextFieldDele
         self.sendDate = strDate
         Time.text = "Select Time Slot"
         max.text = "Select max players"
-        
+        self.putTitle.delegate = self
         //var finish = Int(strTime)
         //finish = finish!+1
         LocationTitle.text = fromSegue
@@ -165,6 +165,10 @@ class CreateGroupSportTableViewController: UITableViewController,UITextFieldDele
         }
         let newLength = currentCharacterCount + string.characters.count - range.length
         return newLength <= 24
+    }
+    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+        userText.resignFirstResponder()
+        return true;
     }
     func datePickerChanged(datePicker:UIDatePicker) {
         var dateFormatter = NSDateFormatter()
@@ -255,6 +259,7 @@ class CreateGroupSportTableViewController: UITableViewController,UITextFieldDele
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
         }
     }
+    
     func createEvent(){
          NSNotificationCenter.defaultCenter().postNotificationName("sendNotificationID", object: nil)
         self.sendStartHour = Time.text!.substringWithRange(Range<String.Index>(start: Time.text!.startIndex.advancedBy(0), end: Time.text!.endIndex.advancedBy(-6)))
@@ -266,7 +271,7 @@ class CreateGroupSportTableViewController: UITableViewController,UITextFieldDele
         print(self.sendFinHour)
         let icon = self.SportTT.text!+" icon"
         let bg = self.SportTT.text!+" bg"
-        let joinPerson : NSArray = [self.user_id]
+        let joinPerson : NSDictionary = ["user_id":self.user_id]
         let eventID = NSUUID().UUIDString
         let parameters = [
             "message": ["type":self.SportTT.text!,"startTime":self.sendDate+" "+self.sendStartHour+".000Z","finishTime":self.sendFinHour,"place":LocationTitle.text!,"latitude":String(latitude),"longitude":String(longitude),"maxPerson":max.text!,"createdId":eventID,"description":createTitle.text!,"author":self.userName,"price":self.price,"image":icon,"bg":bg,"pic":self.firstName,"joinPerson":joinPerson],"_csrf":self.key

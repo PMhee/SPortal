@@ -34,15 +34,41 @@ class UserMakeAppointmentViewController: UIViewController,MKMapViewDelegate,CLLo
         let SportComplex = MKPointAnnotation()
         SportComplex.coordinate.latitude = 13.73888
         SportComplex.coordinate.longitude = 100.52586
-        SportComplex.title = "CU SportComplex"
-        SportComplex.subtitle = "Chulalongkorn Sport Complex"
+        SportComplex.title = "SportComplex"
+        SportComplex.subtitle = "Sport complex at Chulalongkorn"
         let CU = MKPointAnnotation()
-        CU.coordinate.latitude = 14.73888
-        CU.coordinate.longitude = 101.52586
-        CU.title = "Chulalongkorn University"
-        CU.subtitle = "The 1st University in thailand"
-        self.map.addAnnotation(CU)
-        self.map.addAnnotation(SportComplex)
+        CU.coordinate.latitude = 13.73650
+        CU.coordinate.longitude = 100.52885
+        CU.title = "Chulalongkorn"
+        CU.subtitle = "University"
+        let starclub = MKPointAnnotation()
+        starclub.coordinate.latitude = 13.78390
+        starclub.coordinate.longitude = 100.55357
+        starclub.title = "Starclub"
+        starclub.subtitle = "Football stadium"
+        let predator = MKPointAnnotation()
+        predator.coordinate.latitude = 13.835246
+        predator.coordinate.longitude = 100.528851
+        predator.title = "Predator"
+        predator.subtitle = "BB gun arena"
+        let f20 = MKPointAnnotation()
+        f20.coordinate.latitude = 13.737384
+        f20.coordinate.longitude = 100.59288
+        f20.title = "F20Baseball"
+        f20.subtitle = "Baseball Stadium"
+        if self.sportType == "Football"{
+            self.map.addAnnotation(starclub)
+        }else if sportType == "Boxing" || sportType == "Yoga" || sportType == "Workout" || sportType == "Basketball" || sportType == "Badminton"{
+            self.map.addAnnotation(SportComplex)
+        }else if sportType == "BBGun"{
+            
+            self.map.addAnnotation(predator)
+        }
+        else if sportType == "Baseball"{
+            self.map.addAnnotation(f20)
+        }else if sportType == "Tennis"{
+            self.map.addAnnotation(CU)
+        }
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager.delegate = self

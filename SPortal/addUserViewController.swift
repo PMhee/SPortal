@@ -11,13 +11,21 @@ import Alamofire
 import FBSDKLoginKit
 import FBSDKCoreKit
 class addUserViewController: UIViewController {
-    var friends = [Friend]()
+    var friends = [String]()
     var key:String!
     var user_id: String!
     var user_name: String!
-    @IBAction func click(sender: UIButton) {
-        createUser()
+    var user = [User]()
+    
+    struct Achievement {
+        var title : String
+        var date : String
+        var checked : String
     }
+    struct F {
+        var user_id : String!
+    }
+    var friend = [F]()
     override func viewDidLoad() {
         super.viewDidLoad()
         Alamofire.request(.GET, "http://localhost:3000/requestCsrf")
@@ -26,7 +34,7 @@ class addUserViewController: UIViewController {
                 self.key = String(response.result.value!)
                 print(self.key)
         }
-        returnUserData()
+            self.returnUserData()
         // Do any additional setup after loading the view.
     }
 
@@ -34,15 +42,34 @@ class addUserViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func createUser(){
         NSNotificationCenter.defaultCenter().postNotificationName("sendNotificationID", object: nil)
         let workplace = "add your workplace"
         let about = ""
-        let parameters = ["message":["facebookId":self.user_id,"displayName":self.user_name],"_csrf":self.key]
+        let noti = []
+        let parameters = ["message":["facebookId":self.user_id,"displayName":self.user_name,"notification":noti,"newNotification":noti],"_csrf":self.key]
         Alamofire.request(.POST, "http://localhost:3000/addUser", parameters: parameters as! [String : AnyObject], encoding: .JSON)
-        let param = ["message":["user_id":self.user_id,"date":"2016-04-28T10:00:00.000Z","title":"New Star","checked":false],"_csrf":self.key]
+        let a1 = Achievement(title:"Man of the match",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        let a2 = Achievement(title:"Join Lenkila 10 times",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        let a3 = Achievement(title:"Target achieved",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        let a4 = Achievement(title:"Best pace",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        let a5 = Achievement(title:"Superstar of Lenkila",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        let a6 = Achievement(title:"Longest distance",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        let a7 = Achievement(title:"You will never walk alone",date:"2016-04-28T10:00:00.000Z",checked:"false")
+        var achievement = [Achievement]()
+        achievement += [a1,a2,a3,a4,a5,a6,a7]
+        print(achievement.count)
+//        for i in 0...self.friends.count-1{
+//            let f = F(user_id: self.friends[i])
+//            self.friend.append(f)
+//        }
+        for i in 0...achievement.count-1{
+        let param = ["message":["user_id":self.user_id,"date":achievement[i].date,"title":achievement[i].title,"checked":achievement[i].checked],"_csrf":self.key]
         Alamofire.request(.POST, "http://localhost:3000/addAchievement", parameters: param as! [String : AnyObject], encoding: .JSON)
-    }
+        }
+        self.performSegueWithIdentifier("goInfom", sender: self)
+       }
     func returnUserData()
     {
         // Get List Of Friends
@@ -63,8 +90,7 @@ class addUserViewController: UIViewController {
                         var firstName:String = name
                         var range: Range<String.Index> = firstName.rangeOfString(" ")!
                         var index: Int = firstName.startIndex.distanceTo(range.startIndex)
-                        let f :Friend = Friend(image_profile:firstName.substringWithRange(Range<String.Index>(start: firstName.startIndex.advancedBy(0), end: firstName.startIndex.advancedBy(index))),name:name)
-                        self.friends.append(f)
+                        
                     }
                 }
                 else {
@@ -94,16 +120,27 @@ class addUserViewController: UIViewController {
                     //                    self.gender.text = sex as String
                     let userID : NSString = result.valueForKey("id") as! NSString
                     self.user_id = userID as String
+                    
                     let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                     if let data = NSData(contentsOfURL: facebookProfileUrl!) {
                         var image_blur: UIImage!
                         image_blur = UIImage(data: data)!.applyBlurWithRadius(3, tintColor: UIColor(white: 0.5, alpha: 0.4), saturationDeltaFactor: 1.8)
                     }
+                    self.createUser()
+                    self.performSegueWithIdentifier("goInfom", sender: self)
                     
                 }
             })
-            
+          
         }
+    }
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
 
     /*

@@ -10,9 +10,30 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import CoreData
+import Alamofire
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+    @IBOutlet var login: FBSDKLoginButton!
+    @IBOutlet weak var logo: UIImageView!
+    var friends = [Friend]()
+    var key:String!
+    var user_id: String!
+    var user_name: String!
+    struct Achievement {
+        var title : String
+        var date : String
+        var checked : String
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.logo.layer.cornerRadius = 10
+        Alamofire.request(.GET, "http://localhost:3000/requestCsrf")
+            .responseString { response in
+                print("Response String: \(response.result.value)")
+                self.key = String(response.result.value!)
+                print(self.key)
+                
+        }
         if(FBSDKAccessToken.currentAccessToken() == nil)
         {
             print("Not log in")
@@ -20,12 +41,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         else{
             print("Log in")
         }
-        let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile","user_friends"]
-        loginButton.center = self.view.center
-        loginButton.delegate = self
-        self.view.addSubview(loginButton)
-        returnUserData()
+        login.readPermissions = ["public_profile","user_friends"]
+        login.delegate = self
+        
         
     }
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -39,22 +57,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             print(error.localizedDescription)
         }
     }
-    func returnUserData(){
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, age_range "])
-        
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                print("fetched user: \(result)")
-            }
-        })
-    }
-
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("log out")
     }
